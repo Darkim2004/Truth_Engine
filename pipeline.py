@@ -19,12 +19,13 @@ from models import (
     FetchedPage,
 )
 from search.aggregator import aggregate_search
-from fetcher.manager import fetch_batch
+from fetcher.manager import fetch_batch, fetch_url
 from fetcher.playwright_fetcher import close_browser
 from extractor.content import extract_article_text
 from extractor.metadata import extract_metadata
 from utils.paywall_detector import is_paywall
 from utils.language_filter import is_correct_language, detect_language
+from utils.url_normalizer import normalize_url
 
 console = Console()
 
@@ -57,6 +58,19 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
     ))
 
     all_results: list[ClaimSources] = []
+    # Stato per-sessione (singolo JSON input): URL gia' visitati/schedulati.
+    visited_urls: set[str] = set()
+
+    # Se presente, l'URL originale in input viene marcato subito come gia' visitato
+    # per evitare che venga riutilizzato come fonte durante la stessa sessione.
+    input_source_url = pipeline_input.original_source.url
+    if input_source_url:
+        normalized_input_url = normalize_url(input_source_url)
+        if normalized_input_url:
+            visited_urls.add(normalized_input_url)
+            console.print(
+                f"[dim]🔒 URL input escluso dalle fonti: {normalized_input_url}[/dim]"
+            )
 
     try:
         for i, claim in enumerate(claims):
@@ -76,9 +90,38 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
                 all_results.append(ClaimSources(claim=claim, sources=[]))
                 continue
 
+            # Deduplica per sessione: evita di rivisitare URL gia' visti in claim precedenti.
+            fresh_search_results: list[SearchResult] = []
+            session_duplicates = 0
+
+            for result in search_results:
+                normalized = normalize_url(result.url)
+                if not normalized:
+                    continue
+
+                if normalized in visited_urls:
+                    session_duplicates += 1
+                    continue
+
+                fresh_search_results.append(result)
+                visited_urls.add(normalized)
+
+            if session_duplicates > 0:
+                console.print(
+                    f"  [dim]♻ Skip sessione: {session_duplicates} URL gia' visitati[/dim]"
+                )
+
+            if not fresh_search_results:
+                console.print(
+                    "  [yellow]⚠[/yellow] Tutti gli URL erano gia' visitati in questa sessione. "
+                    "Skip claim."
+                )
+                all_results.append(ClaimSources(claim=claim, sources=[]))
+                continue
+
             # --- 2. FETCH ---
             console.print(f"\n  [blue]📄 Fase 2: Fetch HTML...[/blue]")
-            urls = [r.url for r in search_results]
+            urls = [r.url for r in fresh_search_results]
             pages: list[FetchedPage] = await fetch_batch(urls)
 
             # --- 3. FILTER + EXTRACT ---
@@ -132,7 +175,8 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
 
             console.print(
                 f"\n  [blue]📊[/blue] Claim {claim.id}: "
-                f"{len(sources)} fonti estratte su {len(search_results)} URL trovati"
+                f"{len(sources)} fonti estratte su {len(fresh_search_results)} URL fetchati "
+                f"({len(search_results)} trovati in ricerca)"
             )
 
     finally:
@@ -157,3 +201,47 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
     ))
 
     return output
+
+
+async def get_article_title_from_url(url: str) -> str:
+    """
+    Metodo riusabile per FE/BE: dato un URL, ritorna il titolo articolo.
+
+    Usa gli stessi strumenti della pipeline:
+    - fetch manager (httpx con fallback Playwright)
+    - extractor metadati (og:title, <title>, h1, ecc.)
+
+    Returns:
+        Titolo estratto, oppure stringa vuota se non disponibile.
+    """
+    normalized_url = normalize_url(url)
+    if not normalized_url:
+        return ""
+
+    try:
+        page = await fetch_url(normalized_url)
+        if not page.is_valid or not page.html:
+            return ""
+
+        metadata = extract_metadata(page.html)
+        return (metadata.title or "").strip()
+    finally:
+        # In chiamate standalone (es. endpoint frontend), rilascia risorse browser.
+        await close_browser()
+
+
+def get_article_title_from_url_sync(url: str) -> str:
+    """
+    Wrapper sincrono per ambienti non-async.
+
+    Se il chiamante e' gia' in un event loop async, usare direttamente:
+    `await get_article_title_from_url(url)`.
+    """
+    try:
+        asyncio.get_running_loop()
+    except RuntimeError:
+        return asyncio.run(get_article_title_from_url(url))
+
+    raise RuntimeError(
+        "Event loop gia' attivo: usa await get_article_title_from_url(url)."
+    )

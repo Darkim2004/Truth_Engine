@@ -62,9 +62,9 @@ async def fetch_with_playwright(url: str) -> FetchedPage:
         FetchedPage con html e metadati.
     """
     try:
-        from playwright_stealth import stealth_async
+        from playwright_stealth import Stealth
     except ImportError:
-        console.print("  [red]✗[/red] playwright-stealth non installato")
+        console.print("  [red]✗[/red] playwright-stealth non installato o versione errata")
         return FetchedPage(
             url=url,
             fetch_method="playwright",
@@ -88,8 +88,9 @@ async def fetch_with_playwright(url: str) -> FetchedPage:
 
         page = await context.new_page()
 
-        # Applica stealth
-        await stealth_async(page)
+        # Applica stealth (versione 2.x API)
+        stealth = Stealth()
+        await stealth.apply_stealth_async(page)
 
         # Naviga
         try:
