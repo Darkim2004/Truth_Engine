@@ -6,31 +6,31 @@
     },
     "verdict_label": "DISINFORMAZIONE",
     "explainability": {
-        "summary": "Il CLAIM che le proteine dei grilli modificano il DNA umano è probabilmente falso. La fonte scientifica di Nature fornisce una prova solida che smentisce tale asserzione.",
-        "cross_check_result": "La fonte 'verita-nascoste-blog.it' cita affermazioni non verificabili e allarmistiche, mentre la fonte scientifica di Nature fornisce dati concreti che smentiscono il CLAIM.",
-        "strength_analysis": "La fonte di Nature rappresenta la prova più solida a causa della sua natura scientifica e della data recente (2026), che indica una comprensione aggiornata e verificata dell'argomento.",
+        "summary": "Il CLAIM secondo cui le proteine dei grilli modificano il DNA umano è considerato disinformazione a causa della scarsa qualità delle fonti che lo supportano e della presenza di affermazioni esagerate o false.",
+        "cross_check_result": "La fonte 'verita-nascoste-blog.it' cita affermazioni non supportate da prove scientifiche e contrasta con informazioni verificabili da fonti più attendibili come Nature.",
+        "strength_analysis": "L'analisi più solida proviene dalla fonte scientifica 'https://www.nature.com/articles/s41598-026-12345', che afferma che le proteine degli insetti non integrano il DNA umano.",
         "consensus_level": "Basso",
-        "next_step": "Per conferma definitiva, cercare ulteriori studi scientifici peer-review e dati governativi che esaminino gli effetti delle proteine dei grilli sull'uomo."
+        "next_step": "Per una conferma definitiva, cercare studi peer-review più recenti e dati da fonti governative o universitarie."
     },
     "top_sources": {
         "supporting": [
             {
                 "url": "https://www.nature.com/articles/s41598-026-12345",
-                "reason": "Fornisce dati scientifici recenti e verificati che smentiscono il CLAIM.",
-                "title": "Comprehensive analysis of insect-based proteins"
+                "reason": "Fornisce dati scientifici che smentiscono il CLAIM",
+                "title": "Studio sulla sicurezza delle proteine degli insetti"
             }
         ],
         "conflicting": [
             {
                 "url": "https://verita-nascoste-blog.it/pericolo-insetti",
-                "reason": "Presenta affermazioni allarmistiche e non verificate, senza alcuna prova scientifica a supporto.",
-                "title": "Pericolo insetti"
+                "reason": "Diffonde informazioni non verificate e allarmistiche",
+                "title": "Blog su pericoli degli insetti"
             }
         ]
     },
     "analysis_tags": [
         "Allarmismo",
-        "Dati Scientifici",
-        "Fake Authority"
+        "Dati Scientifici Contraddittori",
+        "Fonti Non Attendibili"
     ]
 }
