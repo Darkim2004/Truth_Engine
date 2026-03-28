@@ -1,1 +1,0 @@
-print("Luiggi gay")

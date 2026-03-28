@@ -1,14 +1,25 @@
+# Ambienti virtuali e Python
 .venv/
 __pycache__/
 *.pyc
 .env
+
+# Editor e IDE
 .vscode/
+.DS_Store
+**/.DS_Store
+
+# Build e Distribuzione
 dist/
 build/
+
+# Test e Coverage
 .pytest_cache/
 .coverage
 htmlcov/
-.DS_Store
+
+# File di configurazione sensibili (NON caricarli su GitHub!)
 front-end/config.js
+
+# File temporanei
 ciao.py
-.DS_Store
