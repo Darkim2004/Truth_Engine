@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://127.0.0.1:5000/elabora";
+const BACKEND_URL = "http://localhost:5001/elabora";
 let currentMode = 'testo';
 
 function switchMode(mode) {
@@ -75,7 +75,6 @@ async function processData() {
 
         const testoDaAnalizzare = dataFlask.testo_estratto;
 
-        // 2. Chiamata a Groq
         label.innerText = "ANALISI AI...";
         const resAI = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             method: 'POST',
@@ -85,8 +84,32 @@ async function processData() {
             },
             body: JSON.stringify({
                 model: CONFIG.MODEL,
-                messages: [{ role: "user", content: `Analizza la veridicità di: ${testoDaAnalizzare}. Rispondi SOLO con un JSON: {affidabilita: 0-100, verdetto: "", colore: "", fonti: []}` }],
-                response_format: { type: "json_object" }
+                messages: [
+                    {
+                        role: "system",
+                        content: "Sei un esperto fact-checker. Analizza il testo e restituisci SEMPRE un JSON valido. Non aggiungere testo prima o dopo il JSON."
+                    },
+                    {
+                        role: "user",
+                        content: `Analizza questa notizia: "${testoDaAnalizzare}". 
+                        Valuta l'affidabilità da 0 a 100. 
+                        Scegli un colore: verde (#10b981) se vero, rosso (#ef4444) se falso, giallo (#f59e0b) se incerto.
+                        Fornisci un verdetto di massimo 10 parole.
+                        Trova 2 fonti reali con nome, un breve snippet e l'URL completo.
+                        
+                        Rispondi ESCLUSIVAMENTE in questo formato JSON:
+                        {
+                          "affidabilita": numero,
+                          "verdetto": "stringa",
+                          "colore": "codice hex",
+                          "fonti": [
+                            {"nome": "Sito", "snippet": "riassunto", "url": "https://..."}
+                          ]
+                        }`
+                    }
+                ],
+                response_format: { type: "json_object" },
+                temperature: 0.2 // Più basso è, più l'IA è precisa e "seria"
             })
         });
 
