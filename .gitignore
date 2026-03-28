@@ -8,3 +8,5 @@ build/
 .pytest_cache/
 .coverage
 htmlcov/
+.DS_Store
+front-end/config.js
