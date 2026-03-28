@@ -1,0 +1,36 @@
+{
+    "percentages": {
+        "truth": 20,
+        "falsity": 60,
+        "uncertainty": 20
+    },
+    "verdict_label": "DISINFORMAZIONE",
+    "explainability": {
+        "summary": "Il CLAIM secondo cui le proteine dei grilli modificano il DNA umano è considerato disinformazione a causa della scarsa qualità delle fonti che lo supportano e della presenza di affermazioni esagerate o false.",
+        "cross_check_result": "La fonte 'verita-nascoste-blog.it' cita affermazioni non supportate da prove scientifiche e contrasta con informazioni verificabili da fonti più attendibili come Nature.",
+        "strength_analysis": "L'analisi più solida proviene dalla fonte scientifica 'https://www.nature.com/articles/s41598-026-12345', che afferma che le proteine degli insetti non integrano il DNA umano.",
+        "consensus_level": "Basso",
+        "next_step": "Per una conferma definitiva, cercare studi peer-review più recenti e dati da fonti governative o universitarie."
+    },
+    "top_sources": {
+        "supporting": [
+            {
+                "url": "https://www.nature.com/articles/s41598-026-12345",
+                "reason": "Fornisce dati scientifici che smentiscono il CLAIM",
+                "title": "Studio sulla sicurezza delle proteine degli insetti"
+            }
+        ],
+        "conflicting": [
+            {
+                "url": "https://verita-nascoste-blog.it/pericolo-insetti",
+                "reason": "Diffonde informazioni non verificate e allarmistiche",
+                "title": "Blog su pericoli degli insetti"
+            }
+        ]
+    },
+    "analysis_tags": [
+        "Allarmismo",
+        "Dati Scientifici Contraddittori",
+        "Fonti Non Attendibili"
+    ]
+}
