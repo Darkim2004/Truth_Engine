@@ -1,60 +1,78 @@
-from core.tabella_pesi import get_credibility_score
-# Importiamo la funzione corretta dal file corretto
-from core.classificatore_evidenze import analyze_context_match 
+import json
+import os
+from core.tabella_pesi import get_credibility_score, extract_domain
+from core.classificatore_evidenze import analyze_context_match
+from core.motore_verdetto import genera_verdetto_probabilistico
+
+def salva_per_matteo(risultato, nome_file="output_per_ui.json"):
+    """Salva il verdetto finale in un JSON leggibile dal Frontend."""
+    with open(nome_file, 'w', encoding='utf-8') as f:
+        json.dump(risultato, f, indent=4, ensure_ascii=False)
+    print(f"\n✅ FILE GENERATO PER MATTEO: {nome_file}")
 
 def genera_dossier_completo(claim, search_results):
-    dossier = {
-        "claim": claim,
-        "evidenze": [],
-        "analisi_aggregata": {
-            "punteggio_medio_credibilita": 0,
-            "presenza_smentite_forti": False
-        }
-    }
+    """
+    FASE 3: Analizza ogni singola fonte fornita da Andrea.
+    Riceve: [{'url': ..., 'text': ..., 'metadata': {...}}, ...]
+    """
+    evidenze_validate = []
 
     for res in search_results:
-        # Estrazione dominio (La facciamo al volo qui per sicurezza)
-        domain = res['url'].split("//")[-1].split("/")[0].replace("www.", "")
+        # 1. Pulizia dominio e punteggio autorità (da tabella_pesi.py)
+        domain = extract_domain(res['url'])
+        score_fonte = get_credibility_score(domain)
         
-        # 1. Credibilità dal tuo file tabella_pesi.py
-        c_score = get_credibility_score(domain)
+        # 2. Analisi semantica con Groq (da classificatore_evidenze.py)
+        # Capisce se il testo conferma o smentisce il claim
+        analisi_ia = analyze_context_match(res['text'], claim)
         
-        # 2. Analisi semantica (Usiamo il nome corretto della funzione)
-        analisi = analyze_context_match(res['text'], claim)
-        
-        # 3. Costruisci il pezzo del dossier con le chiavi che sputa l'LLM
+        # 3. Impacchettamento dei dati per il Giudice Supremo
         info = {
             "url": res['url'],
-            "score_fonte": c_score,
-            "classificazione": analisi['categoria'], 
-            "rilevanza": analisi['rilevanza'],
-            "motivazione": analisi['motivazione']
+            "text": res['text'],
+            "metadata": res.get('metadata', {}), # Dati extra di Andrea (date, autori)
+            "score_fonte": score_fonte,
+            "classificazione": analisi_ia['categoria'], 
+            "rilevanza": analisi_ia['rilevanza'],
+            "motivazione": analisi_ia['motivazione']
         }
         
-        dossier["evidenze"].append(info)
+        evidenze_validate.append(info)
 
-    # Calcolo rapido della media per il dossier
-    if dossier["evidenze"]:
-        media = sum(e['score_fonte'] for e in dossier["evidenze"]) / len(dossier["evidenze"])
-        dossier["analisi_aggregata"]["punteggio_medio_credibilita"] = round(media, 2)
+    return evidenze_validate
 
-    return dossier
-
-from core.source_validator import validate_evidence
-
-def processa_tutte_le_fonti(claim, lista_risultati_ricerca):
+def truth_engine_main(claim, search_results):
     """
-    Questa è la funzione che Andrea chiamerà passandoti 
-    la lista di siti trovati da Google.
+    FUNZIONE MASTER (Quella che deve chiamare Andrea)
+    Coordina il passaggio dalla Fase 3 alla Fase 4.
     """
-    report_finale = []
+    print(f"\n🚀 TRUTH ENGINE AVVIATO")
+    print(f"🔎 Claim: {claim}")
+    print(f"📚 Analisi di {len(search_results)} fonti in corso...")
+
+    # STEP 1: Validazione analitica di ogni fonte (Dossier)
+    dossier = genera_dossier_completo(claim, search_results)
     
-    for fonte in lista_risultati_ricerca:
-        # fonte deve avere 'url' e 'text'
-        risultato = validate_evidence(fonte['url'], fonte['text'], claim)
-        report_finale.append({
-            "url": fonte['url'],
-            "analisi": risultato
-        })
+    # STEP 2: Verdetto Probabilistico e Explainability (Giudice Supremo)
+    # Questa funzione usa Groq per pesare tutto il dossier insieme
+    print("🧠 Il Giudice Supremo sta elaborando il verdetto finale...")
+    verdetto_finale = genera_verdetto_probabilistico(claim, dossier)
     
-    return report_finale
+    # STEP 3: Export per il Frontend di Matteo
+    salva_per_matteo(verdetto_finale)
+    
+    print("🏁 Elaborazione completata con successo.\n")
+    return verdetto_finale
+
+# --- ESEMPIO DI UTILIZZO PER DEBUG ---
+if __name__ == "__main__":
+    # Questo blocco serve solo per testare engine.py da solo
+    test_claim = "L'acqua calda congela più velocemente della fredda"
+    test_results = [
+        {
+            "url": "https://scienza.edu/esperimento",
+            "text": "L'effetto Mpemba conferma che in certe condizioni l'acqua calda congela prima.",
+            "metadata": {"date": "2025", "author": "Prof. Rossi", "has_citations": True}
+        }
+    ]
+    # truth_engine_main(test_claim, test_results)

@@ -12,34 +12,27 @@ def genera_verdetto_probabilistico(claim, dossier_arricchito):
     """
     
     prompt = f"""
-    Sei un Esperto di Intelligence e Fact-Checking. 
-    Analizza il CLAIM e valuta le EVIDENZE fornite, pesando i METADATI (data, autore, citazioni).
-
-    CLAIM: {claim}
+    Sei un Esperto di Intelligence. Analizza il CLAIM e il DOSSIER.
     
-    EVIDENZE (Dossier):
-    {json.dumps(dossier_arricchito, indent=2)}
+    CLAIM: {claim}
+    DOSSIER: {json.dumps(dossier_arricchito, indent=2)}
 
-    ISTRUZIONI DI ANALISI:
-    1. COERENZA TEMPORALE E QUALITÀ: Non dare priorità alla data in modo assoluto. Valuta se la smentita recente (2026) porta nuove prove verificabili o se è solo un'opinione. Se un'evidenza del 2022 è supportata da dati numerici e fonti .gov, e la smentita del 2026 è vaga, mantieni un Truth Score alto ma segnala l'anomalia nell'Uncertainty.
-    2. AUTOREVOLEZZA: Un autore noto o un sito .gov/.edu ha peso triplo rispetto a un blog anonimo.
-    3. TRASPARENZA: Se il metadato 'has_citations' è true, aumenta la fiducia (Truth Score).
-    4. SENTIMENT: Se il testo è troppo emotivo/aggressivo, aumenta l'Uncertainty o il False Score.
+    Oltre alle percentuali, devi SELEZIONARE i top URL:
+    - Scegli fino a 3 URL che SUPPORTANO il verdetto finale (le prove più forti).
+    - Scegli fino a 3 URL che CONTRADDICONO il verdetto (le "voci fuori dal coro" o fake news).
 
-    RISPONDI ESCLUSIVAMENTE IN JSON:
+    RISPONDI IN JSON:
     {{
-        "percentages": {{
-            "truth": 0-100,
-            "falsity": 0-100,
-            "uncertainty": 0-100
-        }},
-        "verdict_label": "APPROVATO | PARZIALMENTE_VERO | DUBBIO | DISINFORMAZIONE",
-        "explainability": {{
-            "summary": "Sintesi in una riga per l'utente",
-            "strength_analysis": "Analisi della fonte più solida (es. dati .gov del 2022)",
-            "conflict_details": "Spiegazione del perché esiste incertezza (es. discrepanza tra dati 2022 e opinioni 2026)",
-            "consensus_level": "Alto/Medio/Basso - indica se le fonti autorevoli sono d'accordo tra loro",
-            "next_step": "Cosa dovrebbe cercare l'utente per avere la certezza assoluta"
+        "percentages": {{ "truth": 0, "falsity": 0, "uncertainty": 0 }},
+        "verdict_label": "...",
+        "explainability": {{ ... }},
+        "top_sources": {{
+            "supporting": [
+                {{ "url": "URL", "reason": "Perché è affidabile?", "title": "Titolo breve" }}
+            ],
+            "conflicting": [
+                {{ "url": "URL", "reason": "Perché è in contrasto?", "title": "Titolo breve" }}
+            ]
         }}
     }}
     """
