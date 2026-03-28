@@ -1,10 +1,36 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from core.engine import truth_engine_main
 import json
+
 
 app = Flask(__name__)
 # Permette la comunicazione col tuo Frontend
 CORS(app) 
+
+@app.route('/api/verify', methods=['POST'])
+def verify():
+    """
+    Questa è la porta d'ingresso per Matteo.
+    Lui ti manda un JSON con { "claim": "...", "results": [...] }
+    """
+    data = request.json
+    if not data:
+        return jsonify({"error": "Nessun dato ricevuto"}), 400
+    
+    claim = data.get('claim')
+    search_results = data.get('results', [])
+
+    # Chiamiamo il tuo motore che abbiamo pulito prima
+    # Lui processa i pesi, i chunk di Andrea e chiede a Groq
+    verdetto = truth_engine_main(claim, search_results)
+
+    # Restituiamo il JSON finale che Matteo userà per la UI
+    return jsonify(verdetto)
+
+if __name__ == '__main__':
+    # Avvia il server sulla porta 5000
+    app.run(debug=True, host='0.0.0.0', port=5000)
 
 @app.route('/elabora', methods=['POST'])
 def elabora():
