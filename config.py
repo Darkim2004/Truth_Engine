@@ -71,3 +71,10 @@ PAYWALL_KEYWORDS = [
 ]
 
 PAYWALL_MIN_CONTENT_LENGTH = 300  # Char minimi per considerare il contenuto valido
+
+# --- Evidence Scoring (Chunking + Similarity) ---
+CHUNK_MIN_SIZE = 150
+CHUNK_MAX_SIZE = 800
+EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
+EMBEDDING_MIN_THRESHOLD = 0.2
+EMBEDDING_TOP_K = 3

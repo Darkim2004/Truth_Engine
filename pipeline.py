@@ -26,6 +26,7 @@ from extractor.metadata import extract_metadata
 from utils.paywall_detector import is_paywall
 from utils.language_filter import is_correct_language, detect_language
 from utils.url_normalizer import normalize_url
+from scoring.evidence_matcher import validate_evidence
 
 console = Console()
 
@@ -172,6 +173,19 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
                 )
 
             all_results.append(ClaimSources(claim=claim, sources=sources))
+
+            # --- 4. EVIDENCE SCORING (chunking + similarity) ---
+            console.print(f"\n  [blue]🧠 Fase 4: Similarity scoring...[/blue]")
+            for source in sources:
+                analysis = validate_evidence(
+                    url=source.url,
+                    text=source.article_text,
+                    claim=claim.claim_text,
+                )
+                source.chunks = analysis["chunks"]
+                source.chunk_similarity_scores = analysis["chunk_similarity_scores"]
+                source.top_chunk_indices = analysis["top_chunk_indices"]
+                source.relevant_chunks = analysis["matches"]
 
             console.print(
                 f"\n  [blue]📊[/blue] Claim {claim.id}: "

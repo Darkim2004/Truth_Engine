@@ -74,6 +74,10 @@ class ExtractedSource(BaseModel):
     metadata: ArticleMetadata = Field(default_factory=ArticleMetadata)
     fetch_method: str = ""
     language_detected: str = ""
+    chunks: list[str] = Field(default_factory=list)
+    chunk_similarity_scores: list[float] = Field(default_factory=list)
+    top_chunk_indices: list[int] = Field(default_factory=list)
+    relevant_chunks: list[dict] = Field(default_factory=list)
 
 
 class ClaimSources(BaseModel):
