@@ -1,43 +1,82 @@
 const BACKEND_URL = "http://127.0.0.1:5000/elabora";
+let currentMode = 'testo';
+
+function switchMode(mode) {
+    if (currentMode === mode) return;
+    currentMode = mode;
+
+    const btnT = document.getElementById('tabTesto');
+    const btnU = document.getElementById('tabUrl');
+    const contT = document.getElementById('containerTesto');
+    const contU = document.getElementById('containerUrl');
+
+    if (mode === 'testo') {
+        btnT.classList.add('tab-active');
+        btnU.classList.remove('tab-active');
+        btnU.classList.add('text-slate-500');
+        contT.classList.remove('hidden');
+        contU.classList.add('hidden');
+    } else {
+        btnU.classList.add('tab-active');
+        btnU.classList.remove('text-slate-500');
+        btnT.classList.remove('tab-active');
+        btnT.classList.add('text-slate-500');
+        contU.classList.remove('hidden');
+        contT.classList.add('hidden');
+    }
+}
 
 async function processData() {
-    const input = document.getElementById('testoInput').value.trim();
+    const inputField = currentMode === 'testo' ? 'testoInput' : 'urlInput';
+    const inputVal = document.getElementById(inputField).value.trim();
+
     const btn = document.getElementById('inviaBtn');
     const label = document.getElementById('btnLabel');
     const loader = document.getElementById('loader');
     const container = document.getElementById('resultContainer');
 
-    if (input.length < 5) return alert("Inserisci un testo valido.");
+    if (inputVal.length < 5) return alert("Inserisci un input valido.");
 
-    // UI Start
-    btn.disabled = true;
-    loader.classList.remove('hidden');
-    label.innerText = "ANALISI IN CORSO...";
-    container.classList.add('hidden');
-
-    // --- MODALITÀ TEST ---
-    if (input.startsWith("test_")) {
+    // --- LOGICA TEST CASE ---
+    if (inputVal.startsWith("test_")) {
+        const scenario = inputVal.split("_")[1];
+        btn.disabled = true;
+        loader.classList.remove('hidden');
         try {
-            const scenario = input.split("_")[1];
             const response = await fetch(`./test-case/${scenario}.json`);
-            if (!response.ok) throw new Error("File test non trovato");
             const data = await response.json();
-
             setTimeout(() => {
                 renderDashboard(data);
                 resetUI(btn, loader, label);
-            }, 1200);
+            }, 1000);
             return;
         } catch (e) {
-            console.error(e);
-            alert("Errore file test.");
+            alert("Test non trovato.");
             resetUI(btn, loader, label);
             return;
         }
     }
 
     // --- FLUSSO REALE ---
+    btn.disabled = true;
+    loader.classList.remove('hidden');
+    label.innerText = "ESTRAZIONE DATI...";
+    container.classList.add('hidden');
+
     try {
+        // 1. Chiamata a Flask (Usa codice di Andrea)
+        const resBackend = await fetch(BACKEND_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ mode: currentMode, data: inputVal })
+        });
+        const dataFlask = await resBackend.json();
+        if (!resBackend.ok) throw new Error(dataFlask.error);
+
+        const testoDaAnalizzare = dataFlask.testo_estratto;
+
+        // 2. Chiamata a Groq
+        label.innerText = "ANALISI AI...";
         const resAI = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             method: 'POST',
             headers: {
@@ -46,68 +85,63 @@ async function processData() {
             },
             body: JSON.stringify({
                 model: CONFIG.MODEL,
-                messages: [{ role: "user", content: `Analizza e restituisci SOLO JSON con claim da: ${input}` }],
+                messages: [{ role: "user", content: `Analizza la veridicità di: ${testoDaAnalizzare}. Rispondi SOLO con un JSON: {affidabilita: 0-100, verdetto: "", colore: "", fonti: []}` }],
                 response_format: { type: "json_object" }
             })
         });
 
         const dataAI = await resAI.json();
-        const extractedClaims = JSON.parse(dataAI.choices[0].message.content);
+        const finalData = JSON.parse(dataAI.choices[0].message.content);
 
-        const resBackend = await fetch(BACKEND_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(extractedClaims)
-        });
-
-        if (!resBackend.ok) throw new Error("Backend Offline");
-
-        const finalResult = await resBackend.json();
-        renderDashboard(finalResult);
+        renderDashboard(finalData);
 
     } catch (err) {
-        console.error(err);
-        alert("Errore di comunicazione con il server.");
+        alert("Errore: " + err.message);
     } finally {
         resetUI(btn, loader, label);
     }
 }
 
 function renderDashboard(data) {
-    const container = document.getElementById('resultContainer');
-    const arcoProgress = document.getElementById('gaugeArcoProgress');
+    document.getElementById('resultContainer').classList.remove('hidden');
+    const arco = document.getElementById('gaugeArcoProgress');
     const percentualeTesto = document.getElementById('percentualeTesto');
     const verdettoTesto = document.getElementById('verdettoTesto');
-    const lista = document.getElementById('listaFonti');
 
-    container.classList.remove('hidden');
-
-    // Animazione Arco SVG
     const pathLength = 251.32;
-    const targetOffset = pathLength - (data.affidabilita * pathLength / 100);
+    const offset = pathLength - (data.affidabilita * pathLength / 100);
 
+    // Applichiamo i cambiamenti con un piccolo delay per l'effetto wow
     setTimeout(() => {
-        arcoProgress.style.strokeDashoffset = targetOffset;
-        percentualeTesto.innerText = `${data.affidabilita}%`;
+        // --- QUI SISTEMIAMO IL COLORE ---
+        arco.style.stroke = data.colore; // Imposta il colore (es. #10b981)
+        arco.style.strokeDashoffset = offset; // Muove la lancetta
+
+        percentualeTesto.innerText = data.affidabilita + "%";
         percentualeTesto.style.color = data.colore;
-        percentualeTesto.style.opacity = "1";
-        percentualeTesto.classList.add('number-ready');
+
         verdettoTesto.innerText = data.verdetto;
         verdettoTesto.style.color = data.colore;
     }, 150);
+    const lista = document.getElementById('listaFonti');
+    lista.innerHTML = `<p class="text-[9px] uppercase font-bold text-slate-500 tracking-[0.3em] mb-4">Fonti Analizzate</p>`;
 
-    // Fonti
-    lista.innerHTML = '<p class="text-[10px] uppercase font-bold text-slate-500 tracking-[0.2em] mb-4">Fonti Verificate</p>';
     data.fonti.forEach(f => {
         const card = document.createElement('div');
-        card.className = "bg-[#070a13]/60 border border-slate-700 p-5 rounded-[1.5rem] shadow-lg text-left";
+        card.className = "bg-[#070a13]/60 border border-slate-800 p-5 rounded-3xl mb-4 text-left hover:border-indigo-500/50 transition-all group";
+
         card.innerHTML = `
-            <div class="flex justify-between items-center mb-3">
-                <span class="text-white font-bold text-xs uppercase italic">${f.nome}</span>
-                <span class="text-[8px] bg-white/10 px-2 py-1 rounded text-slate-400 font-bold uppercase tracking-widest">Verified</span>
+            <div class="flex justify-between items-start mb-2">
+                <h4 class="text-white font-black text-xs uppercase italic tracking-wide">${f.nome}</h4>
+                <span class="text-[8px] bg-slate-800 text-slate-400 px-2 py-1 rounded-full font-bold uppercase">Verificato</span>
             </div>
-            <p class="text-slate-400 text-[11px] mb-4 italic italic">"${f.snippet}"</p>
-            <a href="${f.url}" target="_blank" class="text-rose-500 text-[10px] font-black uppercase tracking-widest">Consulta Fonte →</a>
+            <p class="text-slate-400 text-[11px] leading-relaxed mb-4">"${f.snippet}"</p>
+            ${f.url ? `
+                <a href="${f.url}" target="_blank" class="inline-flex items-center gap-2 text-indigo-400 text-[9px] font-black uppercase tracking-widest hover:text-white transition-colors">
+                    Vai alla fonte 
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            ` : ''}
         `;
         lista.appendChild(card);
     });
@@ -116,13 +150,34 @@ function renderDashboard(data) {
 function resetUI(btn, loader, label) {
     btn.disabled = false;
     loader.classList.add('hidden');
-    label.innerText = "AVVIA SCANSIONE";
+    label.innerText = "Avvia Scansione";
 }
 
-// Gestione tasto Invio
-document.getElementById('testoInput').addEventListener('keydown', function (event) {
-    if (event.key === 'Enter' && !event.shiftKey) {
-        event.preventDefault();
+// Invio con tasto Enter
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey && (document.activeElement.id === 'testoInput' || document.activeElement.id === 'urlInput')) {
+        e.preventDefault();
         processData();
     }
 });
+
+function resetAll() {
+    // 1. Pulisce gli input
+    document.getElementById('testoInput').value = "";
+    document.getElementById('urlInput').value = "";
+
+    // 2. Nasconde i risultati
+    document.getElementById('resultContainer').classList.add('hidden');
+
+    // 3. Resetta il tachimetro (opzionale per pulizia visiva)
+    const arco = document.getElementById('gaugeArcoProgress');
+    arco.style.strokeDashoffset = "251.32";
+
+    // 4. Riporta l'URL alla normalità (senza parametri ?text=...)
+    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    window.history.pushState({ path: cleanUrl }, '', cleanUrl);
+
+    // 5. Riporta il focus sul campo testo
+    document.getElementById('testoInput').focus();
+}
+
