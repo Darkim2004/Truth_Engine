@@ -1,0 +1,12 @@
+{
+    "affidabilita": 55,
+    "verdetto": "INFORMAZIONE DUBBIA",
+    "colore": "#fbbf24",
+    "fonti": [
+        {
+            "nome": "Corriere della Sera",
+            "url": "https://www.corriere.it",
+            "snippet": "Esperti divisi sulla nuova riforma: alcuni prevedono benefici, altri un crollo dei consumi."
+        }
+    ]
+}
