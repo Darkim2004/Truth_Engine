@@ -5,7 +5,7 @@
         "language": "it"
     },
     "original_source": {
-        "text_content": "la terra è piatta",
+        "text_content": "agcom cose",
         "url": ""
     },
     "analysis": {
@@ -13,9 +13,21 @@
         "claims_to_verify": [
             {
                 "id": 0,
-                "claim_text": "la terra è piatta",
-                "search_query": "teoria terra piatta smentita",
-                "category": "science"
+                "claim_text": "agcom",
+                "search_query": "AGCOM italiana",
+                "category": "politics"
+            },
+            {
+                "id": 1,
+                "claim_text": "funzioni agcom",
+                "search_query": "funzioni e compiti AGCOM",
+                "category": "politics"
+            },
+            {
+                "id": 2,
+                "claim_text": "agcom cosa fa",
+                "search_query": "ruolo e responsabilità AGCOM",
+                "category": "politics"
             }
         ]
     }
