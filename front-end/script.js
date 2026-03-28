@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://localhost:5001/elabora";
+const BACKEND_URL = "http://localhost:5001/elabora_completo";
 let currentMode = 'testo';
 
 function switchMode(mode) {
@@ -56,70 +56,38 @@ async function processData() {
             return;
         }
     }
-
-    // --- FLUSSO REALE ---
+    // --- FLUSSO REALE: Backend fa tutto (Groq claims → DuckDuckGo → Core Engine → verdetto) ---
     btn.disabled = true;
     loader.classList.remove('hidden');
-    label.innerText = "ESTRAZIONE DATI...";
+    label.innerText = "ANALISI IN CORSO...";
     container.classList.add('hidden');
 
     try {
-        // 1. Chiamata a Flask (Usa codice di Andrea)
+        // Chiamata unica al backend che fa: Groq claims → DuckDuckGo → fetch → score → verdetto
+        console.log("[DEBUG] Invio richiesta al backend...", BACKEND_URL);
+        console.log("[DEBUG] Payload:", { mode: currentMode, data: inputVal });
+
         const resBackend = await fetch(BACKEND_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ mode: currentMode, data: inputVal })
-        });
-        const dataFlask = await resBackend.json();
-        if (!resBackend.ok) throw new Error(dataFlask.error);
-
-        const testoDaAnalizzare = dataFlask.testo_estratto;
-
-        label.innerText = "ANALISI AI...";
-        const resAI = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-            method: 'POST',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${CONFIG.API_KEY}`
+                'Accept': 'application/json'
             },
-            body: JSON.stringify({
-                model: CONFIG.MODEL,
-                messages: [
-                    {
-                        role: "system",
-                        content: "Sei un esperto fact-checker. Analizza il testo e restituisci SEMPRE un JSON valido. Non aggiungere testo prima o dopo il JSON."
-                    },
-                    {
-                        role: "user",
-                        content: `Analizza questa notizia: "${testoDaAnalizzare}". 
-                        Valuta l'affidabilità da 0 a 100. 
-                        Scegli un colore: verde (#10b981) se vero, rosso (#ef4444) se falso, giallo (#f59e0b) se incerto.
-                        Fornisci un verdetto di massimo 10 parole.
-                        Trova 2 fonti reali con nome, un breve snippet e l'URL completo.
-                        
-                        Rispondi ESCLUSIVAMENTE in questo formato JSON:
-                        {
-                          "affidabilita": numero,
-                          "verdetto": "stringa",
-                          "colore": "codice hex",
-                          "fonti": [
-                            {"nome": "Sito", "snippet": "riassunto", "url": "https://..."}
-                          ]
-                        }`
-                    }
-                ],
-                response_format: { type: "json_object" },
-                temperature: 0.2 // Più basso è, più l'IA è precisa e "seria"
-            })
+            body: JSON.stringify({ mode: currentMode, data: inputVal })
         });
 
-        const dataAI = await resAI.json();
-        const finalData = JSON.parse(dataAI.choices[0].message.content);
+        console.log("[DEBUG] Risposta ricevuta. Status:", resBackend.status);
+        const finalData = await resBackend.json();
+        console.log("[DEBUG] Dati ricevuti:", finalData);
+
+        if (!resBackend.ok) throw new Error(finalData.error || "Errore backend");
 
         renderDashboard(finalData);
 
     } catch (err) {
-        alert("Errore: " + err.message);
+        console.error("[DEBUG] ❌ ERRORE:", err);
+        alert("Errore durante l'analisi: " + err.message);
     } finally {
         resetUI(btn, loader, label);
     }

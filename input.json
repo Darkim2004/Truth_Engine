@@ -1,4 +1,22 @@
 {
-    "tipo": "TESTO",
-    "contenuto": "la meloni si è dimessa"
+    "metadata": {
+        "source_type": "user_input",
+        "timestamp": "",
+        "language": "it"
+    },
+    "original_source": {
+        "text_content": "la terra è piatta",
+        "url": ""
+    },
+    "analysis": {
+        "engine": "LLM-Powered",
+        "claims_to_verify": [
+            {
+                "id": 0,
+                "claim_text": "la terra è piatta",
+                "search_query": "teoria terra piatta smentita",
+                "category": "science"
+            }
+        ]
+    }
 }
