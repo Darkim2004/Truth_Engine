@@ -14,7 +14,7 @@ from models import FetchedPage
 from fetcher.httpx_fetcher import fetch_with_httpx
 from fetcher.playwright_fetcher import fetch_with_playwright
 
-console = Console()
+console = Console(legacy_windows=False)
 
 # Semaphore globale per limitare concorrenza
 _semaphore = asyncio.Semaphore(HTTP_MAX_CONCURRENCY)
@@ -38,7 +38,7 @@ async def fetch_url(url: str) -> FetchedPage:
 
         # 2. Fallback: Playwright
         console.print(
-            f"    [dim]↪ httpx fallito ({result.error}), provo Playwright...[/dim]"
+            f"    [dim]-> httpx fallito ({result.error}), provo Playwright...[/dim]"
         )
         pw_result = await fetch_with_playwright(url)
 
@@ -46,7 +46,7 @@ async def fetch_url(url: str) -> FetchedPage:
             return pw_result
 
         # Entrambi falliti
-        console.print(f"    [red]✗[/red] Fetch fallito per {url[:60]}...")
+        console.print(f"    [red][ERRORE][/red] Fetch fallito per {url[:60]}...")
         return pw_result
 
 
@@ -60,7 +60,7 @@ async def fetch_batch(urls: list[str]) -> list[FetchedPage]:
     if not urls:
         return []
 
-    console.print(f"\n  [blue]📄[/blue] Fetching {len(urls)} pagine...")
+    console.print(f"\n  [blue][FETCH][/blue] Fetching {len(urls)} pagine...")
 
     tasks = [fetch_url(url) for url in urls]
     results = await asyncio.gather(*tasks, return_exceptions=True)
@@ -80,7 +80,7 @@ async def fetch_batch(urls: list[str]) -> list[FetchedPage]:
 
     valid = sum(1 for p in pages if p.is_valid)
     console.print(
-        f"  [blue]📄[/blue] Fetch completato: {valid}/{len(pages)} pagine valide"
+        f"  [blue][FETCH][/blue] Fetch completato: {valid}/{len(pages)} pagine valide"
     )
 
     return pages

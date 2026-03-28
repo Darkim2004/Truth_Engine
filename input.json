@@ -5,7 +5,7 @@
         "language": "it"
     },
     "original_source": {
-        "text_content": "la terra è piatta",
+        "text_content": "Matteo Salvini indagato per mafia",
         "url": ""
     },
     "analysis": {
@@ -13,9 +13,9 @@
         "claims_to_verify": [
             {
                 "id": 0,
-                "claim_text": "la terra è piatta",
-                "search_query": "teoria terra piatta smentita",
-                "category": "science"
+                "claim_text": "Matteo Salvini indagato per mafia",
+                "search_query": "Matteo Salvini indagato per mafia ultime notizie",
+                "category": "politics"
             }
         ]
     }

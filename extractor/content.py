@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from rich.console import Console
 
-console = Console()
+console = Console(legacy_windows=False)
 
 
 def extract_article_text(html: str) -> str:
@@ -40,7 +40,7 @@ def extract_article_text(html: str) -> str:
         return ""
 
     except Exception as e:
-        console.print(f"    [red]✗[/red] trafilatura errore: {str(e)[:100]}")
+        console.print(f"    [red][ERRORE][/red] trafilatura errore: {str(e)[:100]}")
         return ""
 
 
@@ -73,5 +73,5 @@ def extract_article_structured(html: str) -> dict:
         }
 
     except Exception as e:
-        console.print(f"    [red]✗[/red] bare_extraction errore: {str(e)[:100]}")
+        console.print(f"    [red][ERRORE][/red] bare_extraction errore: {str(e)[:100]}")
         return {}

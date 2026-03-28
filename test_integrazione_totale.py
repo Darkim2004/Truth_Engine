@@ -50,7 +50,7 @@ def test_integrazione():
         print(f"Errore tecnico: {e}")
         print("\nControlla se:")
         print("1. Hai attivato il .venv")
-        print("2. La GROK_API_KEY nel file .env è corretta")
+        print("2. La GROQ_API_KEY nel file .env è corretta")
         print("3. I file evidence_matcher.py e engine.py sono nelle cartelle giuste")
 
 if __name__ == "__main__":

@@ -1,36 +1,33 @@
 {
     "percentages": {
-        "truth": 0,
-        "falsity": 80,
-        "uncertainty": 20
+        "truth": 80,
+        "falsity": 5,
+        "uncertainty": 15
     },
-    "verdict_label": "DISINFORMAZIONE",
+    "verdict_label": "VERIFICATO",
     "explainability": {
-        "summary": "La teoria della Terra piatta è smentita da prove scientifiche consolidate e riscontri storici.",
-        "cross_check_result": "Le fonti ufficiali e gli studi scientifici smentiscono le affermazioni dei terrapiattisti.",
-        "strength_analysis": "La prova più solida proviene da fonti come Wikipedia, che fornisce una visione d'insieme storica e scientifica della teoria della Terra piatta.",
+        "summary": "Le fonti analizzate confermano che non esiste una correlazione tra il vaccino anti-HPV e la sclerosi multipla.",
+        "cross_check_result": "Le fonti citate nel dossier sono coerenti con le informazioni disponibili su siti governativi e universitari.",
+        "strength_analysis": "La prova più solida deriva da uno studio pubblicato su una rivista scientifica autorevole.",
         "consensus_level": "Alto",
-        "next_step": "Per una conferma definitiva, cercare pubblicazioni scientifiche recenti su riviste di alta qualità e siti web di istituzioni scientifiche riconosciute."
+        "next_step": "Per conferma definitiva, sarebbe utile consultare ulteriori studi scientifici condotti su larga scala."
     },
     "top_sources": {
         "supporting": [
             {
-                "url": "https://it.wikipedia.org/wiki/Terra_piatta",
-                "reason": "Fornisce una panoramica completa e scientifica sulla teoria della Terra piatta.",
-                "title": "Terra piatta - Wikipedia"
+                "url": "https://www.vaccinarsi.org/notizie/2015/04/08/nessuna-correlazione-antihpv-sclerosi-multipla",
+                "reason": "Conferma l'assenza di correlazione attraverso uno studio condotto in Danimarca e Svezia.",
+                "title": "Nessuna correlazione tra vaccino anti-HPV e sclerosi multipla"
+            },
+            {
+                "url": "https://www.vaccinarsi.org/notizie/2015/02/19/nessuna-associazione-vaccini-sclerosi-multipla",
+                "reason": "Riconferma l'assenza di associazione tra vaccini e sclerosi multipla attraverso uno studio condotto in California.",
+                "title": "Nessuna associazione tra vaccini e sclerosi multipla"
             }
         ],
-        "conflicting": [
-            {
-                "url": "https://www.gravita-zero.org/2024/12/perche-esistono-i-terrapiattisti-e.html",
-                "reason": "Presenta argomentazioni non scientifiche a sostegno della teoria della Terra piatta.",
-                "title": "Perché esistono i terrapiattisti e perché credono che la Terra sia piatta?"
-            }
-        ]
+        "conflicting": []
     },
     "analysis_tags": [
-        "Dati Scientifici",
-        "Mancanza di prove empiriche",
-        "Teoria non supportata"
+        "Dati Scientifici"
     ]
 }

@@ -14,7 +14,7 @@ from rich.console import Console
 from config import HTTP_TIMEOUT, HTTP_MAX_RETRIES, HTTP_BACKOFF_FACTOR, DEFAULT_HEADERS
 from models import FetchedPage
 
-console = Console()
+console = Console(legacy_windows=False)
 
 # Status code da ritentare
 RETRYABLE_STATUS = {429, 500, 502, 503, 504}
@@ -59,7 +59,7 @@ async def fetch_with_httpx(url: str) -> FetchedPage:
                     if attempt < HTTP_MAX_RETRIES:
                         sleep_time = HTTP_BACKOFF_FACTOR ** attempt + random.uniform(0, 1)
                         console.print(
-                            f"    [yellow]↻[/yellow] httpx {response.status_code} per {url[:60]}... "
+                            f"    [yellow][RETRY][/yellow] httpx {response.status_code} per {url[:60]}... "
                             f"retry in {sleep_time:.1f}s"
                         )
                         await asyncio.sleep(sleep_time)
