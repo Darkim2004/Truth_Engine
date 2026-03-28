@@ -1,0 +1,120 @@
+﻿+-----------------------------------------------------------------------------+
+| Truth Engine ù Crawling Pipeline                                            |
+| Claims da verificare: 2                                                     |
+| Lingua attesa: it                                                           |
++-----------------------------------------------------------------------------+
+
+Errore pipeline: 'charmap' codec can't encode characters in position 0-59: 
+character maps to <undefined>
+python : Traceback (most 
+recent call last):
+At line:1 char:1
++ python main.py --input 
+input_example.json --output 
+test_output3.json  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpecified: (Trace  
+  back (most recent call    
+ last)::String) [], Remo    
+teException
+    + FullyQualifiedErrorId 
+    : NativeCommandError
+ 
+  File "C:\Programmazione\Ha
+ckathon\main.py", line 53, 
+in main
+    output = asyncio.run(run
+_pipeline(input_data))
+  File "C:\Python314\Lib\asy
+ncio\runners.py", line 204, 
+in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asy
+ncio\runners.py", line 127, 
+in run
+    return self._loop.run_un
+til_complete(task)
+           ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asy
+ncio\base_events.py", line 
+719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Programmazione\Ha
+ckathon\pipeline.py", line 
+63, in run_pipeline
+    
+console.print(f"\n{'\u2500' 
+* 60}")
+    ~~~~~~~~~~~~~^^^^^^^^^^^
+^^^^^^
+  File "C:\Users\andre\AppDa
+ta\Roaming\Python\Python314\
+site-packages\rich\console.p
+y", line 1697, in print
+    with self:
+         ^^^^
+  File "C:\Users\andre\AppDa
+ta\Roaming\Python\Python314\
+site-packages\rich\console.p
+y", line 870, in __exit__
+    self._exit_buffer()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andre\AppDa
+ta\Roaming\Python\Python314\
+site-packages\rich\console.p
+y", line 826, in 
+_exit_buffer
+    self._check_buffer()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andre\AppDa
+ta\Roaming\Python\Python314\
+site-packages\rich\console.p
+y", line 2042, in 
+_check_buffer
+    self._write_buffer()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\andre\AppDa
+ta\Roaming\Python\Python314\
+site-packages\rich\console.p
+y", line 2078, in 
+_write_buffer
+    legacy_windows_render(bu
+ffer, LegacyWindowsTerm(self
+.file))
+    ~~~~~~~~~~~~~~~~~~~~~^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^
+  File "C:\Users\andre\AppDa
+ta\Roaming\Python\Python314\
+site-packages\rich\_windows_
+renderer.py", line 19, in 
+legacy_windows_render
+    term.write_text(text)
+    ~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\andre\AppDa
+ta\Roaming\Python\Python314\
+site-packages\rich\_win32_co
+nsole.py", line 402, in 
+write_text
+    self.write(text)
+    ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\enc
+odings\cp1252.py", line 19, 
+in encode
+    return codecs.charmap_en
+code(input,self.errors,encod
+ing_table)[0]
+           ~~~~~~~~~~~~~~~~~
+~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^
+UnicodeEncodeError: 
+'charmap' codec can't 
+encode characters in 
+position 0-59: character 
+maps to <undefined>

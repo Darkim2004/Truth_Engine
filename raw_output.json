@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-03-28T11:48:03.606770+00:00",
+  "total_claims": 2,
+  "total_sources_found": 0,
+  "results": [
+    {
+      "claim": {
+        "id": 0,
+        "claim_text": "Il vaccino COVID causa autismo",
+        "search_query": "vaccino COVID autismo studi scientifici",
+        "category": "health"
+      },
+      "sources": []
+    },
+    {
+      "claim": {
+        "id": 1,
+        "claim_text": "Nuovi studi scientifici collegano vaccino e autismo",
+        "search_query": "studi scientifici vaccino autismo correlazione",
+        "category": "health"
+      },
+      "sources": []
+    }
+  ]
+}

@@ -1,0 +1,434 @@
+2026-03-28 12:47:59,905 - DEBUG - Using proactor: IocpProactor
+2026-03-28 12:47:59,956 - DEBUG - starting new connection: https://en.wikipedia.org/
+2026-03-28 12:47:59,956 - DEBUG - starting new connection: https://grokipedia.com/
+2026-03-28 12:47:59,959 - DEBUG - connecting to 104.18.18.2:443
+2026-03-28 12:47:59,964 - DEBUG - connected to 104.18.18.2:443
+2026-03-28 12:47:59,964 - DEBUG - No cached session for DnsName("grokipedia.com")
+2026-03-28 12:47:59,964 - DEBUG - Not resuming any session
+2026-03-28 12:47:59,981 - DEBUG - connecting to 185.15.58.224:443
+2026-03-28 12:47:59,989 - DEBUG - Browser emulation: Some(BrowserEmulator { browser_type: Opera, version: BrowserVersion { major: 126, minor: 0, patch: 0 }, extension_order_seed: Some(36266), cipher_suites: Some([CipherSuite(0xa0a), TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, CipherSuite(0x9c), CipherSuite(0x9d), CipherSuite(0x2f), CipherSuite(0x35)]), signature_algorithms: Some([ECDSA_NISTP256_SHA256, RSA_PSS_SHA256, RSA_PKCS1_SHA256, ECDSA_NISTP384_SHA384, RSA_PSS_SHA384, RSA_PKCS1_SHA384, RSA_PSS_SHA512, RSA_PKCS1_SHA512]), named_groups: Some([GREASE, X25519MLKEM768, X25519, secp256r1, secp384r1]), os_type: None, include_status_request_v2: false })
+2026-03-28 12:47:59,990 - DEBUG - Using extension_order_seed: 702
+2026-03-28 12:47:59,991 - DEBUG - Browser emulation: Some(BrowserEmulator { browser_type: Opera, version: BrowserVersion { major: 126, minor: 0, patch: 0 }, extension_order_seed: Some(36266), cipher_suites: Some([CipherSuite(0xa0a), TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, CipherSuite(0x9c), CipherSuite(0x9d), CipherSuite(0x2f), CipherSuite(0x35)]), signature_algorithms: Some([ECDSA_NISTP256_SHA256, RSA_PSS_SHA256, RSA_PKCS1_SHA256, ECDSA_NISTP384_SHA384, RSA_PSS_SHA384, RSA_PKCS1_SHA384, RSA_PSS_SHA512, RSA_PKCS1_SHA512]), named_groups: Some([GREASE, X25519MLKEM768, X25519, secp256r1, secp384r1]), os_type: None, include_status_request_v2: false })
+2026-03-28 12:47:59,991 - DEBUG - Cipher suites count: 16
+2026-03-28 12:47:59,991 - DEBUG -   [0] CipherSuite(0xbaba)
+2026-03-28 12:47:59,991 - DEBUG -   [1] TLS13_AES_128_GCM_SHA256
+2026-03-28 12:47:59,991 - DEBUG -   [2] TLS13_AES_256_GCM_SHA384
+2026-03-28 12:47:59,991 - DEBUG -   [3] TLS13_CHACHA20_POLY1305_SHA256
+2026-03-28 12:47:59,991 - DEBUG -   [4] TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+2026-03-28 12:47:59,991 - DEBUG -   [5] TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+2026-03-28 12:47:59,991 - DEBUG -   [6] TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+2026-03-28 12:47:59,991 - DEBUG -   [7] TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+2026-03-28 12:47:59,991 - DEBUG -   [8] TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+2026-03-28 12:47:59,991 - DEBUG -   [9] TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+2026-03-28 12:47:59,991 - DEBUG -   [10] TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+2026-03-28 12:47:59,991 - DEBUG -   [11] TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+2026-03-28 12:47:59,991 - DEBUG -   [12] CipherSuite(0x9c)
+2026-03-28 12:47:59,991 - DEBUG -   [13] CipherSuite(0x9d)
+2026-03-28 12:47:59,991 - DEBUG -   [14] CipherSuite(0x2f)
+2026-03-28 12:47:59,991 - DEBUG -   [15] CipherSuite(0x35)
+2026-03-28 12:47:59,991 - DEBUG - Final cipher suites for ClientHello: [CipherSuite(0xbaba), TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, CipherSuite(0x9c), CipherSuite(0x9d), CipherSuite(0x2f), CipherSuite(0x35)]
+2026-03-28 12:48:00,006 - DEBUG - connected to 185.15.58.224:443
+2026-03-28 12:48:00,006 - DEBUG - No cached session for DnsName("en.wikipedia.org")
+2026-03-28 12:48:00,006 - DEBUG - Not resuming any session
+2026-03-28 12:48:00,006 - DEBUG - Browser emulation: Some(BrowserEmulator { browser_type: Safari, version: BrowserVersion { major: 26, minor: 3, patch: 0 }, extension_order_seed: Some(39548), cipher_suites: Some([TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, CipherSuite(0x9d), CipherSuite(0x9c), CipherSuite(0x35), CipherSuite(0x2f), CipherSuite(0xc008), CipherSuite(0xc012), CipherSuite(0xa)]), signature_algorithms: Some([ECDSA_NISTP256_SHA256, RSA_PSS_SHA256, RSA_PKCS1_SHA256, ECDSA_NISTP384_SHA384, RSA_PSS_SHA384, RSA_PSS_SHA384, RSA_PKCS1_SHA384, RSA_PSS_SHA512, RSA_PKCS1_SHA512, RSA_PKCS1_SHA1]), named_groups: Some([X25519MLKEM768, X25519, secp256r1, secp384r1]), os_type: Some(MacOS), include_status_request_v2: true })
+2026-03-28 12:48:00,006 - DEBUG - Using extension_order_seed: 5264
+2026-03-28 12:48:00,006 - DEBUG - Browser emulation: Some(BrowserEmulator { browser_type: Safari, version: BrowserVersion { major: 26, minor: 3, patch: 0 }, extension_order_seed: Some(39548), cipher_suites: Some([TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, CipherSuite(0x9d), CipherSuite(0x9c), CipherSuite(0x35), CipherSuite(0x2f), CipherSuite(0xc008), CipherSuite(0xc012), CipherSuite(0xa)]), signature_algorithms: Some([ECDSA_NISTP256_SHA256, RSA_PSS_SHA256, RSA_PKCS1_SHA256, ECDSA_NISTP384_SHA384, RSA_PSS_SHA384, RSA_PSS_SHA384, RSA_PKCS1_SHA384, RSA_PSS_SHA512, RSA_PKCS1_SHA512, RSA_PKCS1_SHA1]), named_groups: Some([X25519MLKEM768, X25519, secp256r1, secp384r1]), os_type: Some(MacOS), include_status_request_v2: true })
+2026-03-28 12:48:00,006 - DEBUG - Cipher suites count: 20
+2026-03-28 12:48:00,006 - DEBUG -   [0] TLS13_AES_128_GCM_SHA256
+2026-03-28 12:48:00,006 - DEBUG -   [1] TLS13_AES_256_GCM_SHA384
+2026-03-28 12:48:00,006 - DEBUG -   [2] TLS13_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:00,006 - DEBUG -   [3] TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+2026-03-28 12:48:00,006 - DEBUG -   [4] TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+2026-03-28 12:48:00,007 - DEBUG -   [5] TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:00,007 - DEBUG -   [6] TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+2026-03-28 12:48:00,007 - DEBUG -   [7] TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+2026-03-28 12:48:00,007 - DEBUG -   [8] TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:00,007 - DEBUG -   [9] TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+2026-03-28 12:48:00,007 - DEBUG -   [10] TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+2026-03-28 12:48:00,007 - DEBUG -   [11] TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+2026-03-28 12:48:00,007 - DEBUG -   [12] TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+2026-03-28 12:48:00,007 - DEBUG -   [13] CipherSuite(0x9d)
+2026-03-28 12:48:00,007 - DEBUG -   [14] CipherSuite(0x9c)
+2026-03-28 12:48:00,007 - DEBUG -   [15] CipherSuite(0x35)
+2026-03-28 12:48:00,007 - DEBUG -   [16] CipherSuite(0x2f)
+2026-03-28 12:48:00,007 - DEBUG -   [17] CipherSuite(0xc008)
+2026-03-28 12:48:00,007 - DEBUG -   [18] CipherSuite(0xc012)
+2026-03-28 12:48:00,007 - DEBUG -   [19] CipherSuite(0xa)
+2026-03-28 12:48:00,007 - DEBUG - Final cipher suites for ClientHello: [TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, CipherSuite(0x9d), CipherSuite(0x9c), CipherSuite(0x35), CipherSuite(0x2f), CipherSuite(0xc008), CipherSuite(0xc012), CipherSuite(0xa)]
+2026-03-28 12:48:00,020 - DEBUG - Using ciphersuite TLS13_AES_128_GCM_SHA256
+2026-03-28 12:48:00,020 - DEBUG - Not resuming
+2026-03-28 12:48:00,022 - DEBUG - TLS1.3 encrypted extensions: ServerExtensions { server_name_ack: (), selected_protocol: SingleProtocolName(ProtocolName(6832)), encrypted_client_hello_ack: ServerEncryptedClientHello { retry_configs: [V18(EchConfigContents { key_config: HpkeKeyConfig { config_id: 166, kem_id: DHKEM_X25519_HKDF_SHA256, public_key: 37c3914628d85cff71bb0d2c7766fe7312f40bab4f85a37108b589b652228958, symmetric_cipher_suites: [HpkeSymmetricCipherSuite { kdf_id: HKDF_SHA256, aead_id: AES_128_GCM }] }, maximum_name_length: 0, public_name: DnsName("cloudflare-ech.com"), extensions: [] })] }, unknown_extensions: {}, .. }
+2026-03-28 12:48:00,022 - DEBUG - ALPN protocol is Some(b"h2")
+2026-03-28 12:48:00,028 - DEBUG - binding client connection
+2026-03-28 12:48:00,028 - DEBUG - Using ciphersuite TLS13_AES_128_GCM_SHA256
+2026-03-28 12:48:00,028 - DEBUG - client connection bound
+2026-03-28 12:48:00,028 - DEBUG - handshake2: settings header_table_size=Some(65536), enable_push=Some(false), initial_window_size=Some(6291456), max_frame_size=None, max_header_list_size=Some(262144)
+2026-03-28 12:48:00,028 - DEBUG - handshake2: sending initial settings frame
+2026-03-28 12:48:00,028 - DEBUG - Not resuming
+2026-03-28 12:48:00,029 - DEBUG - send frame=Settings { flags: (0x0), header_table_size: 65536, enable_push: 0, initial_window_size: 6291456, max_header_list_size: 262144 }
+2026-03-28 12:48:00,029 - DEBUG - encoding SETTINGS; len=24, order=SettingsOrder { ids: [HeaderTableSize, EnablePush, InitialWindowSize, MaxHeaderListSize] }, header_table_size=Some(65536), enable_push=Some(0), initial_window_size=Some(6291456), max_frame_size=None, max_header_list_size=Some(262144)
+2026-03-28 12:48:00,029 - DEBUG - encoding setting; val=HeaderTableSize(65536)
+2026-03-28 12:48:00,029 - DEBUG - encoding setting; val=EnablePush(0)
+2026-03-28 12:48:00,029 - DEBUG - encoding setting; val=InitialWindowSize(6291456)
+2026-03-28 12:48:00,029 - DEBUG - encoding setting; val=MaxHeaderListSize(262144)
+2026-03-28 12:48:00,029 - DEBUG - Connection; peer=Client
+2026-03-28 12:48:00,029 - DEBUG - pooling idle connection for ("https", grokipedia.com)
+2026-03-28 12:48:00,029 - DEBUG - TLS1.3 encrypted extensions: ServerExtensions { server_name_ack: (), selected_protocol: SingleProtocolName(ProtocolName(6832)), unknown_extensions: {}, .. }
+2026-03-28 12:48:00,029 - DEBUG - ALPN protocol is Some(b"h2")
+2026-03-28 12:48:00,030 - DEBUG - binding client connection
+2026-03-28 12:48:00,030 - DEBUG - client connection bound
+2026-03-28 12:48:00,030 - DEBUG - handshake2: settings header_table_size=None, enable_push=Some(false), initial_window_size=Some(2097152), max_frame_size=None, max_header_list_size=None
+2026-03-28 12:48:00,030 - DEBUG - handshake2: sending initial settings frame
+2026-03-28 12:48:00,030 - DEBUG - send frame=Settings { flags: (0x0), enable_push: 0, max_concurrent_streams: 100, initial_window_size: 2097152, no_rfc7540_priorities: 1 }
+2026-03-28 12:48:00,030 - DEBUG - encoding SETTINGS; len=24, order=SettingsOrder { ids: [EnablePush, MaxConcurrentStreams, InitialWindowSize, NoRfc7540Priorities] }, header_table_size=None, enable_push=Some(0), initial_window_size=Some(2097152), max_frame_size=None, max_header_list_size=None
+2026-03-28 12:48:00,030 - DEBUG - encoding setting; val=EnablePush(0)
+2026-03-28 12:48:00,030 - DEBUG - encoding setting; val=MaxConcurrentStreams(100)
+2026-03-28 12:48:00,030 - DEBUG - encoding setting; val=InitialWindowSize(2097152)
+2026-03-28 12:48:00,030 - DEBUG - encoding setting; val=NoRfc7540Priorities(1)
+2026-03-28 12:48:00,030 - DEBUG - Connection; peer=Client
+2026-03-28 12:48:00,031 - DEBUG - pooling idle connection for ("https", en.wikipedia.org)
+2026-03-28 12:48:00,031 - DEBUG - send frame=WindowUpdate { stream_id: StreamId(0), size_increment: 10420225 }
+2026-03-28 12:48:00,031 - DEBUG - send frame=Headers { stream_id: StreamId(1), flags: (0x5: END_HEADERS | END_STREAM) }
+2026-03-28 12:48:00,031 - DEBUG - send frame=WindowUpdate { stream_id: StreamId(0), size_increment: 15663105 }
+2026-03-28 12:48:00,031 - DEBUG - send frame=Headers { stream_id: StreamId(1), flags: (0x25: END_HEADERS | END_STREAM | PRIORITY), stream_dep: StreamDependency { dependency_id: StreamId(0), weight: 255, is_exclusive: true } }
+2026-03-28 12:48:00,031 - DEBUG - received frame=Settings { flags: (0x0), max_concurrent_streams: 100, initial_window_size: 65536, max_frame_size: 16777215 }
+2026-03-28 12:48:00,031 - DEBUG - send frame=Settings { flags: (0x1: ACK) }
+2026-03-28 12:48:00,031 - DEBUG - encoding SETTINGS; len=0, order=SettingsOrder { ids: [HeaderTableSize, EnablePush, MaxConcurrentStreams, InitialWindowSize, MaxFrameSize, MaxHeaderListSize, EnableConnectProtocol, NoRfc7540Priorities] }, header_table_size=None, enable_push=None, initial_window_size=None, max_frame_size=None, max_header_list_size=None
+2026-03-28 12:48:00,031 - DEBUG - received frame=WindowUpdate { stream_id: StreamId(0), size_increment: 2147418112 }
+2026-03-28 12:48:00,041 - DEBUG - received frame=Settings { flags: (0x1: ACK) }
+2026-03-28 12:48:00,041 - DEBUG - received settings ACK; applying Settings { flags: (0x0), header_table_size: 65536, enable_push: 0, initial_window_size: 6291456, max_header_list_size: 262144 }
+2026-03-28 12:48:00,056 - DEBUG - received frame=Settings { flags: (0x0), max_concurrent_streams: 100, enable_connect_protocol: 1 }
+2026-03-28 12:48:00,056 - DEBUG - send frame=Settings { flags: (0x1: ACK) }
+2026-03-28 12:48:00,056 - DEBUG - encoding SETTINGS; len=0, order=SettingsOrder { ids: [HeaderTableSize, EnablePush, MaxConcurrentStreams, InitialWindowSize, MaxFrameSize, MaxHeaderListSize, EnableConnectProtocol, NoRfc7540Priorities] }, header_table_size=None, enable_push=None, initial_window_size=None, max_frame_size=None, max_header_list_size=None
+2026-03-28 12:48:00,056 - DEBUG - received frame=Settings { flags: (0x1: ACK) }
+2026-03-28 12:48:00,056 - DEBUG - received settings ACK; applying Settings { flags: (0x0), enable_push: 0, max_concurrent_streams: 100, initial_window_size: 2097152, no_rfc7540_priorities: 1 }
+2026-03-28 12:48:00,057 - DEBUG - received frame=Headers { stream_id: StreamId(1), flags: (0x4: END_HEADERS) }
+2026-03-28 12:48:00,057 - DEBUG - received frame=Data { stream_id: StreamId(1), flags: (0x1: END_STREAM) }
+2026-03-28 12:48:00,057 - DEBUG - inserting secure cookie 'WMF-Last-Access'
+2026-03-28 12:48:00,058 - DEBUG - inserting secure cookie 'WMF-Last-Access-Global'
+2026-03-28 12:48:00,058 - DEBUG - inserting secure cookie 'GeoIP'
+2026-03-28 12:48:00,058 - DEBUG - inserting secure cookie 'NetworkProbeLimit'
+2026-03-28 12:48:00,058 - DEBUG - inserting secure cookie 'WMF-Uniq'
+2026-03-28 12:48:00,058 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=vaccino%20COVID%20autismo%20studi%20scientifici 200
+2026-03-28 12:48:00,180 - DEBUG - Decoder changed max table size from=0 to=4096
+2026-03-28 12:48:00,181 - DEBUG - received frame=Headers { stream_id: StreamId(1), flags: (0x4: END_HEADERS) }
+2026-03-28 12:48:00,181 - DEBUG - received frame=Data { stream_id: StreamId(1) }
+2026-03-28 12:48:00,181 - DEBUG - received frame=Data { stream_id: StreamId(1), flags: (0x1: END_STREAM) }
+2026-03-28 12:48:00,181 - DEBUG - inserting secure cookie 'grokipedia-affinity'
+2026-03-28 12:48:00,181 - DEBUG - inserting secure cookie '__cf_bm'
+2026-03-28 12:48:00,181 - INFO - response: https://grokipedia.com/api/typeahead?query=vaccino+COVID+autismo+studi+scientifici&limit=1 200
+2026-03-28 12:48:00,182 - DEBUG - starting new connection: https://html.duckduckgo.com/
+2026-03-28 12:48:00,183 - DEBUG - connecting to 40.114.177.156:443
+2026-03-28 12:48:00,233 - DEBUG - connected to 40.114.177.156:443
+2026-03-28 12:48:00,234 - DEBUG - No cached session for DnsName("html.duckduckgo.com")
+2026-03-28 12:48:00,234 - DEBUG - Not resuming any session
+2026-03-28 12:48:00,234 - DEBUG - Browser emulation: Some(BrowserEmulator { browser_type: Opera, version: BrowserVersion { major: 129, minor: 0, patch: 0 }, extension_order_seed: Some(36266), cipher_suites: Some([CipherSuite(0xa0a), TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, CipherSuite(0x9c), CipherSuite(0x9d), CipherSuite(0x2f), CipherSuite(0x35)]), signature_algorithms: Some([ECDSA_NISTP256_SHA256, RSA_PSS_SHA256, RSA_PKCS1_SHA256, ECDSA_NISTP384_SHA384, RSA_PSS_SHA384, RSA_PKCS1_SHA384, RSA_PSS_SHA512, RSA_PKCS1_SHA512]), named_groups: Some([GREASE, X25519MLKEM768, X25519, secp256r1, secp384r1]), os_type: None, include_status_request_v2: false })
+2026-03-28 12:48:00,234 - DEBUG - Using extension_order_seed: 4319
+2026-03-28 12:48:00,235 - DEBUG - Browser emulation: Some(BrowserEmulator { browser_type: Opera, version: BrowserVersion { major: 129, minor: 0, patch: 0 }, extension_order_seed: Some(36266), cipher_suites: Some([CipherSuite(0xa0a), TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, CipherSuite(0x9c), CipherSuite(0x9d), CipherSuite(0x2f), CipherSuite(0x35)]), signature_algorithms: Some([ECDSA_NISTP256_SHA256, RSA_PSS_SHA256, RSA_PKCS1_SHA256, ECDSA_NISTP384_SHA384, RSA_PSS_SHA384, RSA_PKCS1_SHA384, RSA_PSS_SHA512, RSA_PKCS1_SHA512]), named_groups: Some([GREASE, X25519MLKEM768, X25519, secp256r1, secp384r1]), os_type: None, include_status_request_v2: false })
+2026-03-28 12:48:00,235 - DEBUG - Cipher suites count: 16
+2026-03-28 12:48:00,235 - DEBUG -   [0] CipherSuite(0xdada)
+2026-03-28 12:48:00,235 - DEBUG -   [1] TLS13_AES_128_GCM_SHA256
+2026-03-28 12:48:00,235 - DEBUG -   [2] TLS13_AES_256_GCM_SHA384
+2026-03-28 12:48:00,235 - DEBUG -   [3] TLS13_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:00,235 - DEBUG -   [4] TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+2026-03-28 12:48:00,235 - DEBUG -   [5] TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+2026-03-28 12:48:00,235 - DEBUG -   [6] TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+2026-03-28 12:48:00,235 - DEBUG -   [7] TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+2026-03-28 12:48:00,235 - DEBUG -   [8] TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:00,235 - DEBUG -   [9] TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:00,235 - DEBUG -   [10] TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+2026-03-28 12:48:00,235 - DEBUG -   [11] TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+2026-03-28 12:48:00,235 - DEBUG -   [12] CipherSuite(0x9c)
+2026-03-28 12:48:00,235 - DEBUG -   [13] CipherSuite(0x9d)
+2026-03-28 12:48:00,235 - DEBUG -   [14] CipherSuite(0x2f)
+2026-03-28 12:48:00,235 - DEBUG -   [15] CipherSuite(0x35)
+2026-03-28 12:48:00,236 - DEBUG - Final cipher suites for ClientHello: [CipherSuite(0xdada), TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, CipherSuite(0x9c), CipherSuite(0x9d), CipherSuite(0x2f), CipherSuite(0x35)]
+2026-03-28 12:48:00,273 - DEBUG - Using ciphersuite TLS13_AES_256_GCM_SHA384
+2026-03-28 12:48:00,273 - DEBUG - Not resuming
+2026-03-28 12:48:00,274 - DEBUG - TLS1.3 encrypted extensions: ServerExtensions { server_name_ack: (), selected_protocol: SingleProtocolName(ProtocolName(6832)), unknown_extensions: {}, .. }
+2026-03-28 12:48:00,274 - DEBUG - ALPN protocol is Some(b"h2")
+2026-03-28 12:48:00,277 - DEBUG - binding client connection
+2026-03-28 12:48:00,277 - DEBUG - client connection bound
+2026-03-28 12:48:00,277 - DEBUG - handshake2: settings header_table_size=Some(65536), enable_push=Some(false), initial_window_size=Some(6291456), max_frame_size=None, max_header_list_size=Some(262144)
+2026-03-28 12:48:00,277 - DEBUG - handshake2: sending initial settings frame
+2026-03-28 12:48:00,277 - DEBUG - send frame=Settings { flags: (0x0), header_table_size: 65536, enable_push: 0, initial_window_size: 6291456, max_header_list_size: 262144 }
+2026-03-28 12:48:00,277 - DEBUG - encoding SETTINGS; len=24, order=SettingsOrder { ids: [HeaderTableSize, EnablePush, InitialWindowSize, MaxHeaderListSize] }, header_table_size=Some(65536), enable_push=Some(0), initial_window_size=Some(6291456), max_frame_size=None, max_header_list_size=Some(262144)
+2026-03-28 12:48:00,277 - DEBUG - encoding setting; val=HeaderTableSize(65536)
+2026-03-28 12:48:00,277 - DEBUG - encoding setting; val=EnablePush(0)
+2026-03-28 12:48:00,277 - DEBUG - encoding setting; val=InitialWindowSize(6291456)
+2026-03-28 12:48:00,277 - DEBUG - encoding setting; val=MaxHeaderListSize(262144)
+2026-03-28 12:48:00,277 - DEBUG - Connection; peer=Client
+2026-03-28 12:48:00,277 - DEBUG - pooling idle connection for ("https", html.duckduckgo.com)
+2026-03-28 12:48:00,277 - DEBUG - send frame=WindowUpdate { stream_id: StreamId(0), size_increment: 15663105 }
+2026-03-28 12:48:00,277 - DEBUG - send frame=Headers { stream_id: StreamId(1), flags: (0x24: END_HEADERS | PRIORITY), stream_dep: StreamDependency { dependency_id: StreamId(0), weight: 255, is_exclusive: true } }
+2026-03-28 12:48:00,278 - DEBUG - send frame=Data { stream_id: StreamId(1), flags: (0x1: END_STREAM) }
+2026-03-28 12:48:00,309 - DEBUG - received frame=Settings { flags: (0x0), max_concurrent_streams: 100, initial_window_size: 65536, max_frame_size: 16777215 }
+2026-03-28 12:48:00,309 - DEBUG - send frame=Settings { flags: (0x1: ACK) }
+2026-03-28 12:48:00,310 - DEBUG - encoding SETTINGS; len=0, order=SettingsOrder { ids: [HeaderTableSize, EnablePush, MaxConcurrentStreams, InitialWindowSize, MaxFrameSize, MaxHeaderListSize, EnableConnectProtocol, NoRfc7540Priorities] }, header_table_size=None, enable_push=None, initial_window_size=None, max_frame_size=None, max_header_list_size=None
+2026-03-28 12:48:00,310 - DEBUG - received frame=WindowUpdate { stream_id: StreamId(0), size_increment: 2147418112 }
+2026-03-28 12:48:00,310 - DEBUG - received frame=Settings { flags: (0x1: ACK) }
+2026-03-28 12:48:00,310 - DEBUG - received settings ACK; applying Settings { flags: (0x0), header_table_size: 65536, enable_push: 0, initial_window_size: 6291456, max_header_list_size: 262144 }
+2026-03-28 12:48:00,310 - DEBUG - received frame=WindowUpdate { stream_id: StreamId(1), size_increment: 2147418111 }
+2026-03-28 12:48:00,955 - DEBUG - Decoder changed max table size from=0 to=0
+2026-03-28 12:48:00,955 - DEBUG - received frame=Headers { stream_id: StreamId(1), flags: (0x4: END_HEADERS) }
+2026-03-28 12:48:00,955 - DEBUG - received frame=Data { stream_id: StreamId(1) }
+2026-03-28 12:48:00,955 - DEBUG - received frame=Data { stream_id: StreamId(1), flags: (0x1: END_STREAM) }
+2026-03-28 12:48:00,956 - INFO - response: https://html.duckduckgo.com/html/ 200
+2026-03-28 12:48:01,504 - DEBUG - connect_tcp.started host='it.wikipedia.org' port=443 local_address=None timeout=15 socket_options=None
+2026-03-28 12:48:01,505 - DEBUG - connect_tcp.started host='www.pazienti.it' port=443 local_address=None timeout=15 socket_options=None
+2026-03-28 12:48:01,509 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002370DBCFCB0>
+2026-03-28 12:48:01,509 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000002370DBF5230> server_hostname='www.pazienti.it' timeout=15
+2026-03-28 12:48:01,516 - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002370DD1DA90>
+2026-03-28 12:48:01,516 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2026-03-28 12:48:01,516 - DEBUG - send_request_headers.complete
+2026-03-28 12:48:01,516 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2026-03-28 12:48:01,517 - DEBUG - send_request_body.complete
+2026-03-28 12:48:01,517 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2026-03-28 12:48:01,547 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002370DD1E350>
+2026-03-28 12:48:01,547 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000002370DBBDB50> server_hostname='it.wikipedia.org' timeout=15
+2026-03-28 12:48:01,574 - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002370DC5E8B0>
+2026-03-28 12:48:01,576 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2026-03-28 12:48:01,576 - DEBUG - send_request_headers.complete
+2026-03-28 12:48:01,576 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2026-03-28 12:48:01,576 - DEBUG - send_request_body.complete
+2026-03-28 12:48:01,576 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2026-03-28 12:48:01,598 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 403, b'Forbidden', [(b'content-length', b'151'), (b'content-type', b'text/plain'), (b'x-request-id', b'a856aaea-b64b-4f62-867d-438b8db373cf'), (b'server', b'HAProxy'), (b'x-cache', b'cp6013 int'), (b'x-cache-status', b'int-tls'), (b'x-analytics', b'')])
+2026-03-28 12:48:01,599 - INFO - HTTP Request: GET https://it.wikipedia.org/wiki/Presunta_correlazione_tra_vaccini_e_autismo "HTTP/1.1 403 Forbidden"
+2026-03-28 12:48:01,599 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2026-03-28 12:48:01,599 - DEBUG - receive_response_body.complete
+2026-03-28 12:48:01,600 - DEBUG - response_closed.started
+2026-03-28 12:48:01,600 - DEBUG - response_closed.complete
+2026-03-28 12:48:01,601 - DEBUG - close.started
+2026-03-28 12:48:01,602 - DEBUG - close.complete
+2026-03-28 12:48:02,009 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/html; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Date', b'Sat, 28 Mar 2026 11:48:40 GMT'), (b'content-encoding', b'gzip'), (b'etag', b'W/"5bceb3a8116b15d41ee9251320a4cafe"'), (b'x-frame-options', b'SAMEORIGIN'), (b'x-xss-protection', b'0'), (b'x-content-type-options', b'nosniff'), (b'x-permitted-cross-domain-policies', b'none'), (b'referrer-policy', b'strict-origin-when-cross-origin'), (b'link', b'</packs/media/src/fonts/pazienti_icon-97593b5fe9d9fd6c4aa3e4a775dc82e9.woff>; rel=preload; as=font; type=font/woff; crossorigin=anonymous,</packs/media/src/fonts/stratos-medium-32c61e0f51e750f105f4413e4ef68444.woff>; rel=preload; as=font; type=font/woff; crossorigin=anonymous,</packs/media/src/fonts/stratos-semilight-118ebceea9c8a8df44c80943d1802cb2.woff>; rel=preload; as=font; type=font/woff; crossorigin=anonymous,</packs/media/src/fonts/stratos-regular-19b2148bd3097c46418525be2ff6a02c.woff>; rel=preload; as=font; type=font/woff; crossorigin=anonymous,</packs/media/src/fonts/stratos-extralight-93083b8b25461c77e861a2159d655bb7.woff>; rel=preload; as=font; type=font/woff; crossorigin=anonymous,</packs/media/src/fonts/stratos-semibold-ff40bf027ee9169f91d0590951dfca56.woff>; rel=preload; as=font; type=font/woff; crossorigin=anonymous,</packs/media/src/fonts/stratos-semilightitalic-8e8387174947805204d3b5ca6f5a0d72.woff>; rel=preload; as=font; type=font/woff; crossorigin=anonymous'), (b'cache-control', b'no-cache'), (b'vary', b'Origin'), (b'vary', b'Accept-Encoding'), (b'set-cookie', b'_pazienti3_session=pFovr2l%2FTb4q%2BEijka7CIVzMF9Ee8ujSRqYfNaXbxsxTAFZ8QW7iBUtMmo9RvQpGWbjt1suRuSUu%2Fd8QoPsl31Y0oANiJbiCJ9emprA8V8w%2FXHtN%2B1PiaVsILUVrIv0LzpZUHTgQrUYSWEdbrO48N6WT8iKvt%2FdHNfqkfnr%2BSWUvHlhK8CTXGqmKe03ZG6%2Baiz38gNBAT9dIFw3DtYn2xV8CTEs%2F08brk4FwxqDI6ICQDICsKB2u%2BVKtSLH%2Fhhx7Ulys9ILoNAI7XDMFrtdmwG8UgpV0VTFJoG4%3D--wz5z%2FgPUOB333lkR--BcNDwlMB2kGqZY2NpWIhkg%3D%3D; path=/; secure; httponly; SameSite=Lax'), (b'x-request-id', b'c7df59cb-c107-4c99-9a4a-97cc2b916619'), (b'x-runtime', b'0.405677'), (b'strict-transport-security', b'max-age=63072000; includeSubDomains'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 fc9851add8ad2fe80247a319dd3f2d62.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'FCO50-P7'), (b'X-Amz-Cf-Id', b'_eXuhfnmDNZqw3mFHhwQjRQcpbSD9J8Idl183V0i5phKS8OCA37l9A==')])
+2026-03-28 12:48:02,010 - INFO - HTTP Request: GET https://www.pazienti.it/news-di-salute/autismo-e-vaccini-gli-studi-scientifici-confermano-che-non-esiste-alcun-legame-25092025 "HTTP/1.1 200 OK"
+2026-03-28 12:48:02,011 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2026-03-28 12:48:02,032 - DEBUG - receive_response_body.complete
+2026-03-28 12:48:02,032 - DEBUG - response_closed.started
+2026-03-28 12:48:02,032 - DEBUG - response_closed.complete
+2026-03-28 12:48:02,034 - DEBUG - close.started
+2026-03-28 12:48:02,034 - DEBUG - close.complete
+2026-03-28 12:48:02,063 - DEBUG - starting new connection: https://en.wikipedia.org/
+2026-03-28 12:48:02,063 - DEBUG - starting new connection: https://grokipedia.com/
+2026-03-28 12:48:02,063 - DEBUG - send frame=GoAway { error_code: NO_ERROR, last_stream_id: StreamId(0) }
+2026-03-28 12:48:02,063 - DEBUG - Connection::poll; connection error error=GoAway(b"", NO_ERROR, Library)
+2026-03-28 12:48:02,063 - DEBUG - Sending warning alert CloseNotify
+2026-03-28 12:48:02,063 - DEBUG - send frame=GoAway { error_code: NO_ERROR, last_stream_id: StreamId(0) }
+2026-03-28 12:48:02,063 - DEBUG - Connection::poll; connection error error=GoAway(b"", NO_ERROR, Library)
+2026-03-28 12:48:02,063 - DEBUG - connecting to 104.18.18.2:443
+2026-03-28 12:48:02,063 - DEBUG - Sending warning alert CloseNotify
+2026-03-28 12:48:02,063 - DEBUG - send frame=GoAway { error_code: NO_ERROR, last_stream_id: StreamId(0) }
+2026-03-28 12:48:02,063 - DEBUG - Connection::poll; connection error error=GoAway(b"", NO_ERROR, Library)
+2026-03-28 12:48:02,064 - DEBUG - Sending warning alert CloseNotify
+2026-03-28 12:48:02,064 - DEBUG - connecting to 185.15.58.224:443
+2026-03-28 12:48:02,088 - DEBUG - connected to 185.15.58.224:443
+2026-03-28 12:48:02,088 - DEBUG - No cached session for DnsName("en.wikipedia.org")
+2026-03-28 12:48:02,088 - DEBUG - Not resuming any session
+2026-03-28 12:48:02,089 - DEBUG - Browser emulation: Some(BrowserEmulator { browser_type: Safari, version: BrowserVersion { major: 18, minor: 5, patch: 0 }, extension_order_seed: Some(39548), cipher_suites: Some([TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, CipherSuite(0x9d), CipherSuite(0x9c), CipherSuite(0x35), CipherSuite(0x2f), CipherSuite(0xc008), CipherSuite(0xc012), CipherSuite(0xa)]), signature_algorithms: Some([ECDSA_NISTP256_SHA256, RSA_PSS_SHA256, RSA_PKCS1_SHA256, ECDSA_NISTP384_SHA384, RSA_PSS_SHA384, RSA_PSS_SHA384, RSA_PKCS1_SHA384, RSA_PSS_SHA512, RSA_PKCS1_SHA512, RSA_PKCS1_SHA1]), named_groups: Some([X25519MLKEM768, X25519, secp256r1, secp384r1]), os_type: Some(MacOS), include_status_request_v2: true })
+2026-03-28 12:48:02,089 - DEBUG - Using extension_order_seed: 10810
+2026-03-28 12:48:02,089 - DEBUG - Browser emulation: Some(BrowserEmulator { browser_type: Safari, version: BrowserVersion { major: 18, minor: 5, patch: 0 }, extension_order_seed: Some(39548), cipher_suites: Some([TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, CipherSuite(0x9d), CipherSuite(0x9c), CipherSuite(0x35), CipherSuite(0x2f), CipherSuite(0xc008), CipherSuite(0xc012), CipherSuite(0xa)]), signature_algorithms: Some([ECDSA_NISTP256_SHA256, RSA_PSS_SHA256, RSA_PKCS1_SHA256, ECDSA_NISTP384_SHA384, RSA_PSS_SHA384, RSA_PSS_SHA384, RSA_PKCS1_SHA384, RSA_PSS_SHA512, RSA_PKCS1_SHA512, RSA_PKCS1_SHA1]), named_groups: Some([X25519MLKEM768, X25519, secp256r1, secp384r1]), os_type: Some(MacOS), include_status_request_v2: true })
+2026-03-28 12:48:02,089 - DEBUG - Cipher suites count: 20
+2026-03-28 12:48:02,089 - DEBUG -   [0] TLS13_AES_128_GCM_SHA256
+2026-03-28 12:48:02,089 - DEBUG -   [1] TLS13_AES_256_GCM_SHA384
+2026-03-28 12:48:02,089 - DEBUG -   [2] TLS13_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:02,089 - DEBUG -   [3] TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+2026-03-28 12:48:02,089 - DEBUG -   [4] TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+2026-03-28 12:48:02,089 - DEBUG -   [5] TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:02,089 - DEBUG -   [6] TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+2026-03-28 12:48:02,089 - DEBUG -   [7] TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+2026-03-28 12:48:02,089 - DEBUG -   [8] TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:02,089 - DEBUG -   [9] TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+2026-03-28 12:48:02,089 - DEBUG -   [10] TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+2026-03-28 12:48:02,089 - DEBUG -   [11] TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+2026-03-28 12:48:02,090 - DEBUG -   [12] TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+2026-03-28 12:48:02,090 - DEBUG -   [13] CipherSuite(0x9d)
+2026-03-28 12:48:02,090 - DEBUG -   [14] CipherSuite(0x9c)
+2026-03-28 12:48:02,090 - DEBUG -   [15] CipherSuite(0x35)
+2026-03-28 12:48:02,090 - DEBUG -   [16] CipherSuite(0x2f)
+2026-03-28 12:48:02,090 - DEBUG -   [17] CipherSuite(0xc008)
+2026-03-28 12:48:02,090 - DEBUG -   [18] CipherSuite(0xc012)
+2026-03-28 12:48:02,090 - DEBUG -   [19] CipherSuite(0xa)
+2026-03-28 12:48:02,090 - DEBUG - Final cipher suites for ClientHello: [TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, CipherSuite(0x9d), CipherSuite(0x9c), CipherSuite(0x35), CipherSuite(0x2f), CipherSuite(0xc008), CipherSuite(0xc012), CipherSuite(0xa)]
+2026-03-28 12:48:02,091 - DEBUG - connected to 104.18.18.2:443
+2026-03-28 12:48:02,091 - DEBUG - No cached session for DnsName("grokipedia.com")
+2026-03-28 12:48:02,091 - DEBUG - Not resuming any session
+2026-03-28 12:48:02,091 - DEBUG - Browser emulation: Some(BrowserEmulator { browser_type: Chrome, version: BrowserVersion { major: 145, minor: 0, patch: 0 }, extension_order_seed: Some(36266), cipher_suites: Some([CipherSuite(0xa0a), TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, CipherSuite(0x9c), CipherSuite(0x9d), CipherSuite(0x2f), CipherSuite(0x35)]), signature_algorithms: Some([ECDSA_NISTP256_SHA256, RSA_PSS_SHA256, RSA_PKCS1_SHA256, ECDSA_NISTP384_SHA384, RSA_PSS_SHA384, RSA_PKCS1_SHA384, RSA_PSS_SHA512, RSA_PKCS1_SHA512]), named_groups: Some([GREASE, X25519MLKEM768, X25519, secp256r1, secp384r1]), os_type: None, include_status_request_v2: false })
+2026-03-28 12:48:02,091 - DEBUG - Using extension_order_seed: 39751
+2026-03-28 12:48:02,091 - DEBUG - Browser emulation: Some(BrowserEmulator { browser_type: Chrome, version: BrowserVersion { major: 145, minor: 0, patch: 0 }, extension_order_seed: Some(36266), cipher_suites: Some([CipherSuite(0xa0a), TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, CipherSuite(0x9c), CipherSuite(0x9d), CipherSuite(0x2f), CipherSuite(0x35)]), signature_algorithms: Some([ECDSA_NISTP256_SHA256, RSA_PSS_SHA256, RSA_PKCS1_SHA256, ECDSA_NISTP384_SHA384, RSA_PSS_SHA384, RSA_PKCS1_SHA384, RSA_PSS_SHA512, RSA_PKCS1_SHA512]), named_groups: Some([GREASE, X25519MLKEM768, X25519, secp256r1, secp384r1]), os_type: None, include_status_request_v2: false })
+2026-03-28 12:48:02,091 - DEBUG - Cipher suites count: 16
+2026-03-28 12:48:02,091 - DEBUG -   [0] CipherSuite(0x2a2a)
+2026-03-28 12:48:02,092 - DEBUG -   [1] TLS13_AES_128_GCM_SHA256
+2026-03-28 12:48:02,092 - DEBUG -   [2] TLS13_AES_256_GCM_SHA384
+2026-03-28 12:48:02,092 - DEBUG -   [3] TLS13_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:02,092 - DEBUG -   [4] TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+2026-03-28 12:48:02,092 - DEBUG -   [5] TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+2026-03-28 12:48:02,092 - DEBUG -   [6] TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+2026-03-28 12:48:02,092 - DEBUG -   [7] TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+2026-03-28 12:48:02,092 - DEBUG -   [8] TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:02,092 - DEBUG -   [9] TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:02,092 - DEBUG -   [10] TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+2026-03-28 12:48:02,092 - DEBUG -   [11] TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+2026-03-28 12:48:02,092 - DEBUG -   [12] CipherSuite(0x9c)
+2026-03-28 12:48:02,092 - DEBUG -   [13] CipherSuite(0x9d)
+2026-03-28 12:48:02,092 - DEBUG -   [14] CipherSuite(0x2f)
+2026-03-28 12:48:02,092 - DEBUG -   [15] CipherSuite(0x35)
+2026-03-28 12:48:02,092 - DEBUG - Final cipher suites for ClientHello: [CipherSuite(0x2a2a), TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, CipherSuite(0x9c), CipherSuite(0x9d), CipherSuite(0x2f), CipherSuite(0x35)]
+2026-03-28 12:48:02,110 - DEBUG - Using ciphersuite TLS13_AES_128_GCM_SHA256
+2026-03-28 12:48:02,111 - DEBUG - Not resuming
+2026-03-28 12:48:02,111 - DEBUG - TLS1.3 encrypted extensions: ServerExtensions { server_name_ack: (), selected_protocol: SingleProtocolName(ProtocolName(6832)), unknown_extensions: {}, .. }
+2026-03-28 12:48:02,111 - DEBUG - ALPN protocol is Some(b"h2")
+2026-03-28 12:48:02,115 - DEBUG - binding client connection
+2026-03-28 12:48:02,116 - DEBUG - client connection bound
+2026-03-28 12:48:02,116 - DEBUG - handshake2: settings header_table_size=None, enable_push=Some(false), initial_window_size=Some(2097152), max_frame_size=None, max_header_list_size=None
+2026-03-28 12:48:02,116 - DEBUG - handshake2: sending initial settings frame
+2026-03-28 12:48:02,116 - DEBUG - send frame=Settings { flags: (0x0), enable_push: 0, max_concurrent_streams: 100, initial_window_size: 2097152, no_rfc7540_priorities: 1 }
+2026-03-28 12:48:02,116 - DEBUG - encoding SETTINGS; len=24, order=SettingsOrder { ids: [EnablePush, MaxConcurrentStreams, InitialWindowSize, NoRfc7540Priorities] }, header_table_size=None, enable_push=Some(0), initial_window_size=Some(2097152), max_frame_size=None, max_header_list_size=None
+2026-03-28 12:48:02,116 - DEBUG - encoding setting; val=EnablePush(0)
+2026-03-28 12:48:02,116 - DEBUG - encoding setting; val=MaxConcurrentStreams(100)
+2026-03-28 12:48:02,116 - DEBUG - encoding setting; val=InitialWindowSize(2097152)
+2026-03-28 12:48:02,116 - DEBUG - encoding setting; val=NoRfc7540Priorities(1)
+2026-03-28 12:48:02,117 - DEBUG - Connection; peer=Client
+2026-03-28 12:48:02,117 - DEBUG - pooling idle connection for ("https", en.wikipedia.org)
+2026-03-28 12:48:02,117 - DEBUG - send frame=WindowUpdate { stream_id: StreamId(0), size_increment: 10420225 }
+2026-03-28 12:48:02,117 - DEBUG - send frame=Headers { stream_id: StreamId(1), flags: (0x5: END_HEADERS | END_STREAM) }
+2026-03-28 12:48:02,121 - DEBUG - Using ciphersuite TLS13_AES_128_GCM_SHA256
+2026-03-28 12:48:02,121 - DEBUG - Not resuming
+2026-03-28 12:48:02,122 - DEBUG - TLS1.3 encrypted extensions: ServerExtensions { server_name_ack: (), selected_protocol: SingleProtocolName(ProtocolName(6832)), encrypted_client_hello_ack: ServerEncryptedClientHello { retry_configs: [V18(EchConfigContents { key_config: HpkeKeyConfig { config_id: 166, kem_id: DHKEM_X25519_HKDF_SHA256, public_key: 37c3914628d85cff71bb0d2c7766fe7312f40bab4f85a37108b589b652228958, symmetric_cipher_suites: [HpkeSymmetricCipherSuite { kdf_id: HKDF_SHA256, aead_id: AES_128_GCM }] }, maximum_name_length: 0, public_name: DnsName("cloudflare-ech.com"), extensions: [] })] }, unknown_extensions: {}, .. }
+2026-03-28 12:48:02,122 - DEBUG - ALPN protocol is Some(b"h2")
+2026-03-28 12:48:02,127 - DEBUG - binding client connection
+2026-03-28 12:48:02,127 - DEBUG - client connection bound
+2026-03-28 12:48:02,128 - DEBUG - handshake2: settings header_table_size=Some(65536), enable_push=Some(false), initial_window_size=Some(6291456), max_frame_size=None, max_header_list_size=Some(262144)
+2026-03-28 12:48:02,128 - DEBUG - handshake2: sending initial settings frame
+2026-03-28 12:48:02,128 - DEBUG - send frame=Settings { flags: (0x0), header_table_size: 65536, enable_push: 0, initial_window_size: 6291456, max_header_list_size: 262144 }
+2026-03-28 12:48:02,128 - DEBUG - encoding SETTINGS; len=24, order=SettingsOrder { ids: [HeaderTableSize, EnablePush, InitialWindowSize, MaxHeaderListSize] }, header_table_size=Some(65536), enable_push=Some(0), initial_window_size=Some(6291456), max_frame_size=None, max_header_list_size=Some(262144)
+2026-03-28 12:48:02,128 - DEBUG - encoding setting; val=HeaderTableSize(65536)
+2026-03-28 12:48:02,128 - DEBUG - encoding setting; val=EnablePush(0)
+2026-03-28 12:48:02,128 - DEBUG - encoding setting; val=InitialWindowSize(6291456)
+2026-03-28 12:48:02,128 - DEBUG - encoding setting; val=MaxHeaderListSize(262144)
+2026-03-28 12:48:02,128 - DEBUG - Connection; peer=Client
+2026-03-28 12:48:02,128 - DEBUG - pooling idle connection for ("https", grokipedia.com)
+2026-03-28 12:48:02,128 - DEBUG - send frame=WindowUpdate { stream_id: StreamId(0), size_increment: 15663105 }
+2026-03-28 12:48:02,129 - DEBUG - send frame=Headers { stream_id: StreamId(1), flags: (0x25: END_HEADERS | END_STREAM | PRIORITY), stream_dep: StreamDependency { dependency_id: StreamId(0), weight: 255, is_exclusive: true } }
+2026-03-28 12:48:02,132 - DEBUG - received frame=Settings { flags: (0x0), max_concurrent_streams: 100, initial_window_size: 65536, max_frame_size: 16777215 }
+2026-03-28 12:48:02,133 - DEBUG - send frame=Settings { flags: (0x1: ACK) }
+2026-03-28 12:48:02,133 - DEBUG - encoding SETTINGS; len=0, order=SettingsOrder { ids: [HeaderTableSize, EnablePush, MaxConcurrentStreams, InitialWindowSize, MaxFrameSize, MaxHeaderListSize, EnableConnectProtocol, NoRfc7540Priorities] }, header_table_size=None, enable_push=None, initial_window_size=None, max_frame_size=None, max_header_list_size=None
+2026-03-28 12:48:02,133 - DEBUG - received frame=WindowUpdate { stream_id: StreamId(0), size_increment: 2147418112 }
+2026-03-28 12:48:02,133 - DEBUG - received frame=Settings { flags: (0x1: ACK) }
+2026-03-28 12:48:02,133 - DEBUG - received settings ACK; applying Settings { flags: (0x0), header_table_size: 65536, enable_push: 0, initial_window_size: 6291456, max_header_list_size: 262144 }
+2026-03-28 12:48:02,134 - DEBUG - received frame=Settings { flags: (0x0), max_concurrent_streams: 100, enable_connect_protocol: 1 }
+2026-03-28 12:48:02,134 - DEBUG - send frame=Settings { flags: (0x1: ACK) }
+2026-03-28 12:48:02,134 - DEBUG - encoding SETTINGS; len=0, order=SettingsOrder { ids: [HeaderTableSize, EnablePush, MaxConcurrentStreams, InitialWindowSize, MaxFrameSize, MaxHeaderListSize, EnableConnectProtocol, NoRfc7540Priorities] }, header_table_size=None, enable_push=None, initial_window_size=None, max_frame_size=None, max_header_list_size=None
+2026-03-28 12:48:02,144 - DEBUG - received frame=Settings { flags: (0x1: ACK) }
+2026-03-28 12:48:02,144 - DEBUG - received settings ACK; applying Settings { flags: (0x0), enable_push: 0, max_concurrent_streams: 100, initial_window_size: 2097152, no_rfc7540_priorities: 1 }
+2026-03-28 12:48:02,144 - DEBUG - received frame=Headers { stream_id: StreamId(1), flags: (0x4: END_HEADERS) }
+2026-03-28 12:48:02,144 - DEBUG - received frame=Data { stream_id: StreamId(1), flags: (0x1: END_STREAM) }
+2026-03-28 12:48:02,144 - DEBUG - inserting secure cookie 'WMF-Last-Access'
+2026-03-28 12:48:02,144 - DEBUG - inserting secure cookie 'WMF-Last-Access-Global'
+2026-03-28 12:48:02,145 - DEBUG - inserting secure cookie 'GeoIP'
+2026-03-28 12:48:02,145 - DEBUG - inserting secure cookie 'NetworkProbeLimit'
+2026-03-28 12:48:02,145 - DEBUG - inserting secure cookie 'WMF-Uniq'
+2026-03-28 12:48:02,145 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=studi%20scientifici%20vaccino%20autismo%20correlazione 200
+2026-03-28 12:48:02,271 - DEBUG - Decoder changed max table size from=0 to=4096
+2026-03-28 12:48:02,271 - DEBUG - received frame=Headers { stream_id: StreamId(1), flags: (0x4: END_HEADERS) }
+2026-03-28 12:48:02,271 - DEBUG - received frame=Data { stream_id: StreamId(1) }
+2026-03-28 12:48:02,271 - DEBUG - received frame=Data { stream_id: StreamId(1), flags: (0x1: END_STREAM) }
+2026-03-28 12:48:02,272 - DEBUG - inserting secure cookie 'grokipedia-affinity'
+2026-03-28 12:48:02,272 - DEBUG - inserting secure cookie '__cf_bm'
+2026-03-28 12:48:02,272 - INFO - response: https://grokipedia.com/api/typeahead?query=studi+scientifici+vaccino+autismo+correlazione&limit=1 200
+2026-03-28 12:48:02,272 - DEBUG - inserting Set-Cookie 'Cookie { cookie_string: Some("us=us"), name: Indexed(0, 2), value: Indexed(3, 5), expires: None, max_age: None, domain: None, path: None, secure: None, http_only: None, same_site: None, partitioned: None }'
+2026-03-28 12:48:02,272 - DEBUG - inserting Set-Cookie 'Cookie { cookie_string: Some("useLocation=0"), name: Indexed(0, 11), value: Indexed(12, 13), expires: None, max_age: None, domain: None, path: None, secure: None, http_only: None, same_site: None, partitioned: None }'
+2026-03-28 12:48:02,272 - DEBUG - starting new connection: https://search.brave.com/
+2026-03-28 12:48:02,276 - DEBUG - connecting to 108.139.210.73:443
+2026-03-28 12:48:02,279 - DEBUG - connected to 108.139.210.73:443
+2026-03-28 12:48:02,279 - DEBUG - No cached session for DnsName("search.brave.com")
+2026-03-28 12:48:02,279 - DEBUG - Not resuming any session
+2026-03-28 12:48:02,279 - DEBUG - Browser emulation: Some(BrowserEmulator { browser_type: Chrome, version: BrowserVersion { major: 145, minor: 0, patch: 0 }, extension_order_seed: Some(36266), cipher_suites: Some([CipherSuite(0xa0a), TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, CipherSuite(0x9c), CipherSuite(0x9d), CipherSuite(0x2f), CipherSuite(0x35)]), signature_algorithms: Some([ECDSA_NISTP256_SHA256, RSA_PSS_SHA256, RSA_PKCS1_SHA256, ECDSA_NISTP384_SHA384, RSA_PSS_SHA384, RSA_PKCS1_SHA384, RSA_PSS_SHA512, RSA_PKCS1_SHA512]), named_groups: Some([GREASE, X25519MLKEM768, X25519, secp256r1, secp384r1]), os_type: None, include_status_request_v2: false })
+2026-03-28 12:48:02,279 - DEBUG - Using extension_order_seed: 25784
+2026-03-28 12:48:02,279 - DEBUG - Browser emulation: Some(BrowserEmulator { browser_type: Chrome, version: BrowserVersion { major: 145, minor: 0, patch: 0 }, extension_order_seed: Some(36266), cipher_suites: Some([CipherSuite(0xa0a), TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, CipherSuite(0x9c), CipherSuite(0x9d), CipherSuite(0x2f), CipherSuite(0x35)]), signature_algorithms: Some([ECDSA_NISTP256_SHA256, RSA_PSS_SHA256, RSA_PKCS1_SHA256, ECDSA_NISTP384_SHA384, RSA_PSS_SHA384, RSA_PKCS1_SHA384, RSA_PSS_SHA512, RSA_PKCS1_SHA512]), named_groups: Some([GREASE, X25519MLKEM768, X25519, secp256r1, secp384r1]), os_type: None, include_status_request_v2: false })
+2026-03-28 12:48:02,279 - DEBUG - Cipher suites count: 16
+2026-03-28 12:48:02,279 - DEBUG -   [0] CipherSuite(0xeaea)
+2026-03-28 12:48:02,279 - DEBUG -   [1] TLS13_AES_128_GCM_SHA256
+2026-03-28 12:48:02,279 - DEBUG -   [2] TLS13_AES_256_GCM_SHA384
+2026-03-28 12:48:02,279 - DEBUG -   [3] TLS13_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:02,279 - DEBUG -   [4] TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+2026-03-28 12:48:02,279 - DEBUG -   [5] TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+2026-03-28 12:48:02,279 - DEBUG -   [6] TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+2026-03-28 12:48:02,279 - DEBUG -   [7] TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+2026-03-28 12:48:02,279 - DEBUG -   [8] TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:02,279 - DEBUG -   [9] TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+2026-03-28 12:48:02,279 - DEBUG -   [10] TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+2026-03-28 12:48:02,279 - DEBUG -   [11] TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+2026-03-28 12:48:02,279 - DEBUG -   [12] CipherSuite(0x9c)
+2026-03-28 12:48:02,279 - DEBUG -   [13] CipherSuite(0x9d)
+2026-03-28 12:48:02,279 - DEBUG -   [14] CipherSuite(0x2f)
+2026-03-28 12:48:02,279 - DEBUG -   [15] CipherSuite(0x35)
+2026-03-28 12:48:02,279 - DEBUG - Final cipher suites for ClientHello: [CipherSuite(0xeaea), TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384, TLS13_CHACHA20_POLY1305_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, CipherSuite(0x9c), CipherSuite(0x9d), CipherSuite(0x2f), CipherSuite(0x35)]
+2026-03-28 12:48:02,282 - DEBUG - Using ciphersuite TLS13_AES_128_GCM_SHA256
+2026-03-28 12:48:02,282 - DEBUG - Not resuming
+2026-03-28 12:48:02,283 - DEBUG - TLS1.3 encrypted extensions: ServerExtensions { server_name_ack: (), selected_protocol: SingleProtocolName(ProtocolName(6832)), unknown_extensions: {}, .. }
+2026-03-28 12:48:02,283 - DEBUG - ALPN protocol is Some(b"h2")
+2026-03-28 12:48:02,283 - DEBUG - binding client connection
+2026-03-28 12:48:02,283 - DEBUG - client connection bound
+2026-03-28 12:48:02,283 - DEBUG - handshake2: settings header_table_size=Some(65536), enable_push=Some(false), initial_window_size=Some(6291456), max_frame_size=None, max_header_list_size=Some(262144)
+2026-03-28 12:48:02,284 - DEBUG - handshake2: sending initial settings frame
+2026-03-28 12:48:02,284 - DEBUG - send frame=Settings { flags: (0x0), header_table_size: 65536, enable_push: 0, initial_window_size: 6291456, max_header_list_size: 262144 }
+2026-03-28 12:48:02,284 - DEBUG - encoding SETTINGS; len=24, order=SettingsOrder { ids: [HeaderTableSize, EnablePush, InitialWindowSize, MaxHeaderListSize] }, header_table_size=Some(65536), enable_push=Some(0), initial_window_size=Some(6291456), max_frame_size=None, max_header_list_size=Some(262144)
+2026-03-28 12:48:02,284 - DEBUG - encoding setting; val=HeaderTableSize(65536)
+2026-03-28 12:48:02,284 - DEBUG - encoding setting; val=EnablePush(0)
+2026-03-28 12:48:02,284 - DEBUG - encoding setting; val=InitialWindowSize(6291456)
+2026-03-28 12:48:02,284 - DEBUG - encoding setting; val=MaxHeaderListSize(262144)
+2026-03-28 12:48:02,284 - DEBUG - Connection; peer=Client
+2026-03-28 12:48:02,284 - DEBUG - pooling idle connection for ("https", search.brave.com)
+2026-03-28 12:48:02,284 - DEBUG - send frame=WindowUpdate { stream_id: StreamId(0), size_increment: 15663105 }
+2026-03-28 12:48:02,284 - DEBUG - send frame=Headers { stream_id: StreamId(1), flags: (0x25: END_HEADERS | END_STREAM | PRIORITY), stream_dep: StreamDependency { dependency_id: StreamId(0), weight: 255, is_exclusive: true } }
+2026-03-28 12:48:02,287 - DEBUG - received frame=Settings { flags: (0x0), max_concurrent_streams: 128, initial_window_size: 65536, max_frame_size: 16777215 }
+2026-03-28 12:48:02,287 - DEBUG - send frame=Settings { flags: (0x1: ACK) }
+2026-03-28 12:48:02,287 - DEBUG - encoding SETTINGS; len=0, order=SettingsOrder { ids: [HeaderTableSize, EnablePush, MaxConcurrentStreams, InitialWindowSize, MaxFrameSize, MaxHeaderListSize, EnableConnectProtocol, NoRfc7540Priorities] }, header_table_size=None, enable_push=None, initial_window_size=None, max_frame_size=None, max_header_list_size=None
+2026-03-28 12:48:02,287 - DEBUG - received frame=WindowUpdate { stream_id: StreamId(0), size_increment: 2147418112 }
+2026-03-28 12:48:02,287 - DEBUG - received frame=Settings { flags: (0x1: ACK) }
+2026-03-28 12:48:02,287 - DEBUG - received settings ACK; applying Settings { flags: (0x0), header_table_size: 65536, enable_push: 0, initial_window_size: 6291456, max_header_list_size: 262144 }
+2026-03-28 12:48:03,039 - DEBUG - Decoder changed max table size from=0 to=0
+2026-03-28 12:48:03,040 - DEBUG - received frame=Headers { stream_id: StreamId(1), flags: (0x4: END_HEADERS) }
+2026-03-28 12:48:03,040 - DEBUG - received frame=Data { stream_id: StreamId(1) }
+2026-03-28 12:48:03,040 - DEBUG - received frame=Data { stream_id: StreamId(1) }
+2026-03-28 12:48:03,040 - DEBUG - received frame=Data { stream_id: StreamId(1) }
+2026-03-28 12:48:03,040 - DEBUG - inserting secure cookie 'useLocation'
+2026-03-28 12:48:03,040 - INFO - response: https://search.brave.com/search?q=studi+scientifici+vaccino+autismo+correlazione&source=web 200
+2026-03-28 12:48:03,042 - DEBUG - received frame=Data { stream_id: StreamId(1) }
+2026-03-28 12:48:03,042 - DEBUG - received frame=Data { stream_id: StreamId(1) }
+2026-03-28 12:48:03,042 - DEBUG - received frame=Data { stream_id: StreamId(1) }
+2026-03-28 12:48:03,042 - DEBUG - received frame=Data { stream_id: StreamId(1), flags: (0x1: END_STREAM) }
+2026-03-28 12:48:03,435 - DEBUG - connect_tcp.started host='it.wikipedia.org' port=443 local_address=None timeout=15 socket_options=None
+2026-03-28 12:48:03,435 - DEBUG - connect_tcp.started host='www.ospedalebambinogesu.it' port=443 local_address=None timeout=15 socket_options=None
+2026-03-28 12:48:03,457 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002370E154D60>
+2026-03-28 12:48:03,457 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000002370DBF7790> server_hostname='it.wikipedia.org' timeout=15
+2026-03-28 12:48:03,462 - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002370E158950>
+2026-03-28 12:48:03,462 - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000002370DE6F890> server_hostname='www.ospedalebambinogesu.it' timeout=15
+2026-03-28 12:48:03,468 - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002370DD66F10>
+2026-03-28 12:48:03,469 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2026-03-28 12:48:03,469 - DEBUG - send_request_headers.complete
+2026-03-28 12:48:03,469 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2026-03-28 12:48:03,469 - DEBUG - send_request_body.complete
+2026-03-28 12:48:03,469 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2026-03-28 12:48:03,482 - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000002370DD66BE0>
+2026-03-28 12:48:03,483 - DEBUG - send_request_headers.started request=<Request [b'GET']>
+2026-03-28 12:48:03,483 - DEBUG - send_request_headers.complete
+2026-03-28 12:48:03,484 - DEBUG - send_request_body.started request=<Request [b'GET']>
+2026-03-28 12:48:03,484 - DEBUG - send_request_body.complete
+2026-03-28 12:48:03,484 - DEBUG - receive_response_headers.started request=<Request [b'GET']>
+2026-03-28 12:48:03,503 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 403, b'Forbidden', [(b'content-length', b'151'), (b'content-type', b'text/plain'), (b'x-request-id', b'b5cc9d6e-43e1-4c60-82ac-cf2c6185fd84'), (b'server', b'HAProxy'), (b'x-cache', b'cp6013 int'), (b'x-cache-status', b'int-tls'), (b'x-analytics', b'')])
+2026-03-28 12:48:03,504 - INFO - HTTP Request: GET https://it.wikipedia.org/wiki/Presunta_correlazione_tra_vaccini_e_autismo "HTTP/1.1 403 Forbidden"
+2026-03-28 12:48:03,504 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2026-03-28 12:48:03,504 - DEBUG - receive_response_body.complete
+2026-03-28 12:48:03,505 - DEBUG - response_closed.started
+2026-03-28 12:48:03,505 - DEBUG - response_closed.complete
+2026-03-28 12:48:03,507 - DEBUG - close.started
+2026-03-28 12:48:03,507 - DEBUG - close.complete
+2026-03-28 12:48:03,583 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/html; charset=UTF-8'), (b'Content-Length', b'11380'), (b'Connection', b'keep-alive'), (b'Date', b'Sat, 28 Mar 2026 11:48:41 GMT'), (b'X-Cache-Hits', b'0'), (b'Access-Control-Allow-Origin', b'https://kolumbus-preprod.ospedalebambinogesu.it'), (b'Expires', b'Sat, 28 Mar 2026 11:49:41 GMT'), (b'Content-Encoding', b'gzip'), (b'Accept-Ranges', b'bytes'), (b'Vary', b'Accept-Encoding'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 3e95e5d40c2198a29df57e01349d755e.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'FCO50-P4'), (b'X-Amz-Cf-Id', b'-ybFfal6Ge5DTClOLdcfzZ4qt3nrwP3Nl_jretzIJp-bVUzj1Whbyw=='), (b'Age', b'0')])
+2026-03-28 12:48:03,583 - INFO - HTTP Request: GET https://www.ospedalebambinogesu.it/vaccini-e-autismo-cosa-c-e-da-sapere-97115/ "HTTP/1.1 200 OK"
+2026-03-28 12:48:03,583 - DEBUG - receive_response_body.started request=<Request [b'GET']>
+2026-03-28 12:48:03,583 - DEBUG - receive_response_body.complete
+2026-03-28 12:48:03,584 - DEBUG - response_closed.started
+2026-03-28 12:48:03,584 - DEBUG - response_closed.complete
+2026-03-28 12:48:03,586 - DEBUG - close.started
+2026-03-28 12:48:03,586 - DEBUG - close.complete

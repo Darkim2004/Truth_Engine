@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "source_type": "social_media",
+    "timestamp": "2026-03-28T12:00:00Z",
+    "language": "it"
+  },
+  "original_source": {
+    "text_content": "Il vaccino COVID causa autismo nei bambini secondo nuovi studi scientifici",
+    "url": "https://example.com/fake-post"
+  },
+  "analysis": {
+    "engine": "LLM-Powered",
+    "claims_to_verify": [
+      {
+        "id": 0,
+        "claim_text": "Il vaccino COVID causa autismo",
+        "search_query": "vaccino COVID autismo studi scientifici",
+        "category": "health"
+      },
+      {
+        "id": 1,
+        "claim_text": "Nuovi studi scientifici collegano vaccino e autismo",
+        "search_query": "studi scientifici vaccino autismo correlazione",
+        "category": "health"
+      }
+    ]
+  }
+}

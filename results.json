@@ -1,0 +1,55 @@
+{
+  "timestamp": "2026-03-28T11:50:09.828692+00:00",
+  "total_claims": 2,
+  "total_sources_found": 2,
+  "results": [
+    {
+      "claim": {
+        "id": 0,
+        "claim_text": "Il vaccino COVID causa autismo",
+        "search_query": "vaccino COVID autismo studi scientifici",
+        "category": "health"
+      },
+      "sources": [
+        {
+          "url": "https://www.epicentro.iss.it/vaccini/CommentoSalmaso2014",
+          "article_text": "Vaccini e autismo\nLa presenza di una possibile associazione causale tra vaccinazioni e autismo è stata estensivamente studiata e non è stata evidenziata alcuna correlazione. Anche l’ultima ricerca pubblicata nel marzo 2013 sul Journal of Pediatrics (Increasing Exposure to Antibody-Stimulating Proteins and Polysaccharides in Vaccines Is Not Associated with Risk of Autism) conferma tale conclusione in linea con le altre numerose evidenze scientifiche disponibili in materia.\nNella ricerca, condotta dai Centers for disease control (Cdc) di Atlanta (Usa), sono stati studiati 256 bambini con disturbi dello spettro autistico e confrontati con 752 bambini non autistici, quantificando la loro esposizione totale cumulativa, nei primi due anni di vita, ad antigeni contenuti nei vaccini, come pure il numero massimo di antigeni a cui i bambini erano stati esposti nelle singole sedute vaccinali. I risultati hanno mostrato che:\n- il numero totale di antigeni ricevuti entro i due anni di età non differiva nei due gruppi di bambini (con e senza autismo)\n- il numero massimo di antigeni ricevuto dai bambini autistici nelle singole sedute vaccinali era simile a quello ricevuto dai bambini senza autismo\n- i bambini affetti da autismo con regressione non avevano ricevuto un numero maggiore di vaccini rispetto ai bambini autistici senza regressione\n- anche se l’attuale calendario prevede la somministrazione di un numero più elevato di vaccini rispetto al passato, grazie al miglioramento delle tecniche di produzione, il numero totale di antigeni somministrati risulta diminuito.\nQuest’ultima ricerca conferma le conclusioni del rapporto (2004) dell’Institute of Medicine (Iom) (Immunization Safety Review: Vaccines and Autism), basato su una approfondita revisione degli studi clinici ed epidemiologici disponibili sul nesso tra vaccini e autismo, effettuata da un gruppo indipendente di esperti negli Usa.\nVaccino MPR e autismo\nL’ipotesi che la vaccinazione antimorbillo-parotite e rosolia (MPR) in particolare possa essere associata ad autismo è stata sollevata negli anni Novanta da uno studio inglese pubblicato nel 1998 su The Lancet. L’ipotesi è stata successivamente valutata da numerosi studi condotti sia in Europa che negli Usa, ma nessuno di questi ha confermato che possa esserci una relazione causale tra vaccino MPR e autismo. Gli stessi autori dello studio inglese hanno successivamente ritirato le loro conclusioni e nel 2010 la rivista The Lancet, ha formalmente ritirato tale articolo. Oltretutto è stato riportato che, oltre ai difetti epidemiologici di questo studio, numerosi fatti circa la storia anamnestica dei pazienti fossero stati falsificati dall’autore Andrew Wakefield (radiato dall’Ordine dei medici) per supportare i risultati e che l’intero studio fosse distorto da interessi economici. L’Autore è stato radiato dall’Ordine dei medici per il suo comportamento.\nSuccessivamente la revisione dello Iom, gli studi dei Cdc statunitensi e di altre organizzazioni inclusa l’American Academy of Pediatrics, un’organizzazione professionale con 60 mila membri, come pure una revisione di numerosi studi epidemiologici condotti in diversi Paesi europei, hanno raggiunto le medesime conclusioni, respingendo perciò l’ipotesi di una relazione causale tra vaccino MPR e autismo.\nL’Istituto superiore di sanità promuove, attraverso la diffusione di informazioni scientificamente corrette, un’adesione consapevole alle vaccinazioni.\nPrecisazione\nInfine, in riferimento a quanto riportato sul quotidiano La Stampa il 26 marzo 2014 nell’articolo a pag. 13 “La strana intesa fra il pm pugliese e il medico “eretico” anti-vaccini”, in cui il Dott. Massimo Montinari si definisce “esperto di autismo con nomina dell’Istituto Superiore della Sanità”, l’Iss precisa che il Dott. Montinari nel 2010 è stato chiamato dall’Iss stesso, su indicazione di associazioni di pazienti, a partecipare al gruppo di lavoro per la stesura delle Linee guida “Il trattamento dei disturbi dello spettro autistico nei bambini e negli adolescenti” pubblicata nel 2011. La multisciplinarietà del gruppo di lavoro è mirata a offrire opportunità di partecipazione e spazio a molteplici posizioni. Tuttavia il Dott. Montinari non ha condiviso i criteri e la metodologia usata e non ha sottoscritto il documento finale. Nessuno dei partecipanti al gruppo di lavoro può essere qualificato come “esperto” o “consulente” dell’Iss. In particolare fin dal 2010 è stato richiesto al Dott. Montinari di modificare quanto riportato su il proprio curriculum in diversi siti web.",
+          "metadata": {
+            "title": "Vaccini e autismo",
+            "author": "EpiCentro",
+            "published_date": "",
+            "description": "",
+            "site_name": "",
+            "canonical_url": ""
+          },
+          "fetch_method": "httpx",
+          "language_detected": "it"
+        }
+      ]
+    },
+    {
+      "claim": {
+        "id": 1,
+        "claim_text": "Nuovi studi scientifici collegano vaccino e autismo",
+        "search_query": "studi scientifici vaccino autismo correlazione",
+        "category": "health"
+      },
+      "sources": [
+        {
+          "url": "https://www.ospedalebambinogesu.it/vaccini-e-autismo-cosa-c-e-da-sapere-97115/",
+          "article_text": "Nel corso degli ultimi decenni, c'è stata una grande quantità di disinformazione riguardo ai vaccini e il loro presunto legame con l'autismo.\nQuesta disinformazione ha causato molta preoccupazione tra i genitori e ha portato a una diminuzione delle vaccinazioni in alcune comunità.\nTuttavia, è importante basarsi su evidenze scientifiche solide per comprendere la verità su questo argomento.\nIl falso mito che i vaccini causino l'autismo ha avuto origine da uno studio pubblicato nel 1998 da Andrew Wakefield e colleghi sulla rivista medica The Lancet. Questo studio suggeriva un legame tra il vaccino MPR (morbillo, parotite e rosolia) e l'autismo.\nTuttavia, successivamente si è scoperto che lo studio era gravemente viziato da errori metodologici e conflitti di interesse. Wakefield aveva infatti ricevuto finanziamenti da avvocati che stavano preparando cause legali contro i produttori del vaccino.\nNel 2010, The Lancet ha ufficialmente ritirato lo studio, e Wakefield è stato radiato dall'Ordine dei Medici nel Regno Unito per cattiva condotta professionale.\nNumerosi studi successivi hanno esaminato il presunto legame tra vaccini e autismo e hanno concluso che non esiste alcuna associazione.\nAd esempio, uno studio del 2002 condotto in Danimarca su oltre 500.000 bambini ha trovato che i bambini vaccinati con MPR non avevano un rischio aumentato di sviluppare l'autismo rispetto ai bambini non vaccinati.\nUn altro studio del 2019 su oltre 650.000 bambini in Danimarca ha confermato questi risultati, dimostrando che il vaccino MPR non aumenta il rischio di autismo.\nAlcuni hanno suggerito che il timerosal, un conservante a base di mercurio usato in alcuni vaccini, potesse essere collegato all'autismo. Tuttavia, numerosi studi hanno dimostrato che il timerosal non causa autismo.\nInoltre, dal 2001, il timerosal è stato rimosso o ridotto a tracce minime nei vaccini per l'infanzia negli Stati Uniti e in molti altri paesi, senza alcuna diminuzione nei tassi di autismo.\nLe organizzazioni sanitarie mondiali, tra cui l'Organizzazione Mondiale della Sanità (OMS), i Centers for Disease Control and Prevention (CDC) e l'Agenzia Europea per i Medicinali (EMA), hanno tutte concluso che i vaccini sono sicuri ed efficaci e non causano l'autismo.\nLa disinformazione sui vaccini può avere gravi conseguenze, come il ritorno di malattie prevenibili che possono causare gravi complicazioni o morte.\nIscriviti alla newsletter per ricevere i consigli degli specialisti del Bambino Gesù.",
+          "metadata": {
+            "title": "Vaccini e autismo: cosa c'è da sapere",
+            "author": "Ospedale Pediatrico Bambino Gesù",
+            "published_date": "2024-06-27T04:27:00Z",
+            "description": "Le prove raccolte negli ultimi decenni indicano con certezza che nessuna vaccinazione causa l'autismo",
+            "site_name": "ospedalebambingesu.it",
+            "canonical_url": "https://www.ospedalebambinogesu.it/vaccini-e-autismo-cosa-c-e-da-sapere-97115/"
+          },
+          "fetch_method": "httpx",
+          "language_detected": "it"
+        }
+      ]
+    }
+  ]
+}
