@@ -1,15 +1,13 @@
 import os
 import json
-import google.generativeai as genai
-from dotenv import load_dotenv # <--- Importa la libreria
+from groq import Groq # <--- Usiamo la libreria Groq per la tua chiave gsk_
+from dotenv import load_dotenv
 
-# Carica le variabili dal file .env
 load_dotenv()
-api_key = os.getenv("GEMINI_API_KEY")
 
-# Configura Gemini
-genai.configure(api_key=api_key)
-model = genai.GenerativeModel('gemini-1.5-flash')
+# Inizializziamo il client Groq
+# Assicurati che nel .env ci sia GROK_API_KEY=gsk_...
+client = Groq(api_key=os.getenv("GROK_API_KEY"))
 
 def analyze_context_match(text, claim):
     prompt = f"""
@@ -24,12 +22,25 @@ def analyze_context_match(text, claim):
     }}
     """
     try:
-        response = model.generate_content(prompt)
-        return json.loads(response.text.strip('`json\n '))
-    except:
-        return {"rilevanza": 0.5, "categoria": "NON_RILEVANTE", "motivazione": "Errore API"}
+        # Chiamata corretta per Groq
+        chat_completion = client.chat.completions.create(
+            messages=[{"role": "user", "content": prompt}],
+            model="llama-3.3-70b-versatile", # Il modello più forte di Groq
+            response_format={"type": "json_object"} # Forza l'output in JSON
+        )
+        
+        # Estraiamo il testo della risposta
+        return json.loads(chat_completion.choices[0].message.content)
+    
+    except Exception as e:
+        # Stampiamo l'errore nel terminale così capiamo se la chiave scade o altro
+        print(f"ERRORE API: {e}")
+        return {
+            "rilevanza": 0.0, 
+            "categoria": "NON_RILEVANTE", 
+            "motivazione": f"Errore tecnico: {str(e)}"
+        }
 
-# Se vuoi essere super ordinato, aggiungi anche questa per il source_validator
 def get_final_verdict_logic(evidence_list):
-    # Qui andrà la logica della FASE 4
+    # Questa sarà la Fase 4: il Giudice Supremo
     pass
