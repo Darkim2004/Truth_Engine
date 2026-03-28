@@ -1,0 +1,17 @@
+{
+    "affidabilita": 12,
+    "verdetto": "FAKE NEWS RILEVATA",
+    "colore": "#f43f5e",
+    "fonti": [
+        {
+            "nome": "FactCheck.org",
+            "url": "https://www.factcheck.org",
+            "snippet": "Nessuna evidenza scientifica supporta la teoria che la luna sia fatta di formaggio spalmabile."
+        },
+        {
+            "nome": "Reuters Fact Check",
+            "url": "https://www.reuters.com",
+            "snippet": "Il video circolato sui social è un deepfake creato con un software di vecchia generazione."
+        }
+    ]
+}
