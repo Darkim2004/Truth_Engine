@@ -39,3 +39,22 @@ def genera_dossier_completo(claim, search_results):
         dossier["analisi_aggregata"]["punteggio_medio_credibilita"] = round(media, 2)
 
     return dossier
+
+from core.source_validator import validate_evidence
+
+def processa_tutte_le_fonti(claim, lista_risultati_ricerca):
+    """
+    Questa è la funzione che Andrea chiamerà passandoti 
+    la lista di siti trovati da Google.
+    """
+    report_finale = []
+    
+    for fonte in lista_risultati_ricerca:
+        # fonte deve avere 'url' e 'text'
+        risultato = validate_evidence(fonte['url'], fonte['text'], claim)
+        report_finale.append({
+            "url": fonte['url'],
+            "analisi": risultato
+        })
+    
+    return report_finale
