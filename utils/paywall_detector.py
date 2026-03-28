@@ -48,9 +48,14 @@ def is_paywall(html: str) -> bool:
         {"id": lambda i: i and "paywall" in i.lower()},
     ]
 
+    selector_hit = False
     for selector in paywall_selectors:
         if soup.find(attrs=selector):
-            return True
+            selector_hit = True
+            break
+
+    if selector_hit:
+        return True
 
     # 3. Check se il body ha poco testo visibile
     body = soup.find("body")
@@ -61,6 +66,9 @@ def is_paywall(html: str) -> bool:
 
         visible_text = body.get_text(separator=" ", strip=True)
         if len(visible_text) < PAYWALL_MIN_CONTENT_LENGTH:
-            return True
+            # Evita falsi positivi: testo corto da solo non basta.
+            if keyword_count >= 1:
+                return True
+            return False
 
     return False

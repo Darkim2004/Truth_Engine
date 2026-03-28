@@ -78,12 +78,19 @@ class ExtractedSource(BaseModel):
     chunk_similarity_scores: list[float] = Field(default_factory=list)
     top_chunk_indices: list[int] = Field(default_factory=list)
     relevant_chunks: list[dict] = Field(default_factory=list)
+    supports_claim: bool = False
+    claim_score: float = 0.0
+    claim_label: str = ""
 
 
 class ClaimSources(BaseModel):
     """Un claim con tutte le sue fonti estratte."""
     claim: ClaimToVerify
     sources: list[ExtractedSource] = Field(default_factory=list)
+    claim_supported: bool = False
+    claim_max_score: float = 0.0
+    best_source_url: str = ""
+    claim_label: str = ""
 
 
 class PipelineOutput(BaseModel):

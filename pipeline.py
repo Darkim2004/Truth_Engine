@@ -21,14 +21,26 @@ from models import (
 from search.aggregator import aggregate_search
 from fetcher.manager import fetch_batch, fetch_url
 from fetcher.playwright_fetcher import close_browser
-from extractor.content import extract_article_text
+from extractor.content import extract_article_text, extract_article_structured
 from extractor.metadata import extract_metadata
+from config import EMBEDDING_MIN_THRESHOLD
 from utils.paywall_detector import is_paywall
 from utils.language_filter import is_correct_language, detect_language
 from utils.url_normalizer import normalize_url
 from scoring.evidence_matcher import validate_evidence
 
 console = Console()
+
+
+def _classify_relevance(score: float, threshold: float) -> str:
+    """Classifica la pertinenza semantica di una fonte rispetto al claim."""
+    if score >= max(0.75, threshold):
+        return "alta_pertinenza"
+    if score >= max(0.5, threshold):
+        return "media_pertinenza"
+    if score >= threshold:
+        return "bassa_pertinenza"
+    return "non_rilevante"
 
 
 async def run_pipeline(input_data: dict) -> PipelineOutput:
@@ -140,7 +152,13 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
                     continue
 
                 # Estrai contenuto
+                structured_data: dict = {}
                 article_text = extract_article_text(page.html)
+                if not article_text:
+                    # Fallback: prova estrazione strutturata prima di scartare la fonte.
+                    structured_data = extract_article_structured(page.html)
+                    article_text = (structured_data.get("text", "") or "").strip()
+
                 if not article_text:
                     console.print(f"    [dim]⊘ Nessun contenuto estratto: {page.url[:50]}...[/dim]")
                     continue
@@ -156,6 +174,8 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
 
                 # Estrai metadati
                 metadata = extract_metadata(page.html)
+                if not metadata.title and structured_data.get("title"):
+                    metadata.title = structured_data.get("title", "")
                 lang_detected = detect_language(article_text)
 
                 source = ExtractedSource(
@@ -172,25 +192,55 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
                     f"({len(article_text)} char)"
                 )
 
-            all_results.append(ClaimSources(claim=claim, sources=sources))
-
             # --- 4. EVIDENCE SCORING (chunking + similarity) ---
             console.print(f"\n  [blue]🧠 Fase 4: Similarity scoring...[/blue]")
+            source_scores: list[tuple[str, float]] = []
+
             for source in sources:
                 analysis = validate_evidence(
                     url=source.url,
                     text=source.article_text,
                     claim=claim.claim_text,
                 )
-                source.chunks = analysis["chunks"]
-                source.chunk_similarity_scores = analysis["chunk_similarity_scores"]
-                source.top_chunk_indices = analysis["top_chunk_indices"]
-                source.relevant_chunks = analysis["matches"]
+                source.chunks = analysis.get("chunks", [])
+                source.chunk_similarity_scores = analysis.get("chunk_similarity_scores", [])
+                source.top_chunk_indices = analysis.get("top_chunk_indices", [])
+                source.relevant_chunks = analysis.get("matches", [])
+
+                max_similarity = float(analysis.get("max_similarity", 0.0))
+                supports_claim = bool(analysis.get("supports_claim", False))
+                threshold = float(analysis.get("threshold", EMBEDDING_MIN_THRESHOLD))
+
+                source.claim_score = max_similarity
+                source.supports_claim = supports_claim
+                source.claim_label = _classify_relevance(max_similarity, threshold)
+                source_scores.append((source.url, max_similarity))
+
+            # --- 5. CLAIM-LEVEL AGGREGATION ---
+            if source_scores:
+                best_source_url, claim_max_score = max(source_scores, key=lambda x: x[1])
+            else:
+                best_source_url, claim_max_score = "", 0.0
+
+            claim_supported = any(s.supports_claim for s in sources)
+            claim_label = _classify_relevance(claim_max_score, EMBEDDING_MIN_THRESHOLD)
+
+            all_results.append(
+                ClaimSources(
+                    claim=claim,
+                    sources=sources,
+                    claim_supported=claim_supported,
+                    claim_max_score=claim_max_score,
+                    best_source_url=best_source_url,
+                    claim_label=claim_label,
+                )
+            )
 
             console.print(
                 f"\n  [blue]📊[/blue] Claim {claim.id}: "
                 f"{len(sources)} fonti estratte su {len(fresh_search_results)} URL fetchati "
-                f"({len(search_results)} trovati in ricerca)"
+                f"({len(search_results)} trovati in ricerca) | "
+                f"max_score={claim_max_score:.3f} | label={claim_label}"
             )
 
     finally:
