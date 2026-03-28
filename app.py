@@ -1,6 +1,25 @@
+import sys
+import io
+import os
+
+# Fix encoding per Windows: il terminale cp1252 non supporta emoji e caratteri Unicode.
+# Impostiamo la code page del terminale a UTF-8 (65001) tramite Win32 API
+# PRIMA di qualsiasi import (Rich, Flask, ecc.) — questo risolve anche
+# il crash di rich.Console che usa LegacyWindowsTerm e bypassa sys.stdout.
+if sys.platform == 'win32':
+    try:
+        import ctypes
+        ctypes.windll.kernel32.SetConsoleOutputCP(65001)
+        ctypes.windll.kernel32.SetConsoleCP(65001)
+    except Exception:
+        pass
+
+
 import json
 import requests
 import os
+import asyncio
+import threading
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -14,8 +33,73 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# Configurazione CORS "Blindata" per evitare errori Load Failed su Safari
-CORS(app, resources={r"/*": {"origins": "*"}})
+# Loop asyncio persistente per evitare crash [Errno 22] su Windows
+# quando Playwright/subprocess chiudono il loop per-request.
+_async_loop = None
+_async_loop_thread = None
+_async_loop_lock = threading.Lock()
+_async_loop_ready = threading.Event()
+
+
+def _async_loop_worker():
+    global _async_loop
+    _async_loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(_async_loop)
+    _async_loop_ready.set()
+    _async_loop.run_forever()
+
+
+def run_async_task(coro):
+    """Esegue coroutine su un loop dedicato e riutilizzato tra le richieste."""
+    global _async_loop_thread
+
+    with _async_loop_lock:
+        if _async_loop_thread is None or not _async_loop_thread.is_alive():
+            _async_loop_ready.clear()
+            _async_loop_thread = threading.Thread(
+                target=_async_loop_worker,
+                name="truth-engine-async-loop",
+                daemon=True,
+            )
+            _async_loop_thread.start()
+            _async_loop_ready.wait(timeout=5)
+
+    if _async_loop is None:
+        raise RuntimeError("Loop asyncio non disponibile")
+
+    future = asyncio.run_coroutine_threadsafe(coro, _async_loop)
+    return future.result()
+
+# Configurazione CORS blindata: 3 livelli di sicurezza
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=False)
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Accept"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    return response
+
+# Cattura TUTTE le eccezioni non gestite e ritorna JSON con CORS headers
+@app.errorhandler(Exception)
+def handle_exception(e):
+    import traceback
+    traceback.print_exc()
+    response = jsonify({"error": f"Errore server: {str(e)}"})
+    response.status_code = 500
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Accept"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    return response
+
+@app.errorhandler(500)
+def handle_500(e):
+    response = jsonify({"error": f"Errore interno: {str(e)}"})
+    response.status_code = 500
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Accept"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    return response
 
 # --- ROTTA 1: VERIFICA COMPLETA (Il motore di Andrea/Luigi) ---
 @app.route('/api/verify', methods=['POST'])
@@ -70,7 +154,7 @@ def elabora():
                 }
             }
         except Exception as e:
-            print(f"❌ Errore URL: {e}")
+            print(f"[ERRORE] Errore URL: {e}")
             return jsonify({"error": f"Errore durante l'estrazione URL: {str(e)}"}), 400
     else:
         # Modalità Testo Libero
@@ -84,9 +168,9 @@ def elabora():
     try:
         with open('input.json', 'w', encoding='utf-8') as f:
             json.dump(data_to_save, f, indent=4, ensure_ascii=False)
-        print("✅ input.json aggiornato correttamente.")
+        print("[OK] input.json aggiornato correttamente.")
     except Exception as e:
-        print(f"❌ Errore salvataggio file: {e}")
+        print(f"[ERRORE] Errore salvataggio file: {e}")
 
     return jsonify({
         "status": "success",
@@ -103,12 +187,12 @@ def elabora_completo():
     3. Core Engine: verdetto finale
     4. Mapping risultato per la dashboard frontend
     """
-    import asyncio
-    from groq import Groq
-    from pipeline import run_pipeline
-
+    # Gestione preflight CORS — PRIMA di qualsiasi import pesante
     if request.method == 'OPTIONS':
         return jsonify({"status": "ok"}), 200
+
+    from groq import Groq
+    from pipeline import run_pipeline
 
     payload = request.json
     if not payload:
@@ -136,7 +220,7 @@ def elabora_completo():
 
     try:
         # --- STEP 1: Groq genera claims e search queries ---
-        print(f"🧠 Step 1: Groq genera claims dal testo...")
+        print(f"[STEP 1] Groq genera claims dal testo...")
         groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
         chat_completion = groq_client.chat.completions.create(
@@ -166,13 +250,13 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
 
         claims_data = json.loads(chat_completion.choices[0].message.content)
         claims_list = claims_data.get("claims", [])
-        print(f"✅ Groq ha generato {len(claims_list)} claims")
+        print(f"[OK] Groq ha generato {len(claims_list)} claims")
 
         if not claims_list:
             return jsonify({"error": "Nessun claim estratto dal testo"}), 400
 
         # --- STEP 2: Costruisci PipelineInput e lancia la pipeline ---
-        print(f"🔍 Step 2: Pipeline (DuckDuckGo → fetch → extract → scoring)...")
+        print(f"[STEP 2] Pipeline (DuckDuckGo -> fetch -> extract -> scoring)...")
         pipeline_input = {
             "metadata": {
                 "source_type": "user_input",
@@ -193,14 +277,14 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
         with open('input.json', 'w', encoding='utf-8') as f:
             json.dump(pipeline_input, f, indent=4, ensure_ascii=False)
 
-        # Esegui la pipeline di crawling (DuckDuckGo search → fetch → extract → score)
-        pipeline_output = asyncio.run(run_pipeline(pipeline_input))
+        # Esegue la pipeline su un loop async persistente (workaround stabile per Windows).
+        pipeline_output = run_async_task(run_pipeline(pipeline_input))
         pipeline_dict = pipeline_output.model_dump()
 
-        print(f"📊 Pipeline completata: {pipeline_dict['total_sources_found']} fonti trovate")
+        print(f"[INFO] Pipeline completata: {pipeline_dict['total_sources_found']} fonti trovate")
 
         # --- STEP 3: Core Engine — verdetto per ogni claim ---
-        print(f"⚖️ Step 3: Core Engine genera il verdetto finale...")
+        print(f"[STEP 3] Core Engine genera il verdetto finale...")
         verdetti = []
         for result in pipeline_dict.get("results", []):
             claim_text = result["claim"]["claim_text"]
@@ -230,7 +314,7 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
                 })
 
         # --- STEP 4: Mappatura per il frontend dashboard ---
-        print(f"🎨 Step 4: Mapping per la dashboard...")
+        print(f"[STEP 4] Mapping per la dashboard...")
 
         # Prendi il verdetto principale (primo claim o media)
         if verdetti:
@@ -305,17 +389,18 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
                 "fonti": []
             }
 
-        print(f"✅ Analisi completata: {risultato_frontend['verdetto']} ({risultato_frontend['affidabilita']}%)")
+        print(f"[OK] Analisi completata: {risultato_frontend['verdetto']} ({risultato_frontend['affidabilita']}%)")
         return jsonify(risultato_frontend)
 
     except Exception as e:
         import traceback
         traceback.print_exc()
-        print(f"❌ Errore pipeline: {e}")
+        print(f"[ERRORE] Errore pipeline: {e}")
         return jsonify({"error": f"Errore durante l'analisi: {str(e)}"}), 500
 
 # --- AVVIO DEL SERVER (SOSTITUISCI IL FINALE) ---
 if __name__ == '__main__':
     # Usiamo 127.0.0.1 invece di 0.0.0.0 per essere "amici" di Safari
-    print("🚀 Truth Shield Server attivo su http://127.0.0.1:5001")
-    app.run(host='127.0.0.1', port=5001, debug=True)
+    print("[START] Truth Shield Server attivo su http://127.0.0.1:5001")
+    # Evita riavvii automatici durante le richieste (scriviamo file JSON a runtime).
+    app.run(host='127.0.0.1', port=5001, debug=True, use_reloader=False, threaded=True)

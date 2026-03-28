@@ -13,7 +13,7 @@ def salva_per_matteo(risultato, nome_file="output_per_ui.json"):
     """Salva il verdetto finale in un JSON leggibile dal Frontend."""
     with open(nome_file, 'w', encoding='utf-8') as f:
         json.dump(risultato, f, indent=4, ensure_ascii=False)
-    print(f"\n✅ FILE GENERATO PER MATTEO: {nome_file}")
+    print(f"\n[OK] FILE GENERATO PER MATTEO: {nome_file}")
 
 def genera_dossier_completo(claim, search_results):
     """
@@ -56,22 +56,22 @@ def truth_engine_main(claim, search_results):
     """
     FUNZIONE MASTER: Quella che viene chiamata da app.py (Flask).
     """
-    print(f"\n🚀 TRUTH ENGINE AVVIATO")
-    print(f"🔎 Claim: {claim}")
-    print(f"📚 Analisi di {len(search_results)} fonti tramite Scoring di Andrea...")
+    print(f"\n[START] TRUTH ENGINE AVVIATO")
+    print(f"[RICERCA] Claim: {claim}")
+    print(f"[FONTI] Analisi di {len(search_results)} fonti tramite Scoring di Andrea...")
 
     # STEP 1: Creazione del Dossier Arricchito (Scoring + Pesi)
     dossier = genera_dossier_completo(claim, search_results)
     
     # STEP 2: Il Giudice Supremo (Groq) emette il verdetto
-    print("🧠 Il Giudice Supremo sta elaborando il verdetto finale...")
+    print("[LLM] Il Giudice Supremo sta elaborando il verdetto finale...")
     verdetto_finale = genera_verdetto_probabilistico(claim, dossier)
     
     # STEP 3: Salvataggio fisico per sicurezza e ritorno per Flask
     salva_per_matteo(verdetto_finale)
     
-    print("🏁 Elaborazione completata con successo.\n")
+    print("[FINE] Elaborazione completata con successo.\n")
     return verdetto_finale
 
 if __name__ == "__main__":
-    print("🛠️ Engine configurato per ricevere i dati di Andrea e rispondere a Matteo.")
+    print("[INIT] Engine configurato per ricevere i dati di Andrea e rispondere a Matteo.")

@@ -15,7 +15,7 @@ from ddgs import DDGS
 from config import SEARCH_MAX_RESULTS, SEARCH_RETRY_MAX, SEARCH_BACKOFF_FACTOR, SEARCH_DELAY_BETWEEN
 from models import SearchResult
 
-console = Console()
+console = Console(legacy_windows=False)
 
 # Thread pool per wrappare le chiamate sincrone
 _executor = ThreadPoolExecutor(max_workers=2)
@@ -55,7 +55,7 @@ async def search_duckduckgo(query: str, max_results: int = SEARCH_MAX_RESULTS) -
                     ))
 
             console.print(
-                f"  [green]✓[/green] DuckDuckGo: {len(results)} risultati per "
+                f"  [green][OK][/green] DuckDuckGo: {len(results)} risultati per "
                 f"'{query[:50]}{'...' if len(query) > 50 else ''}'"
             )
             return results
@@ -67,17 +67,17 @@ async def search_duckduckgo(query: str, max_results: int = SEARCH_MAX_RESULTS) -
             if "ratelimit" in error_name.lower() or "429" in str(e):
                 sleep_time = SEARCH_BACKOFF_FACTOR ** attempt + random.uniform(0, 1)
                 console.print(
-                    f"  [yellow]⚠[/yellow] DuckDuckGo rate limit "
+                    f"  [yellow][ATTENZIONE][/yellow] DuckDuckGo rate limit "
                     f"(tentativo {attempt}/{SEARCH_RETRY_MAX}). "
                     f"Attendo {sleep_time:.1f}s..."
                 )
                 await asyncio.sleep(sleep_time)
             else:
-                console.print(f"  [red]✗[/red] DuckDuckGo errore: {error_name}: {e}")
+                console.print(f"  [red][ERRORE][/red] DuckDuckGo errore: {error_name}: {e}")
                 break
 
     console.print(
-        f"  [red]✗[/red] DuckDuckGo: nessun risultato per "
+        f"  [red][ERRORE][/red] DuckDuckGo: nessun risultato per "
         f"'{query[:50]}{'...' if len(query) > 50 else ''}'"
     )
     return results

@@ -7,7 +7,7 @@ from __future__ import annotations
 from langdetect import detect, LangDetectException
 from rich.console import Console
 
-console = Console()
+console = Console(legacy_windows=False)
 
 
 def detect_language(text: str) -> str:
