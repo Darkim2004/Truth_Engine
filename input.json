@@ -5,7 +5,7 @@
         "language": "it"
     },
     "original_source": {
-        "text_content": "vaccini causano autismo",
+        "text_content": "Jeremy Bowen: Trump is waging war based on instinct and it isn't working",
         "url": ""
     },
     "analysis": {
@@ -13,9 +13,21 @@
         "claims_to_verify": [
             {
                 "id": 0,
-                "claim_text": "vaccini causano autismo",
-                "search_query": "vaccini e autismo studio scientifico",
-                "category": "health"
+                "claim_text": "Trump sta conducendo una guerra basata sull'istinto",
+                "search_query": "Trump guerra istinto",
+                "category": "politics"
+            },
+            {
+                "id": 1,
+                "claim_text": "La strategia di Trump non sta funzionando",
+                "search_query": "Trump strategia di guerra efficacia",
+                "category": "politics"
+            },
+            {
+                "id": 2,
+                "claim_text": "Jeremy Bowen ha affermato che Trump sta conducendo una guerra basata sull'istinto",
+                "search_query": "Jeremy Bowen trump guerra istinto",
+                "category": "politics"
             }
         ]
     }
