@@ -104,19 +104,23 @@
             </div>
 
             <!-- Statistiche Dettagliate e Tachimetro (Flex Container) -->
-            <div class="flex flex-col md:flex-row items-center justify-between bg-[#070a13]/60 p-8 rounded-[2.5rem] border border-slate-800 relative gap-8">
-                
+            <div
+                class="flex flex-col md:flex-row items-center justify-between bg-[#070a13]/60 p-8 rounded-[2.5rem] border border-slate-800 relative gap-8">
+
                 <!-- Colonna Sinistra: Percentuali -->
-                <div class="flex-1 w-full flex flex-col justify-center space-y-6 md:pr-8 md:border-r md:border-slate-800/80">
-                    
+                <div
+                    class="flex-1 w-full flex flex-col justify-center space-y-6 md:pr-8 md:border-r md:border-slate-800/80">
+
                     <!-- Verità -->
                     <div>
                         <div class="flex justify-between items-end mb-2">
-                            <span class="text-[10px] uppercase font-bold tracking-[0.2em] text-emerald-400">Verità</span>
+                            <span
+                                class="text-[10px] uppercase font-bold tracking-[0.2em] text-emerald-400">Verità</span>
                             <span id="txtTruth" class="font-black text-white text-sm">0%</span>
                         </div>
                         <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                            <div id="barTruth" class="h-full bg-emerald-500 rounded-full transition-all duration-1000" style="width: 0%"></div>
+                            <div id="barTruth" class="h-full bg-emerald-500 rounded-full transition-all duration-1000"
+                                style="width: 0%"></div>
                         </div>
                     </div>
 
@@ -127,18 +131,22 @@
                             <span id="txtFalsity" class="font-black text-white text-sm">0%</span>
                         </div>
                         <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                            <div id="barFalsity" class="h-full bg-red-500 rounded-full transition-all duration-1000" style="width: 0%"></div>
+                            <div id="barFalsity" class="h-full bg-red-500 rounded-full transition-all duration-1000"
+                                style="width: 0%"></div>
                         </div>
                     </div>
 
                     <!-- Incertezza -->
                     <div>
                         <div class="flex justify-between items-end mb-2">
-                            <span class="text-[10px] uppercase font-bold tracking-[0.2em] text-yellow-500">Incertezza</span>
+                            <span
+                                class="text-[10px] uppercase font-bold tracking-[0.2em] text-yellow-500">Incertezza</span>
                             <span id="txtUncertainty" class="font-black text-white text-sm">0%</span>
                         </div>
                         <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                            <div id="barUncertainty" class="h-full bg-yellow-500 rounded-full transition-all duration-1000" style="width: 0%"></div>
+                            <div id="barUncertainty"
+                                class="h-full bg-yellow-500 rounded-full transition-all duration-1000"
+                                style="width: 0%"></div>
                         </div>
                     </div>
 
@@ -159,8 +167,8 @@
                             stroke-linecap="round" />
 
                         <path id="gaugeArcoProgress" d="M20,100 A80,80 0 0,1 180,100" fill="none"
-                            stroke="url(#gaugeGradient)" stroke-width="12" stroke-linecap="round" stroke-dasharray="251.32"
-                            stroke-dashoffset="251.32" />
+                            stroke="url(#gaugeGradient)" stroke-width="12" stroke-linecap="round"
+                            stroke-dasharray="251.32" stroke-dashoffset="251.32" />
 
                         <g fill="#94a3b8" font-size="12" font-weight="900" font-family="Inter" text-anchor="middle"
                             class="select-none">
@@ -172,7 +180,8 @@
 
                     <div class="absolute inset-0 flex flex-col items-center justify-end pb-7">
                         <span id="percentualeTesto" class="text-3xl font-900 leading-none">0%</span>
-                        <span class="text-[8px] uppercase font-bold tracking-[0.3em] text-slate-400 mt-2">Affidabilità</span>
+                        <span class="text-[8px] uppercase font-bold tracking-[0.3em] text-slate-400 mt-2">Affidabilità
+                            Fonti</span>
                     </div>
                 </div>
 
