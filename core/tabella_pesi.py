@@ -53,7 +53,7 @@ def get_credibility_score(domain):
     quotidiani_maggiori = [
         "corriere.it", "repubblica.it", "ilsole24ore.com", "lastampa.it",
         "ilgiornale.it", "liberoquotidiano.it", "ansa.it",
-        "nytimes.com", "bbc.co.uk", "reuters.com", "theguardian.com","rainews.it"
+        "nytimes.com", "bbc.co.uk", "reuters.com", "theguardian.com","rainews.it","gazzetta.it"
     ]
     if any(q in clean_domain for q in quotidiani_maggiori):
         return 0.8
