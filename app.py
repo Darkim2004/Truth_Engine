@@ -1,19 +1,128 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-from core.engine import truth_engine_main
+import sys
+import io
+import os
+
+# Fix encoding per Windows: il terminale cp1252 non supporta emoji e caratteri Unicode.
+# Impostiamo la code page del terminale a UTF-8 (65001) tramite Win32 API
+# PRIMA di qualsiasi import (Rich, Flask, ecc.) — questo risolve anche
+# il crash di rich.Console che usa LegacyWindowsTerm e bypassa sys.stdout.
+if sys.platform == 'win32':
+    try:
+        import ctypes
+        ctypes.windll.kernel32.SetConsoleOutputCP(65001)
+        ctypes.windll.kernel32.SetConsoleCP(65001)
+    except Exception:
+        pass
+
+
 import json
+import requests
+import os
+import asyncio
+import threading
+from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
+from dotenv import load_dotenv
+
+# Import dei moduli del tuo team
+from core.engine import truth_engine_main
+from extractor.metadata import extract_metadata
+
+# Carichiamo le variabili d'ambiente (.env)
+load_dotenv()
+
+app = Flask(__name__,
+            static_folder='front-end',
+            static_url_path='/static')
+
+# Loop asyncio persistente per evitare crash [Errno 22] su Windows
+# quando Playwright/subprocess chiudono il loop per-request.
+_async_loop = None
+_async_loop_thread = None
+_async_loop_lock = threading.Lock()
+_async_loop_ready = threading.Event()
 
 
-app = Flask(__name__)
-# Permette la comunicazione col tuo Frontend
-CORS(app) 
+def _async_loop_worker():
+    global _async_loop
+    _async_loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(_async_loop)
+    _async_loop_ready.set()
+    _async_loop.run_forever()
 
+
+def run_async_task(coro):
+    """Esegue coroutine su un loop dedicato e riutilizzato tra le richieste."""
+    global _async_loop_thread
+
+    with _async_loop_lock:
+        if _async_loop_thread is None or not _async_loop_thread.is_alive():
+            _async_loop_ready.clear()
+            _async_loop_thread = threading.Thread(
+                target=_async_loop_worker,
+                name="truth-engine-async-loop",
+                daemon=True,
+            )
+            _async_loop_thread.start()
+            _async_loop_ready.wait(timeout=5)
+
+    if _async_loop is None:
+        raise RuntimeError("Loop asyncio non disponibile")
+
+    future = asyncio.run_coroutine_threadsafe(coro, _async_loop)
+    return future.result()
+
+# Configurazione CORS blindata: 3 livelli di sicurezza
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=False)
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Accept"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    return response
+
+# Cattura TUTTE le eccezioni non gestite e ritorna JSON con CORS headers
+@app.errorhandler(Exception)
+def handle_exception(e):
+    import traceback
+    traceback.print_exc()
+    response = jsonify({"error": f"Errore server: {str(e)}"})
+    response.status_code = 500
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Accept"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    return response
+
+@app.errorhandler(500)
+def handle_500(e):
+    response = jsonify({"error": f"Errore interno: {str(e)}"})
+    response.status_code = 500
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Accept"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+    return response
+
+# --- ROTTA 0: SERVE IL FRONTEND ---
+@app.route('/')
+def serve_frontend():
+    return send_from_directory('front-end', 'index.html')
+
+@app.route('/config.js')
+def serve_config_js():
+    return send_from_directory('front-end', 'config.js')
+
+@app.route('/script.js')
+def serve_script_js():
+    return send_from_directory('front-end', 'script.js')
+
+@app.route('/test-case/<path:filename>')
+def serve_test_case(filename):
+    return send_from_directory('front-end/test-case', filename)
+
+# --- ROTTA 1: VERIFICA COMPLETA (Il motore di Andrea/Luigi) ---
 @app.route('/api/verify', methods=['POST'])
 def verify():
-    """
-    Questa è la porta d'ingresso per Matteo.
-    Lui ti manda un JSON con { "claim": "...", "results": [...] }
-    """
     data = request.json
     if not data:
         return jsonify({"error": "Nessun dato ricevuto"}), 400
@@ -21,43 +130,300 @@ def verify():
     claim = data.get('claim')
     search_results = data.get('results', [])
 
-    # Chiamiamo il tuo motore che abbiamo pulito prima
-    # Lui processa i pesi, i chunk di Andrea e chiede a Groq
+    # Chiamiamo il motore core
     verdetto = truth_engine_main(claim, search_results)
-
-    # Restituiamo il JSON finale che Matteo userà per la UI
     return jsonify(verdetto)
 
-if __name__ == '__main__':
-    # Avvia il server sulla porta 5000
-    app.run(debug=True, host='0.0.0.0', port=5000)
-
-@app.route('/elabora', methods=['POST'])
+# --- ROTTA 2: ELABORA (La funzione per Matteo e la UI) ---
+@app.route('/elabora', methods=['POST', 'OPTIONS'])
 def elabora():
-    # Riceve il JSON dal tuo Frontend
-    dati_ricevuti = request.json
-    
-    # OPZIONALE: Se Andrea vuole proprio scrivere il file fisico:
-    with open('input.json', 'w') as f:
-        json.dump(dati_ricevuti, f, indent=4)
+    # Gestione automatica del pre-flight del browser
+    if request.method == 'OPTIONS':
+        return jsonify({"status": "ok"}), 200
 
-    # --- QUI ANDREA FA LA SUA MAGIA ---
-    # Esempio: lui cerca su Google, confronta i dati, ecc.
-    # Se la pipeline (LLM + scarping) è pronta, qui la richiameremo così:
-    # import asyncio
-    # from pipeline import run_pipeline
-    # output = asyncio.run(run_pipeline(dati_ricevuti))
-    # risultato = output.model_dump()
-    
-    # Dati mock attualmente richiesti
-    risultato = {
-        "verdetto": "Inaffidabile",
-        "confidenza": "85%",
-        "fonti_trovate": 2
-    }
-    
-    # Restituisce il risultato al Frontend
-    return jsonify(risultato)
+    payload = request.json
+    if not payload:
+        return jsonify({"error": "Payload mancante"}), 400
 
+    mode = payload.get('mode') # 'testo' o 'url'
+    input_data = payload.get('data')
+    
+    data_to_analyze = ""
+    data_to_save = {}
+
+    if mode == 'url':
+        try:
+            # Scarichiamo la pagina con un User-Agent per evitare blocchi
+            headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'}
+            res = requests.get(input_data, timeout=10, headers=headers)
+            res.raise_for_status()
+            
+            # Estrazione metadata
+            metadata = extract_metadata(res.text)
+            
+            data_to_analyze = f"Titolo: {metadata.title}. Descrizione: {metadata.description}. Autore: {metadata.author}"
+            data_to_save = {
+                "tipo": "URL",
+                "url": input_data,
+                "metadata": {
+                    "titolo": metadata.title,
+                    "descrizione": metadata.description,
+                    "autore": metadata.author,
+                    "sito": metadata.site_name
+                }
+            }
+        except Exception as e:
+            print(f"[ERRORE] Errore URL: {e}")
+            return jsonify({"error": f"Errore durante l'estrazione URL: {str(e)}"}), 400
+    else:
+        # Modalità Testo Libero
+        data_to_analyze = input_data
+        data_to_save = {
+            "tipo": "TESTO",
+            "contenuto": input_data
+        }
+
+    # --- SCRITTURA SU FILE input.json ---
+    try:
+        with open('input.json', 'w', encoding='utf-8') as f:
+            json.dump(data_to_save, f, indent=4, ensure_ascii=False)
+        print("[OK] input.json aggiornato correttamente.")
+    except Exception as e:
+        print(f"[ERRORE] Errore salvataggio file: {e}")
+
+    return jsonify({
+        "status": "success",
+        "testo_estratto": data_to_analyze
+    })
+
+# --- ROTTA 3: ELABORA COMPLETO (Pipeline reale: Groq claims → DuckDuckGo → Core Engine) ---
+@app.route('/elabora_completo', methods=['POST', 'OPTIONS'])
+def elabora_completo():
+    """
+    Flusso completo lato server:
+    1. Groq genera claims + search queries dal testo dell'utente
+    2. Pipeline: DuckDuckGo → fetch → extract → scoring
+    3. Core Engine: verdetto finale
+    4. Mapping risultato per la dashboard frontend
+    """
+    # Gestione preflight CORS — PRIMA di qualsiasi import pesante
+    if request.method == 'OPTIONS':
+        return jsonify({"status": "ok"}), 200
+
+    from groq import Groq
+    from pipeline import run_pipeline
+
+    payload = request.json
+    if not payload:
+        return jsonify({"error": "Payload mancante"}), 400
+
+    mode = payload.get('mode')
+    input_data = payload.get('data')
+
+    # --- STEP 0: Estrai il testo da analizzare ---
+    data_to_analyze = ""
+    source_url = ""
+
+    if mode == 'url':
+        try:
+            headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'}
+            res = requests.get(input_data, timeout=10, headers=headers)
+            res.raise_for_status()
+            metadata = extract_metadata(res.text)
+            data_to_analyze = f"Titolo: {metadata.title}. Descrizione: {metadata.description}. Autore: {metadata.author}"
+            source_url = input_data
+        except Exception as e:
+            return jsonify({"error": f"Errore URL: {str(e)}"}), 400
+    else:
+        data_to_analyze = input_data
+
+    try:
+        # --- STEP 1: Groq genera claims e search queries ---
+        print(f"[STEP 1] Groq genera claims dal testo...")
+        groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+
+        chat_completion = groq_client.chat.completions.create(
+            messages=[
+                {"role": "system", "content": "Sei un analista di fact-checking. Dato un testo, estrai le affermazioni verificabili (claims) e genera per ciascuna una query di ricerca ottimizzata per DuckDuckGo. Rispondi SOLO in JSON."},
+                {"role": "user", "content": f"""Analizza questo testo ed estrai le affermazioni da verificare:
+
+"{data_to_analyze}"
+
+Rispondi con un JSON nel formato:
+{{
+  "claims": [
+    {{
+      "id": 0,
+      "claim_text": "L'affermazione da verificare",
+      "search_query": "query ottimizzata per cercare su DuckDuckGo",
+      "category": "health/science/politics/economy/other"
+    }}
+  ]
+}}
+
+Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate per trovare fonti che confermino o smentiscano il claim."""}
+            ],
+            model="llama-3.3-70b-versatile",
+            response_format={"type": "json_object"}
+        )
+
+        claims_data = json.loads(chat_completion.choices[0].message.content)
+        claims_list = claims_data.get("claims", [])
+        print(f"[OK] Groq ha generato {len(claims_list)} claims")
+
+        if not claims_list:
+            return jsonify({"error": "Nessun claim estratto dal testo"}), 400
+
+        # --- STEP 2: Costruisci PipelineInput e lancia la pipeline ---
+        print(f"[STEP 2] Pipeline (DuckDuckGo -> fetch -> extract -> scoring)...")
+        pipeline_input = {
+            "metadata": {
+                "source_type": "user_input",
+                "timestamp": "",
+                "language": "it"
+            },
+            "original_source": {
+                "text_content": data_to_analyze,
+                "url": source_url
+            },
+            "analysis": {
+                "engine": "LLM-Powered",
+                "claims_to_verify": claims_list
+            }
+        }
+
+        # Salva input.json per debug
+        with open('input.json', 'w', encoding='utf-8') as f:
+            json.dump(pipeline_input, f, indent=4, ensure_ascii=False)
+
+        # Esegue la pipeline su un loop async persistente (workaround stabile per Windows).
+        pipeline_output = run_async_task(run_pipeline(pipeline_input))
+        pipeline_dict = pipeline_output.model_dump()
+
+        print(f"[INFO] Pipeline completata: {pipeline_dict['total_sources_found']} fonti trovate")
+
+        # --- STEP 3: Core Engine — verdetto per ogni claim ---
+        print(f"[STEP 3] Core Engine genera il verdetto finale...")
+        verdetti = []
+        for result in pipeline_dict.get("results", []):
+            claim_text = result["claim"]["claim_text"]
+            sources = result.get("sources", [])
+
+            if sources:
+                # Prepara i dati per truth_engine_main
+                search_results_for_engine = []
+                for src in sources:
+                    search_results_for_engine.append({
+                        "url": src["url"],
+                        "text": src.get("article_text", ""),
+                        "metadata": src.get("metadata", {})
+                    })
+
+                verdetto = truth_engine_main(claim_text, search_results_for_engine)
+                verdetti.append({
+                    "claim": claim_text,
+                    "verdetto": verdetto,
+                    "fonti_reali": sources
+                })
+            else:
+                verdetti.append({
+                    "claim": claim_text,
+                    "verdetto": {"verdict_label": "INCERTO", "percentages": {"truth": 0, "falsity": 0, "uncertainty": 100}},
+                    "fonti_reali": []
+                })
+
+        # --- STEP 4: Mappatura per il frontend dashboard ---
+        print(f"[STEP 4] Mapping per la dashboard...")
+
+        # Prendi il verdetto principale (primo claim o media)
+        # Prendi il verdetto principale (primo claim o media)
+        if verdetti:
+            main = verdetti[0]["verdetto"]
+            percentages = main.get("percentages", {})
+            truth_pct = percentages.get("truth", 50)
+            
+            # ✅ ECCO IL TUO PARAMETRO RECUPERATO!
+            tuo_confidence_score = main.get("confidence_score", 0) 
+            
+            label = main.get("verdict_label", "INCERTO")
+
+            # Mappa colore in base al verdetto
+            colore_map = {
+                "VERIFICATO": "#10b981",
+                "PARZIALMENTE_VERO": "#f59e0b",
+                "DUBBIO": "#f97316",
+                "DISINFORMAZIONE": "#ef4444",
+                "INCERTO": "#6b7280"
+            }
+            colore = colore_map.get(label, "#6b7280")
+
+            # Mappa verdetto label in italiano
+            label_map = {
+                "VERIFICATO": "Informazione verificata",
+                "PARZIALMENTE_VERO": "Parzialmente vero",
+                "DUBBIO": "Informazione dubbia",
+                "DISINFORMAZIONE": "Disinformazione",
+                "INCERTO": "Non verificabile"
+            }
+            verdetto_testo = label_map.get(label, label)
+
+            # Costruisci fonti reali per il frontend dai dati dell'UI
+            fonti_frontend = []
+            top_sources = main.get("top_sources", {})
+            
+            for src in top_sources.get("supporting", []) + top_sources.get("conflicting", []):
+                fonti_frontend.append({
+                    "nome": src.get("title", "Fonte"),
+                    "snippet": src.get("reason", ""),
+                    "url": src.get("url", "")
+                })
+
+            if not fonti_frontend:
+                for v in verdetti:
+                    for src in v.get("fonti_reali", [])[:2]:
+                        meta = src.get("metadata", {})
+                        fonti_frontend.append({
+                            "nome": meta.get("site_name") or meta.get("title", "Fonte"),
+                            "snippet": (meta.get("description") or src.get("article_text", ""))[:150],
+                            "url": src.get("url", "")
+                        })
+
+            # ✅ IL JSON FINALE CORRETTO PER LA DASHBOARD
+            risultato_frontend = {
+                "affidabilita": tuo_confidence_score, # MUOVE IL TACHIMETRO (Tua Matematica)
+                "verita_percentuale": truth_pct,      # PER I GRAFICI A BARRE (Logica Groq)
+                "verdetto": verdetto_testo,
+                "colore": colore,
+                "fonti": fonti_frontend[:4],
+                "dettagli": {
+                    "explainability": main.get("explainability", {}),
+                    "analysis_tags": main.get("analysis_tags", []),
+                    "percentages": percentages,
+                    "claims_analizzati": len(verdetti)
+                }
+            }
+        else:
+            # Fallback se non ci sono verdetti
+            risultato_frontend = {
+                "affidabilita": 0,
+                "verita_percentuale": 0,
+                "verdetto": "Nessun dato analizzato",
+                "colore": "#6b7280",
+                "fonti": []
+            }
+
+        print(f"[OK] Analisi completata e caricata da file: {risultato_frontend['verdetto']} ({risultato_frontend['affidabilita']}%)")
+        return jsonify(risultato_frontend)
+
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        print(f"[ERRORE] Errore pipeline: {e}")
+        return jsonify({"error": f"Errore durante l'analisi: {str(e)}"}), 500
+
+# --- AVVIO DEL SERVER (SOSTITUISCI IL FINALE) ---
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    # Usiamo 127.0.0.1 invece di 0.0.0.0 per essere "amici" di Safari
+    print("[START] Truth Shield Server attivo su http://127.0.0.1:5001")
+    # Evita riavvii automatici durante le richieste (scriviamo file JSON a runtime).
+    app.run(host='127.0.0.1', port=5001, debug=True, use_reloader=False, threaded=True)

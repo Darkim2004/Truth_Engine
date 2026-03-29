@@ -8,5 +8,12 @@
             "url": "https://www.corriere.it",
             "snippet": "Esperti divisi sulla nuova riforma: alcuni prevedono benefici, altri un crollo dei consumi."
         }
-    ]
+    ],
+    "dettagli": {
+        "percentages": {
+            "truth": 40,
+            "falsity": 30,
+            "uncertainty": 30
+        }
+    }
 }

@@ -29,18 +29,7 @@ from utils.language_filter import is_correct_language, detect_language
 from utils.url_normalizer import normalize_url
 from scoring.evidence_matcher import validate_evidence
 
-console = Console()
-
-
-def _classify_relevance(score: float, threshold: float) -> str:
-    """Classifica la pertinenza semantica di una fonte rispetto al claim."""
-    if score >= max(0.75, threshold):
-        return "alta_pertinenza"
-    if score >= max(0.5, threshold):
-        return "media_pertinenza"
-    if score >= threshold:
-        return "bassa_pertinenza"
-    return "non_rilevante"
+console = Console(legacy_windows=False)
 
 
 async def run_pipeline(input_data: dict) -> PipelineOutput:
@@ -82,12 +71,12 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
         if normalized_input_url:
             visited_urls.add(normalized_input_url)
             console.print(
-                f"[dim]🔒 URL input escluso dalle fonti: {normalized_input_url}[/dim]"
+                f"[dim][ESCLUSO] URL input escluso dalle fonti: {normalized_input_url}[/dim]"
             )
 
     try:
         for i, claim in enumerate(claims):
-            console.print(f"\n{'─' * 60}")
+            console.print(f"\n{'-' * 60}")
             console.print(
                 f"[bold cyan]Claim {claim.id}[/bold cyan] ({i + 1}/{len(claims)}): "
                 f"{claim.claim_text[:80]}..."
@@ -95,11 +84,11 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
             console.print(f"  Query: [italic]{claim.search_query}[/italic]")
 
             # --- 1. SEARCH ---
-            console.print(f"\n  [blue]🔍 Fase 1: Ricerca...[/blue]")
+            console.print(f"\n  [blue]Fase 1: Ricerca...[/blue]")
             search_results: list[SearchResult] = await aggregate_search(claim.search_query)
 
             if not search_results:
-                console.print(f"  [yellow]⚠[/yellow] Nessun risultato trovato. Skip claim.")
+                console.print(f"  [yellow][ATTENZIONE][/yellow] Nessun risultato trovato. Skip claim.")
                 all_results.append(ClaimSources(claim=claim, sources=[]))
                 continue
 
@@ -121,53 +110,48 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
 
             if session_duplicates > 0:
                 console.print(
-                    f"  [dim]♻ Skip sessione: {session_duplicates} URL gia' visitati[/dim]"
+                    f"  [dim][SKIP] Skip sessione: {session_duplicates} URL gia' visitati[/dim]"
                 )
 
             if not fresh_search_results:
                 console.print(
-                    "  [yellow]⚠[/yellow] Tutti gli URL erano gia' visitati in questa sessione. "
+                    "  [yellow][ATTENZIONE][/yellow] Tutti gli URL erano gia' visitati in questa sessione. "
                     "Skip claim."
                 )
                 all_results.append(ClaimSources(claim=claim, sources=[]))
                 continue
 
             # --- 2. FETCH ---
-            console.print(f"\n  [blue]📄 Fase 2: Fetch HTML...[/blue]")
+            console.print(f"\n  [blue]Fase 2: Fetch HTML...[/blue]")
             urls = [r.url for r in fresh_search_results]
             pages: list[FetchedPage] = await fetch_batch(urls)
 
             # --- 3. FILTER + EXTRACT ---
-            console.print(f"\n  [blue]📰 Fase 3: Filtraggio + Estrazione...[/blue]")
+            console.print(f"\n  [blue]Fase 3: Filtraggio + Estrazione...[/blue]")
             sources: list[ExtractedSource] = []
 
             for page in pages:
                 if not page.is_valid:
-                    console.print(f"    [dim]⊘ Skip (fetch fallito): {page.url[:50]}...[/dim]")
+                    console.print(f"    [dim][ERRORE] Skip (fetch fallito): {page.url[:50]}...[/dim]")
                     continue
 
                 # Paywall check
                 if is_paywall(page.html):
-                    console.print(f"    [yellow]🔒 Paywall rilevato: {page.url[:50]}...[/yellow]")
+                    console.print(f"    [yellow][PAYWALL] Paywall rilevato: {page.url[:50]}...[/yellow]")
                     continue
 
                 # Estrai contenuto
                 structured_data: dict = {}
                 article_text = extract_article_text(page.html)
                 if not article_text:
-                    # Fallback: prova estrazione strutturata prima di scartare la fonte.
-                    structured_data = extract_article_structured(page.html)
-                    article_text = (structured_data.get("text", "") or "").strip()
-
-                if not article_text:
-                    console.print(f"    [dim]⊘ Nessun contenuto estratto: {page.url[:50]}...[/dim]")
+                    console.print(f"    [dim][VUOTO] Nessun contenuto estratto: {page.url[:50]}...[/dim]")
                     continue
 
                 # Filtro lingua (opzionale)
                 if expected_lang and not is_correct_language(article_text, expected_lang):
                     detected = detect_language(article_text)
                     console.print(
-                        f"    [yellow]🌐 Lingua sbagliata ({detected} ≠ {expected_lang}): "
+                        f"    [yellow][LINGUA] Lingua sbagliata ({detected} ≠ {expected_lang}): "
                         f"{page.url[:50]}...[/yellow]"
                     )
                     continue
@@ -188,14 +172,12 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
                 sources.append(source)
 
                 console.print(
-                    f"    [green]✓[/green] Estratto: {metadata.title[:50] or page.url[:50]}... "
+                    f"    [green][OK][/green] Estratto: {metadata.title[:50] or page.url[:50]}... "
                     f"({len(article_text)} char)"
                 )
 
             # --- 4. EVIDENCE SCORING (chunking + similarity) ---
-            console.print(f"\n  [blue]🧠 Fase 4: Similarity scoring...[/blue]")
-            source_scores: list[tuple[str, float]] = []
-
+            console.print(f"\n  [blue]Fase 4: Similarity scoring...[/blue]")
             for source in sources:
                 analysis = validate_evidence(
                     url=source.url,
@@ -237,15 +219,22 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
             )
 
             console.print(
-                f"\n  [blue]📊[/blue] Claim {claim.id}: "
+                f"\n  [blue][RISULTATI][/blue] Claim {claim.id}: "
                 f"{len(sources)} fonti estratte su {len(fresh_search_results)} URL fetchati "
                 f"({len(search_results)} trovati in ricerca) | "
                 f"max_score={claim_max_score:.3f} | label={claim_label}"
             )
 
     finally:
-        # Chiudi il browser Playwright se è stato usato
-        await close_browser()
+        # Chiudi il browser Playwright se e' stato usato.
+        # Su Windows puo' emergere OSError [Errno 22] in teardown anche a pipeline completata.
+        try:
+            await close_browser()
+        except OSError as e:
+            if getattr(e, "errno", None) == 22:
+                console.print("[yellow][WARN][/yellow] Ignoro OSError [Errno 22] in close_browser()")
+            else:
+                raise
 
     # Costruisci output
     total_sources = sum(len(r.sources) for r in all_results)
@@ -256,7 +245,7 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
         results=all_results,
     )
 
-    console.print(f"\n{'═' * 60}")
+    console.print(f"\n{'=' * 60}")
     console.print(Panel(
         f"[bold green]Pipeline completato![/bold green]\n"
         f"Claims processati: {len(claims)}\n"
@@ -291,7 +280,13 @@ async def get_article_title_from_url(url: str) -> str:
         return (metadata.title or "").strip()
     finally:
         # In chiamate standalone (es. endpoint frontend), rilascia risorse browser.
-        await close_browser()
+        try:
+            await close_browser()
+        except OSError as e:
+            if getattr(e, "errno", None) == 22:
+                console.print("[yellow][WARN][/yellow] Ignoro OSError [Errno 22] in close_browser()")
+            else:
+                raise
 
 
 def get_article_title_from_url_sync(url: str) -> str:

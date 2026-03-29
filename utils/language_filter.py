@@ -9,7 +9,7 @@ import re
 from langdetect import detect, LangDetectException
 from rich.console import Console
 
-console = Console()
+console = Console(legacy_windows=False)
 
 
 def _normalize_for_language_detection(text: str) -> str:

@@ -16,35 +16,34 @@ def extract_domain(url):
 
 def get_credibility_score(domain):
     """
-    Questa è la tua funzione 'base_domain_score'. 
-    Controlla se il dominio è in Whitelist o Blacklist.
+    Calcola il punteggio di credibilità di base per un dominio.
+    Applica regole specifiche invece di whitelist/blacklist statiche.
     """
-    whitelist = {
-        "ansa.it": 0.95, "reuters.com": 0.95, "apnews.com": 0.95,
-        "istat.it": 1.0, "governo.it": 1.0, "who.int": 1.0,
-        "ilsole24ore.com": 0.9, "corriere.it": 0.85, "bbc.co.uk": 0.85
-    }
-    blacklist = ["bufale.net", "stopcensura.online"]
-    
     # 1. Pulizia extra (se per caso è passato un URL intero invece del solo dominio)
     clean_domain = extract_domain(domain) if "/" in domain else domain
+    clean_domain = clean_domain.lower()
 
-    # 2. Controllo logico
-    if any(b in clean_domain for b in blacklist):
-        return 0.15
-    for trusted, score in whitelist.items():
-        if trusted in clean_domain:
-            return score
-    if clean_domain.endswith((".gov", ".edu", ".int")):
-        return 0.9
-        
+    if clean_domain.endswith(".gov") or "wikipedia." in clean_domain:
+        return 1.0
+
+    if "blog" in clean_domain:
+        return 0.2
+
+    quotidiani_maggiori = [
+        "corriere.it", "repubblica.it", "ilsole24ore.com", "lastampa.it",
+        "ilgiornale.it", "liberoquotidiano.it", "ansa.it",
+        "nytimes.com", "bbc.co.uk", "reuters.com", "theguardian.com"
+    ]
+    if any(q in clean_domain for q in quotidiani_maggiori):
+        return 0.8
+
     return 0.5 # Default Neutro
 
 def get_source_credibility(url, text):
     domain = extract_domain(url) # Funzione per pulire l'URL
     
     # 1. Base Score dal Dominio (quello che abbiamo già fatto)
-    base_score = get_base_domain_score(domain) 
+    base_score = get_credibility_score(domain) 
     
     # 2. Correttori Dinamici basati sul Testo
     penalty = 0

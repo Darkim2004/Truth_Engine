@@ -9,7 +9,7 @@ from rich.console import Console
 from models import SearchResult
 from utils.url_normalizer import normalize_url
 
-console = Console()
+console = Console(legacy_windows=False)
 
 
 def deduplicate_results(results: list[SearchResult]) -> list[SearchResult]:
@@ -31,7 +31,7 @@ def deduplicate_results(results: list[SearchResult]) -> list[SearchResult]:
             duplicates += 1
 
     if duplicates > 0:
-        console.print(f"  [dim]🔗 Rimossi {duplicates} URL duplicati[/dim]")
+        console.print(f"  [dim][LINK] Rimossi {duplicates} URL duplicati[/dim]")
 
     return list(seen_urls.values())
 
@@ -57,7 +57,7 @@ async def aggregate_search(query: str) -> list[SearchResult]:
     unique_results = deduplicate_results(all_results)
 
     console.print(
-        f"  [blue]🔍[/blue] Totale: {len(unique_results)} URL unici "
+        f"  [blue][SEARCH][/blue] Totale: {len(unique_results)} URL unici "
         f"(da {len(all_results)} risultati)"
     )
 

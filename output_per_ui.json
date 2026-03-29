@@ -1,36 +1,35 @@
 {
     "percentages": {
-        "truth": 20,
-        "falsity": 60,
-        "uncertainty": 20
+        "truth": 0,
+        "falsity": 100,
+        "uncertainty": 0
     },
     "verdict_label": "DISINFORMAZIONE",
     "explainability": {
-        "summary": "Il CLAIM secondo cui le proteine dei grilli modificano il DNA umano è considerato disinformazione a causa della scarsa qualità delle fonti che lo supportano e della presenza di affermazioni esagerate o false.",
-        "cross_check_result": "La fonte 'verita-nascoste-blog.it' cita affermazioni non supportate da prove scientifiche e contrasta con informazioni verificabili da fonti più attendibili come Nature.",
-        "strength_analysis": "L'analisi più solida proviene dalla fonte scientifica 'https://www.nature.com/articles/s41598-026-12345', che afferma che le proteine degli insetti non integrano il DNA umano.",
-        "consensus_level": "Basso",
-        "next_step": "Per una conferma definitiva, cercare studi peer-review più recenti e dati da fonti governative o universitarie."
+        "summary": "Verdetto matematico: 0.0 punti per la conferma e 1.3 punti per la smentita.",
+        "cross_check_result": "Punteggi -> Conferma: 0.0 | Confuta: 1.3",
+        "strength_analysis": "Il calcolo si basa sulla somma del peso (affidabilità) della fonte moltiplicato per ogni evidenza testuale (chunk) trovata e classificata.",
+        "consensus_level": "Alto",
+        "next_step": "Nessun ulteriore approfondimento."
     },
     "top_sources": {
-        "supporting": [
-            {
-                "url": "https://www.nature.com/articles/s41598-026-12345",
-                "reason": "Fornisce dati scientifici che smentiscono il CLAIM",
-                "title": "Studio sulla sicurezza delle proteine degli insetti"
-            }
-        ],
+        "supporting": [],
         "conflicting": [
             {
-                "url": "https://verita-nascoste-blog.it/pericolo-insetti",
-                "reason": "Diffonde informazioni non verificate e allarmistiche",
-                "title": "Blog su pericoli degli insetti"
+                "url": "https://www.zerozeronews.it/siria-e-impeachment-trump-sempre-piu-nei-guai/",
+                "reason": "[Peso 0.5] Il chunk parla della decisione di Trump in Siria e del sostegno repubblicano, ma non dice se la decisione sia stata presa in base all'istinto o ad altre considerazioni",
+                "title": "www.zerozeronews.it"
+            },
+            {
+                "url": "https://www.ansa.it/sito/notizie/politica/2025/04/17/intesa-trump-meloni-si-ad-un-accordo-usa-ue-sui-dazi.-il-presidente-lei-e-eccezionale_233ed75d-07a6-43a3-af19-94825eefaa50.html",
+                "reason": "[Peso 0.8] Descrive altre fonti che utilizzano la parola 'parassita' e la loro approvazione da parte di Trump",
+                "title": "www.ansa.it"
             }
         ]
     },
     "analysis_tags": [
-        "Allarmismo",
-        "Dati Scientifici Contraddittori",
-        "Fonti Non Attendibili"
-    ]
+        "Calcolo Matematico",
+        "DISINFORMAZIONE"
+    ],
+    "confidence_score": 60
 }
