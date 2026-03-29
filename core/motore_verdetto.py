@@ -18,7 +18,7 @@ def genera_verdetto_probabilistico(claim, dossier_arricchito):
     DOSSIER: {json.dumps(dossier_arricchito, indent=2)}
 
     ISTRUZIONI DI ANALISI (CRITICHE):
-    1. COERENZA TEMPORALE: Una smentita del 2026 deve avere prove verificabili. Se un dato del 2022 è supportato da fonti .gov/.edu e la smentita del 2026 è vaga, dai priorità alla qualità scientifica.
+    1. COERENZA TEMPORALE: Una smentita del 2026 deve avere prove verificabili. Se un dato del 2022 è supportate da fonti .gov/.edu e la smentita del 2026 è vaga, dai priorità alla qualità scientifica.
     2. CROSS-CHECK: Verifica se le fonti citano studi o enti. Se un blog cita l'OMS ma i dati ufficiali nel dossier dicono l'opposto, segnala la manipolazione.
     3. SENTIMENT: Se il testo è troppo aggressivo o allarmista, aumenta il punteggio di Falsità/Incertezza.
     4. SELEZIONE TOP URL: Scegli fino a 3 URL 'supporting' (che confermano il verdetto) e fino a 3 'conflicting' (voci discordanti). Usa solo URL REALI dal dossier.
