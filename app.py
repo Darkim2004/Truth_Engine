@@ -332,10 +332,15 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
         print(f"[STEP 4] Mapping per la dashboard...")
 
         # Prendi il verdetto principale (primo claim o media)
+        # Prendi il verdetto principale (primo claim o media)
         if verdetti:
             main = verdetti[0]["verdetto"]
             percentages = main.get("percentages", {})
             truth_pct = percentages.get("truth", 50)
+            
+            # ✅ ECCO IL TUO PARAMETRO RECUPERATO!
+            tuo_confidence_score = main.get("confidence_score", 0) 
+            
             label = main.get("verdict_label", "INCERTO")
 
             # Mappa colore in base al verdetto
@@ -360,36 +365,32 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
 
             # Costruisci fonti reali per il frontend
             fonti_frontend = []
-            for v in verdetti:
-                top_sources = v["verdetto"].get("top_sources", {})
-                for src in top_sources.get("supporting", []):
-                    fonti_frontend.append({
-                        "nome": src.get("title", "Fonte"),
-                        "snippet": src.get("reason", ""),
-                        "url": src.get("url", "")
-                    })
-                for src in top_sources.get("conflicting", []):
-                    fonti_frontend.append({
-                        "nome": src.get("title", "Fonte"),
-                        "snippet": src.get("reason", ""),
-                        "url": src.get("url", "")
-                    })
+            top_sources = main.get("top_sources", {})
+            
+            for src in top_sources.get("supporting", []) + top_sources.get("conflicting", []):
+                fonti_frontend.append({
+                    "nome": src.get("title", "Fonte"),
+                    "snippet": src.get("reason", ""),
+                    "url": src.get("url", "")
+                })
 
-            # Se non ci sono fonti dal verdetto, usa quelle dalla pipeline
             if not fonti_frontend:
                 for v in verdetti:
                     for src in v.get("fonti_reali", [])[:2]:
+                        meta = src.get("metadata", {})
                         fonti_frontend.append({
-                            "nome": src.get("metadata", {}).get("site_name", "") or src.get("metadata", {}).get("title", "Fonte"),
-                            "snippet": src.get("metadata", {}).get("description", "")[:150] if src.get("metadata", {}).get("description") else src.get("article_text", "")[:150],
+                            "nome": meta.get("site_name") or meta.get("title", "Fonte"),
+                            "snippet": (meta.get("description") or src.get("article_text", ""))[:150],
                             "url": src.get("url", "")
                         })
 
+            # ✅ IL JSON FINALE CORRETTO PER LA DASHBOARD
             risultato_frontend = {
-                "affidabilita": truth_pct,
+                "affidabilita": tuo_confidence_score, # MUOVE IL TACHIMETRO (Tua Matematica)
+                "verita_percentuale": truth_pct,      # PER I GRAFICI A BARRE (Logica Groq)
                 "verdetto": verdetto_testo,
                 "colore": colore,
-                "fonti": fonti_frontend[:4],  # Max 4 fonti
+                "fonti": fonti_frontend[:4],
                 "dettagli": {
                     "explainability": main.get("explainability", {}),
                     "analysis_tags": main.get("analysis_tags", []),
