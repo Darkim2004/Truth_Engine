@@ -19,6 +19,11 @@
             background: rgba(22, 27, 44, 0.7);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: visible;
+        }
+
+        .title-container {
+            overflow: visible;
         }
 
         .tab-active {
@@ -35,10 +40,10 @@
 <body class="min-h-screen flex items-center justify-center p-4">
     <div class="max-w-2xl w-full glass rounded-[3rem] p-10 border border-slate-800 text-center">
 
-        <div class="text-center mb-12">
-            <div class="flex items-center justify-center gap-2 mb-2">
+        <div class="text-center mb-12 title-container">
+            <div class="flex items-center justify-center gap-2 mb-2" style="overflow: visible;">
                 <h1
-                    class="text-5xl font-900 italic uppercase select-none flex items-center justify-center p-4 px-12 tracking-tighter">
+                    class="text-5xl font-900 italic uppercase select-none flex items-center justify-center p-4" style="overflow: visible; letter-spacing: 0.01em;">
 
                     <svg class="w-11 h-11 mr-2 -mt-1 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                         <path
@@ -47,7 +52,7 @@
                             opacity=".5" />
                     </svg>
 
-                    <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+                    <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent" style="padding-right: 0.15em;">
                         Truth Shield
                     </span>
                 </h1>
@@ -107,7 +112,6 @@
                 <p id="verdettoTesto" class="text-2xl font-black uppercase italic">--</p>
             </div>
             <div id="listaFonti" class="mt-6"></div>
-            <div id="listaFonti" class="mt-6"></div>
 
             <button onclick="resetAll()"
                 class="w-full mt-10 text-[10px] text-slate-600 uppercase tracking-[0.3em] hover:text-indigo-400 transition-all font-black py-4 border-t border-slate-800/50">
@@ -120,8 +124,8 @@
             <span>Matteo Bianchi</span>•<span>Andrea Cancaglioni</span>•<span>Luigi Romano</span>
         </div>
     </div>
-    <script src="config.js"></script>
-    <script src="script.js"></script>
+    <script src="config.js?v=2"></script>
+    <script src="script.js?v=2"></script>
 </body>
 
 </html>

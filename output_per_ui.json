@@ -1,37 +1,4 @@
 {
-    "percentages": {
-        "truth": 80,
-        "falsity": 5,
-        "uncertainty": 15
-    },
-    "verdict_label": "DISINFORMAZIONE",
-    "explainability": {
-        "summary": "La teoria della Terra piatta è smentita da prove scientifiche consolidate e riscontri storici.",
-        "cross_check_result": "Le fonti ufficiali e gli studi scientifici smentiscono le affermazioni dei terrapiattisti.",
-        "strength_analysis": "La prova più solida proviene da fonti come Wikipedia, che fornisce una visione d'insieme storica e scientifica della teoria della Terra piatta.",
-        "consensus_level": "Alto",
-        "next_step": "Per una conferma definitiva, cercare pubblicazioni scientifiche recenti su riviste di alta qualità e siti web di istituzioni scientifiche riconosciute."
-    },
-    "top_sources": {
-        "supporting": [
-            {
-                "url": "https://it.wikipedia.org/wiki/Terra_piatta",
-                "reason": "Fornisce una panoramica completa e scientifica sulla teoria della Terra piatta.",
-                "title": "Terra piatta - Wikipedia"
-            }
-        ],
-        "conflicting": [
-            {
-                "url": "https://www.gravita-zero.org/2024/12/perche-esistono-i-terrapiattisti-e.html",
-                "reason": "Presenta argomentazioni non scientifiche a sostegno della teoria della Terra piatta.",
-                "title": "Perché esistono i terrapiattisti e perché credono che la Terra sia piatta?"
-            }
-        ],
-        "conflicting": []
-    },
-    "analysis_tags": [
-        "Dati Scientifici",
-        "Mancanza di prove empiriche",
-        "Teoria non supportata"
-    ]
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kmt5w0hye32rjbm4tj01bzbw` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99616, Requested 1433. Please try again in 15m6.335999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "status": "failed"
 }

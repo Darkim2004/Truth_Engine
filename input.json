@@ -5,7 +5,7 @@
         "language": "it"
     },
     "original_source": {
-        "text_content": "la terra è piatta",
+        "text_content": "sergio mattarella presidente del cosiglio",
         "url": ""
     },
     "analysis": {
@@ -13,9 +13,9 @@
         "claims_to_verify": [
             {
                 "id": 0,
-                "claim_text": "la terra è piatta",
-                "search_query": "teoria terra piatta smentita",
-                "category": "science"
+                "claim_text": "Sergio Mattarella presidente del consiglio",
+                "search_query": "Sergio Mattarella ruolo nel governo italiano",
+                "category": "politics"
             }
         ]
     }

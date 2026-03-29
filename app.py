@@ -20,7 +20,7 @@ import requests
 import os
 import asyncio
 import threading
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from dotenv import load_dotenv
 
@@ -31,7 +31,9 @@ from extractor.metadata import extract_metadata
 # Carichiamo le variabili d'ambiente (.env)
 load_dotenv()
 
-app = Flask(__name__)
+app = Flask(__name__,
+            static_folder='front-end',
+            static_url_path='/static')
 
 # Loop asyncio persistente per evitare crash [Errno 22] su Windows
 # quando Playwright/subprocess chiudono il loop per-request.
@@ -100,6 +102,19 @@ def handle_500(e):
     response.headers["Access-Control-Allow-Headers"] = "Content-Type, Accept"
     response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
     return response
+
+# --- ROTTA 0: SERVE IL FRONTEND ---
+@app.route('/')
+def serve_frontend():
+    return send_from_directory('front-end', 'index.html')
+
+@app.route('/config.js')
+def serve_config_js():
+    return send_from_directory('front-end', 'config.js')
+
+@app.route('/script.js')
+def serve_script_js():
+    return send_from_directory('front-end', 'script.js')
 
 # --- ROTTA 1: VERIFICA COMPLETA (Il motore di Andrea/Luigi) ---
 @app.route('/api/verify', methods=['POST'])
