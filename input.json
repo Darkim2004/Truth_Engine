@@ -5,7 +5,7 @@
         "language": "it"
     },
     "original_source": {
-        "text_content": "messi ha vinto il pallone d'oro nel 2022",
+        "text_content": "i vaccini causano autismo",
         "url": ""
     },
     "analysis": {
@@ -13,9 +13,9 @@
         "claims_to_verify": [
             {
                 "id": 0,
-                "claim_text": "messi ha vinto il pallone d'oro nel 2022",
-                "search_query": "pallone d'oro 2022 vincitore",
-                "category": "other"
+                "claim_text": "i vaccini causano autismo",
+                "search_query": "studio scientifico vaccini e autismo",
+                "category": "health"
             }
         ]
     }
