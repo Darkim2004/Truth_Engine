@@ -5,7 +5,7 @@
         "language": "it"
     },
     "original_source": {
-        "text_content": "Messi si è sposato",
+        "text_content": "L'AI sostituirà gli umani",
         "url": ""
     },
     "analysis": {
@@ -13,9 +13,9 @@
         "claims_to_verify": [
             {
                 "id": 0,
-                "claim_text": "Messi si è sposato",
-                "search_query": " Lionel Messi matrimonio",
-                "category": "other"
+                "claim_text": "L'AI sostituirà gli umani",
+                "search_query": "intelligenza artificiale sostituisce lavoro umano",
+                "category": "science"
             }
         ]
     }
