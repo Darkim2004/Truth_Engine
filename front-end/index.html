@@ -99,13 +99,25 @@
         <div id="resultContainer" class="mt-12 hidden">
             <div class="bg-[#070a13]/60 py-10 rounded-[2.5rem] border border-slate-800 mb-8 relative">
                 <svg viewBox="0 0 200 120" class="w-64 h-40 mx-auto">
+                    <defs>
+                        <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#ef4444" />
+                            <stop offset="50%" stop-color="#f59e0b" />
+                            <stop offset="100%" stop-color="#10b981" />
+                        </linearGradient>
+                    </defs>
                     <path d="M20,100 A80,80 0 0,1 180,100" fill="none" stroke="#1e293b" stroke-width="12"
                         stroke-linecap="round" />
-                    <path id="gaugeArcoProgress" d="M20,100 A80,80 0 0,1 180,100" fill="none" stroke="indigo"
+                    <path id="gaugeArcoProgress" d="M20,100 A80,80 0 0,1 180,100" fill="none" stroke="url(#gaugeGradient)"
                         stroke-width="12" stroke-linecap="round" stroke-dasharray="251.32" stroke-dashoffset="251.32" />
+                    
+                    <!-- Numeri di riferimento (solo cifre) -->
+                    <text x="15" y="115" fill="#64748b" font-size="8" font-weight="bold" font-family="Inter">0</text>
+                    <text x="100" y="12" fill="#64748b" font-size="8" font-weight="bold" font-family="Inter" text-anchor="middle">50</text>
+                    <text x="185" y="115" fill="#64748b" font-size="8" font-weight="bold" font-family="Inter" text-anchor="end">100</text>
                 </svg>
                 <div class="absolute inset-0 flex flex-col items-center justify-end pb-12">
-                    <span id="percentualeTesto" class="text-5xl font-900">0%</span>
+                    <span id="percentualeTesto" class="text-5xl font-900">0</span>
                 </div>
             </div>
             <div class="p-6 rounded-3xl bg-slate-800/40 border border-slate-700">

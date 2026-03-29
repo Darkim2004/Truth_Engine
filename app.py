@@ -328,16 +328,17 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
                     "fonti_reali": []
                 })
 
-        # --- STEP 4: Mappatura per il frontend dashboard ---
-        print(f"[STEP 4] Mapping per la dashboard...")
-
-        # Prendi il verdetto principale (primo claim o media)
-        if verdetti:
-            main = verdetti[0]["verdetto"]
-            percentages = main.get("percentages", {})
-            truth_pct = percentages.get("truth", 50)
-            label = main.get("verdict_label", "INCERTO")
-
+        # --- STEP 4: Mappatura per il frontend dashboard (Leggendo output_per_ui.json) ---
+        print(f"[STEP 4] Mapping per la dashboard da output_per_ui.json...")
+        
+        try:
+            with open('output_per_ui.json', 'r', encoding='utf-8') as f:
+                data_ui = json.load(f)
+            
+            percentages = data_ui.get("percentages", {})
+            truth_pct = percentages.get("truth", 0)
+            label = data_ui.get("verdict_label", "INCERTO")
+            
             # Mappa colore in base al verdetto
             colore_map = {
                 "VERIFICATO": "#10b981",
@@ -358,53 +359,47 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
             }
             verdetto_testo = label_map.get(label, label)
 
-            # Costruisci fonti reali per il frontend
+            # Costruisci fonti reali per il frontend dai dati dell'UI
             fonti_frontend = []
-            for v in verdetti:
-                top_sources = v["verdetto"].get("top_sources", {})
-                for src in top_sources.get("supporting", []):
-                    fonti_frontend.append({
-                        "nome": src.get("title", "Fonte"),
-                        "snippet": src.get("reason", ""),
-                        "url": src.get("url", "")
-                    })
-                for src in top_sources.get("conflicting", []):
-                    fonti_frontend.append({
-                        "nome": src.get("title", "Fonte"),
-                        "snippet": src.get("reason", ""),
-                        "url": src.get("url", "")
-                    })
-
-            # Se non ci sono fonti dal verdetto, usa quelle dalla pipeline
-            if not fonti_frontend:
-                for v in verdetti:
-                    for src in v.get("fonti_reali", [])[:2]:
-                        fonti_frontend.append({
-                            "nome": src.get("metadata", {}).get("site_name", "") or src.get("metadata", {}).get("title", "Fonte"),
-                            "snippet": src.get("metadata", {}).get("description", "")[:150] if src.get("metadata", {}).get("description") else src.get("article_text", "")[:150],
-                            "url": src.get("url", "")
-                        })
+            top_sources = data_ui.get("top_sources", {})
+            
+            # Aggiungiamo le fonti di supporto e contrasto
+            for src in top_sources.get("supporting", []):
+                fonti_frontend.append({
+                    "nome": src.get("title", "Fonte a supporto"),
+                    "snippet": src.get("reason", "Conferma il claim"),
+                    "url": src.get("url", "")
+                })
+            for src in top_sources.get("conflicting", []):
+                fonti_frontend.append({
+                    "nome": src.get("title", "Fonte in contrasto"),
+                    "snippet": src.get("reason", "Smentisce il claim"),
+                    "url": src.get("url", "")
+                })
 
             risultato_frontend = {
                 "affidabilita": truth_pct,
                 "verdetto": verdetto_testo,
                 "colore": colore,
-                "fonti": fonti_frontend[:4],  # Max 4 fonti
+                "fonti": fonti_frontend[:4],
                 "dettagli": {
-                    "explainability": main.get("explainability", {}),
-                    "analysis_tags": main.get("analysis_tags", []),
+                    "explainability": data_ui.get("explainability", {}),
+                    "analysis_tags": data_ui.get("analysis_tags", []),
                     "claims_analizzati": len(verdetti)
                 }
             }
-        else:
+            
+        except Exception as e:
+            print(f"[ERRORE] Lettura output_per_ui.json fallita: {e}")
+            # Fallback se il file non esiste o è corrotto
             risultato_frontend = {
                 "affidabilita": 0,
-                "verdetto": "Errore nell'analisi",
+                "verdetto": "Errore lettura dati",
                 "colore": "#6b7280",
                 "fonti": []
             }
 
-        print(f"[OK] Analisi completata: {risultato_frontend['verdetto']} ({risultato_frontend['affidabilita']}%)")
+        print(f"[OK] Analisi completata e caricata da file: {risultato_frontend['verdetto']} ({risultato_frontend['affidabilita']}%)")
         return jsonify(risultato_frontend)
 
     except Exception as e:

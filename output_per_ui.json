@@ -1,4 +1,34 @@
 {
-    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kmt5w0hye32rjbm4tj01bzbw` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99996, Requested 2396. Please try again in 34m26.688s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-    "status": "failed"
+    "percentages": {
+        "truth": 80,
+        "falsity": 0,
+        "uncertainty": 20
+    },
+    "verdict_label": "VERIFICATO",
+    "explainability": {
+        "summary": "I dati raccolti confermano che Lionel Messi ha vinto il Pallone d'oro nel 2023.",
+        "cross_check_result": "Le fonti citate sono coerenti e provenienti da siti ufficiali e di news attendibili.",
+        "strength_analysis": "La prova più solida è data dalle informazioni presenti su Wikipedia e su una nota testata giornalistica online.",
+        "consensus_level": "Alto",
+        "next_step": "Per conferma definitiva, verificare i siti ufficiali del Pallone d'oro e della FIFA."
+    },
+    "top_sources": {
+        "supporting": [
+            {
+                "url": "https://it.wikipedia.org/wiki/Pallone_d'oro_2023",
+                "reason": "Fonte ufficiale e aggiornata.",
+                "title": "Pallone d'oro 2023 - Wikipedia"
+            },
+            {
+                "url": "https://tg.la7.it/sport/pallone-doro-2023-il-vincitore-%C3%A8-leo-messi-30-10-2023-197449",
+                "reason": "Notizia di un evento confermata da più fonti.",
+                "title": "Pallone d'Oro 2023: il vincitore è Leo Messi"
+            }
+        ],
+        "conflicting": []
+    },
+    "analysis_tags": [
+        "Dati attendibili",
+        "Fonti ufficiali"
+    ]
 }

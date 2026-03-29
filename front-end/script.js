@@ -97,7 +97,6 @@ function renderDashboard(data) {
     const offset = pathLength - (score * pathLength / 100);
 
     setTimeout(() => {
-        arco.style.stroke = colore;
         arco.style.strokeDashoffset = offset;
         document.getElementById('percentualeTesto').innerText = score + "%";
         document.getElementById('percentualeTesto').style.color = colore;
