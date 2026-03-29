@@ -1,45 +1,29 @@
 {
     "percentages": {
-        "truth": 20,
-        "falsity": 80,
+        "truth": 0,
+        "falsity": 100,
         "uncertainty": 0
     },
     "verdict_label": "DISINFORMAZIONE",
     "explainability": {
-        "summary": "Verdetto matematico: 0.5 punti per la conferma e 2.0 punti per la smentita.",
-        "cross_check_result": "Punteggi -> Conferma: 0.5 | Confuta: 2.0",
+        "summary": "Verdetto matematico: 0.0 punti per la conferma e 1.3 punti per la smentita.",
+        "cross_check_result": "Punteggi -> Conferma: 0.0 | Confuta: 1.3",
         "strength_analysis": "Il calcolo si basa sulla somma del peso (affidabilità) della fonte moltiplicato per ogni evidenza testuale (chunk) trovata e classificata.",
         "consensus_level": "Alto",
-        "next_step": "Raccogliere ulteriori fonti."
+        "next_step": "Nessun ulteriore approfondimento."
     },
     "top_sources": {
-        "supporting": [
-            {
-                "url": "https://www.avvenire.it/idee-e-commenti/iran-missione-scompiuta-una-guerra-senza-dopo_106463",
-                "reason": "[Peso 0.5] Descrive il vero obiettivo di Netanyahu come rendere l'Iran uno 'Stato fallito', che supporta la descrizione di \"la guerra di Trump non sta funzionando\"",
-                "title": "www.avvenire.it"
-            }
-        ],
+        "supporting": [],
         "conflicting": [
             {
-                "url": "https://www.avvenire.it/idee-e-commenti/iran-missione-scompiuta-una-guerra-senza-dopo_106463",
-                "reason": "[Peso 0.5] Descrive la guerra come una ricerca dell'egemonia indiscussa e una forma di dominio militare incontrastato, contrario alla descrizione di \"la guerra di Trump non sta funzionando\"",
-                "title": "www.avvenire.it"
+                "url": "https://www.zerozeronews.it/siria-e-impeachment-trump-sempre-piu-nei-guai/",
+                "reason": "[Peso 0.5] Il chunk parla della decisione di Trump in Siria e del sostegno repubblicano, ma non dice se la decisione sia stata presa in base all'istinto o ad altre considerazioni",
+                "title": "www.zerozeronews.it"
             },
             {
-                "url": "https://www.avvenire.it/idee-e-commenti/iran-missione-scompiuta-una-guerra-senza-dopo_106463",
-                "reason": "[Peso 0.5] Sottolinea la mancanza di una strategia chiara e lo stato finale della guerra (end game) non è chiaro per Trump, confermando la descrizione di \"la guerra di Trump non sta funzionando\"",
-                "title": "www.avvenire.it"
-            },
-            {
-                "url": "https://www.ispionline.it/it/pubblicazione/un-anno-di-trump-loccidente-non-e-piu-lo-stesso-227784",
-                "reason": "[Peso 0.5] Indica che l'annuncio di sanzioni commerciali di Trump potrebbe portare a una guerra commerciale transatlantica, suggerendo che la guerra di Trump possa essere efficace",
-                "title": "www.ispionline.it"
-            },
-            {
-                "url": "https://www.ispionline.it/it/pubblicazione/un-anno-di-trump-loccidente-non-e-piu-lo-stesso-227784",
-                "reason": "[Peso 0.5] Descrive le relazioni transatlantiche come 'al livello più basso mai raggiunto' e sottolinea che la strategia europea di appeasement è fallita, suggerendo che la guerra di Trump possa essere efficace",
-                "title": "www.ispionline.it"
+                "url": "https://www.ansa.it/sito/notizie/politica/2025/04/17/intesa-trump-meloni-si-ad-un-accordo-usa-ue-sui-dazi.-il-presidente-lei-e-eccezionale_233ed75d-07a6-43a3-af19-94825eefaa50.html",
+                "reason": "[Peso 0.8] Descrive altre fonti che utilizzano la parola 'parassita' e la loro approvazione da parte di Trump",
+                "title": "www.ansa.it"
             }
         ]
     },
@@ -47,5 +31,5 @@
         "Calcolo Matematico",
         "DISINFORMAZIONE"
     ],
-    "confidence_score": 50
+    "confidence_score": 60
 }

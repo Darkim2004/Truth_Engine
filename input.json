@@ -14,19 +14,19 @@
             {
                 "id": 0,
                 "claim_text": "Trump sta conducendo una guerra basata sull'istinto",
-                "search_query": "guerra di Trump istinto decisioni strategiche",
+                "search_query": "guerra Trump decisioni istintive",
                 "category": "politics"
             },
             {
                 "id": 1,
-                "claim_text": "La guerra di Trump non sta funzionando",
-                "search_query": "esito guerra Trump risultati strategia fallita",
+                "claim_text": "La guerra condotta da Trump non sta funzionando",
+                "search_query": "esito guerra Trump strategia fallita",
                 "category": "politics"
             },
             {
                 "id": 2,
-                "claim_text": "Jeremy Bowen afferma che Trump sta facendo errori",
-                "search_query": "Jeremy Bowen critica Trump decisioni guerra",
+                "claim_text": "Trump prende decisioni basate sull'istinto",
+                "search_query": "Trump decisioni politiche istinto",
                 "category": "politics"
             }
         ]
