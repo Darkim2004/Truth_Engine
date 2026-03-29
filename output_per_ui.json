@@ -1,36 +1,35 @@
 {
     "percentages": {
-        "truth": 20,
-        "falsity": 60,
-        "uncertainty": 20
+        "truth": 0,
+        "falsity": 100,
+        "uncertainty": 0
     },
     "verdict_label": "DISINFORMAZIONE",
     "explainability": {
-        "summary": "Il CLAIM secondo cui le proteine dei grilli modificano il DNA umano è considerato disinformazione a causa della scarsa qualità delle fonti che lo supportano e della presenza di affermazioni esagerate o false.",
-        "cross_check_result": "La fonte 'verita-nascoste-blog.it' cita affermazioni non supportate da prove scientifiche e contrasta con informazioni verificabili da fonti più attendibili come Nature.",
-        "strength_analysis": "L'analisi più solida proviene dalla fonte scientifica 'https://www.nature.com/articles/s41598-026-12345', che afferma che le proteine degli insetti non integrano il DNA umano.",
-        "consensus_level": "Basso",
-        "next_step": "Per una conferma definitiva, cercare studi peer-review più recenti e dati da fonti governative o universitarie."
+        "summary": "Il claim secondo cui Messi ha vinto il Pallone d'oro nel 2022 è falso. Secondo il dossier, il Pallone d'oro 2022 è stato vinto da Karim Benzema.",
+        "cross_check_result": "Il confronto tra le fonti del dossier rivela che il vincitore del Pallone d'oro 2022 è stato effettivamente Karim Benzema, e non Messi.",
+        "strength_analysis": "La prova più solida è data dalle informazioni presenti nel dossier, che citano fonti ufficiali come Wikipedia.",
+        "consensus_level": "Alto",
+        "next_step": "Per conferma definitiva, è possibile verificare ulteriormente le fonti ufficiali e gli archivi storici relativi al Pallone d'oro 2022."
     },
     "top_sources": {
         "supporting": [
             {
-                "url": "https://www.nature.com/articles/s41598-026-12345",
-                "reason": "Fornisce dati scientifici che smentiscono il CLAIM",
-                "title": "Studio sulla sicurezza delle proteine degli insetti"
+                "url": "https://it.wikipedia.org/wiki/Pallone_d%27oro_2022",
+                "reason": "Conferma il vincitore del Pallone d'oro 2022",
+                "title": "Pallone d'oro 2022 - Wikipedia"
             }
         ],
         "conflicting": [
             {
-                "url": "https://verita-nascoste-blog.it/pericolo-insetti",
-                "reason": "Diffonde informazioni non verificate e allarmistiche",
-                "title": "Blog su pericoli degli insetti"
+                "url": "",
+                "reason": "Nessuna fonte nel dossier supporta il claim",
+                "title": ""
             }
         ]
     },
     "analysis_tags": [
-        "Allarmismo",
-        "Dati Scientifici Contraddittori",
-        "Fonti Non Attendibili"
+        "Dati Scientifici",
+        "Fonti Ufficiali"
     ]
 }

@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Inizializziamo il client Groq
-# Assicurati che nel .env ci sia GROK_API_KEY=gsk_...
-client = Groq(api_key=os.getenv("GROK_API_KEY"))
+# Assicurati che nel .env ci sia GROQ_API_KEY=gsk_...
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def analyze_context_match(text, claim):
     prompt = f"""

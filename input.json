@@ -1,3 +1,22 @@
 {
-    "claim": "nessun claim rilevabile"
+    "metadata": {
+        "source_type": "user_input",
+        "timestamp": "",
+        "language": "it"
+    },
+    "original_source": {
+        "text_content": "messi ha vinto il pallone d'oro nel 2022",
+        "url": ""
+    },
+    "analysis": {
+        "engine": "LLM-Powered",
+        "claims_to_verify": [
+            {
+                "id": 0,
+                "claim_text": "messi ha vinto il pallone d'oro nel 2022",
+                "search_query": "pallone d'oro 2022 vincitore",
+                "category": "other"
+            }
+        ]
+    }
 }

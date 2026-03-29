@@ -13,7 +13,7 @@ from playwright.async_api import async_playwright, TimeoutError as PlaywrightTim
 from config import PLAYWRIGHT_TIMEOUT, PLAYWRIGHT_SCROLL_DELAY, PLAYWRIGHT_SCROLL_STEPS
 from models import FetchedPage
 
-console = Console()
+console = Console(legacy_windows=False)
 
 # Singleton per riutilizzare il browser
 _browser = None
@@ -43,11 +43,24 @@ async def close_browser():
     global _browser, _playwright
 
     if _browser:
-        await _browser.close()
-        _browser = None
+        try:
+            await _browser.close()
+        except OSError as e:
+            # Workaround Windows asyncio/playwright shutdown race.
+            if getattr(e, "errno", None) != 22:
+                raise
+        finally:
+            _browser = None
+
     if _playwright:
-        await _playwright.stop()
-        _playwright = None
+        try:
+            await _playwright.stop()
+        except OSError as e:
+            # Workaround Windows asyncio/playwright shutdown race.
+            if getattr(e, "errno", None) != 22:
+                raise
+        finally:
+            _playwright = None
 
 
 async def fetch_with_playwright(url: str) -> FetchedPage:
@@ -64,7 +77,7 @@ async def fetch_with_playwright(url: str) -> FetchedPage:
     try:
         from playwright_stealth import Stealth
     except ImportError:
-        console.print("  [red]✗[/red] playwright-stealth non installato o versione errata")
+        console.print("  [red][ERRORE][/red] playwright-stealth non installato o versione errata")
         return FetchedPage(
             url=url,
             fetch_method="playwright",
@@ -96,7 +109,7 @@ async def fetch_with_playwright(url: str) -> FetchedPage:
         try:
             await page.goto(url, wait_until="domcontentloaded", timeout=PLAYWRIGHT_TIMEOUT)
         except PlaywrightTimeout:
-            console.print(f"    [yellow]⏱[/yellow] Playwright timeout navigazione: {url[:60]}...")
+            console.print(f"    [yellow][TIMEOUT][/yellow] Playwright timeout navigazione: {url[:60]}...")
             await context.close()
             return FetchedPage(
                 url=url,
@@ -123,7 +136,7 @@ async def fetch_with_playwright(url: str) -> FetchedPage:
         await context.close()
 
         if html and len(html) > 500:
-            console.print(f"    [green]✓[/green] Playwright OK: {url[:60]}...")
+            console.print(f"    [green][OK][/green] Playwright OK: {url[:60]}...")
             return FetchedPage(
                 url=url,
                 html=html,

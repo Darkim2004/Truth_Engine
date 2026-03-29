@@ -3,8 +3,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Cambia GEMINI con GROK qui!
-chiave = os.getenv('GROK_API_KEY')
+# Cambia GEMINI con GROQ qui!
+chiave = os.getenv('GROQ_API_KEY')
 if chiave:
     print(f"DEBUG: La chiave inizia con: {chiave[:5]}...")
 else:

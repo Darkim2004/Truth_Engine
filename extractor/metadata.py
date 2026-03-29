@@ -9,7 +9,7 @@ from rich.console import Console
 
 from models import ArticleMetadata
 
-console = Console()
+console = Console(legacy_windows=False)
 
 
 def extract_metadata(html: str) -> ArticleMetadata:

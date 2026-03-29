@@ -17,7 +17,7 @@ from rich.console import Console
 
 from pipeline import run_pipeline
 
-console = Console()
+console = Console(legacy_windows=False)
 
 
 def main():
