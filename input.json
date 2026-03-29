@@ -5,7 +5,7 @@
         "language": "it"
     },
     "original_source": {
-        "text_content": "Italia vince mondiali di calcio nel 2006",
+        "text_content": "L'Ucraina è in guerra con il Vietnam",
         "url": ""
     },
     "analysis": {
@@ -13,9 +13,9 @@
         "claims_to_verify": [
             {
                 "id": 0,
-                "claim_text": "Italia vince mondiali di calcio nel 2006",
-                "search_query": "Italia risultati mondiali calcio 2006",
-                "category": "other"
+                "claim_text": "L'Ucraina è in guerra con il Vietnam",
+                "search_query": "conflitto Ucraina Vietnam",
+                "category": "politics"
             }
         ]
     }

@@ -23,7 +23,7 @@ def get_credibility_score(domain):
     clean_domain = extract_domain(domain) if "/" in domain else domain
     clean_domain = clean_domain.lower()
 
-    if clean_domain.endswith(".gov"):
+    if clean_domain.endswith(".gov") or "wikipedia." in clean_domain:
         return 1.0
 
     if "blog" in clean_domain:
@@ -32,8 +32,7 @@ def get_credibility_score(domain):
     quotidiani_maggiori = [
         "corriere.it", "repubblica.it", "ilsole24ore.com", "lastampa.it",
         "ilgiornale.it", "liberoquotidiano.it", "ansa.it",
-        "nytimes.com", "bbc.co.uk", "reuters.com", "theguardian.com",
-        "wikipedia.org"
+        "nytimes.com", "bbc.co.uk", "reuters.com", "theguardian.com"
     ]
     if any(q in clean_domain for q in quotidiani_maggiori):
         return 0.8

@@ -1,25 +1,46 @@
 {
     "percentages": {
-        "truth": 0,
-        "falsity": 0,
-        "uncertainty": 100
+        "truth": 19,
+        "falsity": 81,
+        "uncertainty": 0
     },
-    "verdict_label": "INCERTO",
+    "verdict_label": "DISINFORMAZIONE",
     "explainability": {
-        "summary": "Verdetto matematico: 0.0 punti per la conferma e 0.0 punti per la smentita.",
-        "cross_check_result": "Punteggi -> Conferma: 0.0 | Confuta: 0.0",
+        "summary": "Verdetto matematico: 0.5 punti per la conferma e 2.1 punti per la smentita.",
+        "cross_check_result": "Punteggi -> Conferma: 0.5 | Confuta: 2.1",
         "strength_analysis": "Il calcolo si basa sulla somma del peso (affidabilità) della fonte moltiplicato per ogni evidenza testuale (chunk) trovata e classificata.",
-        "consensus_level": "Nessuno",
-        "next_step": "Raccogliere ulteriori fonti."
+        "consensus_level": "Alto",
+        "next_step": "Nessun ulteriore approfondimento."
     },
     "top_sources": {
-        "supporting": [],
-        "conflicting": []
+        "supporting": [
+            {
+                "url": "https://geopolitica.info/parallelismi-tra-invasione-russa-ucraina-conflitto-sino-vietnamita/",
+                "reason": "[Peso 0.5] Paragona la Guerra Sino-Vietnamita del 1979 alla crisi ucraina, dimostrando che ci sono affinità tra i due conflitti",
+                "title": "geopolitica.info"
+            }
+        ],
+        "conflicting": [
+            {
+                "url": "https://it.wikipedia.org/wiki/Guerra_del_Vietnam",
+                "reason": "[Peso 0.8] Il chunk descrive la fine della guerra del Vietnam e la vittoria delle forze comuniste, ma non menziona l'Ucraina.",
+                "title": "it.wikipedia.org"
+            },
+            {
+                "url": "https://it.wikipedia.org/wiki/Guerra_del_Vietnam",
+                "reason": "[Peso 0.8] Il chunk descrive la fine della guerra del Vietnam e l'annessione del Vietnam del Sud al Vietnam del Nord, ma non menziona l'Ucraina.",
+                "title": "it.wikipedia.org"
+            },
+            {
+                "url": "https://geopolitica.info/parallelismi-tra-invasione-russa-ucraina-conflitto-sino-vietnamita/",
+                "reason": "[Peso 0.5] Descrive la guerra tra Ucraina e Russia, ma non menziona il Vietnam",
+                "title": "geopolitica.info"
+            }
+        ]
     },
     "analysis_tags": [
         "Calcolo Matematico",
-        "INCERTO"
+        "DISINFORMAZIONE"
     ],
-    "confidence_score": 80
-    "confidence_score": 80
+    "confidence_score": 65
 }
