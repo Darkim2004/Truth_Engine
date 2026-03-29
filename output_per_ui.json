@@ -1,35 +1,4 @@
 {
-    "percentages": {
-        "truth": 0,
-        "falsity": 100,
-        "uncertainty": 0
-    },
-    "verdict_label": "DISINFORMAZIONE",
-    "explainability": {
-        "summary": "Il claim secondo cui Messi ha vinto il Pallone d'oro nel 2022 è falso. Secondo il dossier, il Pallone d'oro 2022 è stato vinto da Karim Benzema.",
-        "cross_check_result": "Il confronto tra le fonti del dossier rivela che il vincitore del Pallone d'oro 2022 è stato effettivamente Karim Benzema, e non Messi.",
-        "strength_analysis": "La prova più solida è data dalle informazioni presenti nel dossier, che citano fonti ufficiali come Wikipedia.",
-        "consensus_level": "Alto",
-        "next_step": "Per conferma definitiva, è possibile verificare ulteriormente le fonti ufficiali e gli archivi storici relativi al Pallone d'oro 2022."
-    },
-    "top_sources": {
-        "supporting": [
-            {
-                "url": "https://it.wikipedia.org/wiki/Pallone_d%27oro_2022",
-                "reason": "Conferma il vincitore del Pallone d'oro 2022",
-                "title": "Pallone d'oro 2022 - Wikipedia"
-            }
-        ],
-        "conflicting": [
-            {
-                "url": "",
-                "reason": "Nessuna fonte nel dossier supporta il claim",
-                "title": ""
-            }
-        ]
-    },
-    "analysis_tags": [
-        "Dati Scientifici",
-        "Fonti Ufficiali"
-    ]
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kmt5w0hye32rjbm4tj01bzbw` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99996, Requested 2396. Please try again in 34m26.688s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "status": "failed"
 }
