@@ -7,7 +7,25 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from core.tabella_pesi import get_credibility_score, extract_domain
 from core.motore_verdetto import genera_verdetto_probabilistico
+from core.classificatore_evidenze import analyze_context_match
 from scoring.evidence_matcher import validate_evidence 
+
+def calcola_affidabilita_media(dossier):
+    """
+    CALCOLO MATEMATICO: 
+    Determina l'affidabilità basandosi solo sull'Autorità delle fonti trovate.
+    """
+    if not dossier:
+        return 0
+    
+    # Sommiamo i pesi autorità (che vanno da 0.1 a 1.0)
+    punteggio_ottenuto = sum([ev.get('score_fonte', 1.0) for ev in dossier])
+    # Il massimo teorico è il numero di fonti (se tutte avessero peso 1.0)
+    massimo_teorico = len(dossier) * 1.0 
+    
+    if massimo_teorico == 0: return 0
+    # Trasforma in base 100 per la UI del frontend
+    return int(round((punteggio_ottenuto / massimo_teorico) * 100))
 
 def salva_per_matteo(risultato, nome_file="output_per_ui.json"):
     """Salva il verdetto finale in un JSON leggibile dal Frontend."""
@@ -18,33 +36,41 @@ def salva_per_matteo(risultato, nome_file="output_per_ui.json"):
 def genera_dossier_completo(claim, search_results):
     """
     FASE 3: Riceve i risultati grezzi, chiama lo Scoring di Andrea,
+    estrae i chunk e li classifica singolarmente tramite LLM
     e aggiunge i Pesi Autorità del Core.
     """
     evidenze_validate = []
 
     for res in search_results:
-        # 1. CHIAMATA AL MOTORE DI ANDREA
-        # Gli passiamo url, testo e claim. Lui ci ridà i chunk (matches) e la similarità.
+        # Chiamata al motore di Andrea
         analisi_andrea = validate_evidence(
             url=res.get('url', ''),
             text=res.get('text', ''),
             claim=claim
         )
         
-        # 2. CALCOLO AUTORITÀ (Tuo Core)
-        # Estraiamo il dominio e cerchiamo il punteggio nella tua tabella pesi.
         domain = extract_domain(res.get('url', ''))
         score_fonte = get_credibility_score(domain)
         
-        # 3. IMPACCHETTAMENTO PER GROQ
-        # Costruiamo il dizionario con i dati di Andrea + i tuoi.
+        # Analizziamo ogni singolo chunk trovato da Andrea con l'LLM
+        chunks_analizzati = []
+        for match in analisi_andrea.get('matches', []):
+            chunk_text = match.get('chunk_text', '')
+            if chunk_text:
+                risultato_llm = analyze_context_match(chunk_text, claim)
+                chunks_analizzati.append({
+                    "testo": chunk_text,
+                    "categoria": risultato_llm.get("categoria", "NON_ATTINENTE"),
+                    "motivazione": risultato_llm.get("motivazione", "")
+                })
+        
         info = {
             "url": res.get('url'),
-            "score_fonte": score_fonte, # Tuo peso autorità
-            "max_similarity": analisi_andrea.get('max_similarity', 0.0), # Matematica Andrea
-            "supports_claim_math": analisi_andrea.get('supports_claim', False), # Soglia Andrea
-            # Mandiamo a Groq solo i paragrafi rilevanti (matches) trovati da Andrea
+            "score_fonte": score_fonte,
+            "max_similarity": analisi_andrea.get('max_similarity', 0.0),
+            "supports_claim_math": analisi_andrea.get('supports_claim', False),
             "top_matches": [m['chunk_text'] for m in analisi_andrea.get('matches', [])],
+            "chunks_analizzati": chunks_analizzati,
             "metadata": res.get('metadata', {})
         }
         
@@ -63,11 +89,15 @@ def truth_engine_main(claim, search_results):
     # STEP 1: Creazione del Dossier Arricchito (Scoring + Pesi)
     dossier = genera_dossier_completo(claim, search_results)
     
-    # STEP 2: Il Giudice Supremo (Groq) emette il verdetto
-    print("[LLM] Il Giudice Supremo sta elaborando il verdetto finale...")
+    # STEP 2: Calcolo Affidabilità (Media Pesata Autorità)
+    score_affidabilita = calcola_affidabilita_media(dossier)
+    
+    # STEP 3: Il Giudice Supremo (Groq) emette il verdetto
     verdetto_finale = genera_verdetto_probabilistico(claim, dossier)
     
-    # STEP 3: Salvataggio fisico per sicurezza e ritorno per Flask
+    # STEP 4: Inserimento del dato per il tachimetro di Matteo
+    verdetto_finale["confidence_score"] = score_affidabilita
+    
     salva_per_matteo(verdetto_finale)
     
     print("[FINE] Elaborazione completata con successo.\n")

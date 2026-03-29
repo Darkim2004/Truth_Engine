@@ -328,17 +328,21 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
                     "fonti_reali": []
                 })
 
-        # --- STEP 4: Mappatura per il frontend dashboard (Leggendo output_per_ui.json) ---
-        print(f"[STEP 4] Mapping per la dashboard da output_per_ui.json...")
-        
-        try:
-            with open('output_per_ui.json', 'r', encoding='utf-8') as f:
-                data_ui = json.load(f)
+        # --- STEP 4: Mappatura per il frontend dashboard ---
+        print(f"[STEP 4] Mapping per la dashboard...")
+
+        # Prendi il verdetto principale (primo claim o media)
+        # Prendi il verdetto principale (primo claim o media)
+        if verdetti:
+            main = verdetti[0]["verdetto"]
+            percentages = main.get("percentages", {})
+            truth_pct = percentages.get("truth", 50)
             
-            percentages = data_ui.get("percentages", {})
-            truth_pct = percentages.get("truth", 0)
-            label = data_ui.get("verdict_label", "INCERTO")
+            # ✅ ECCO IL TUO PARAMETRO RECUPERATO!
+            tuo_confidence_score = main.get("confidence_score", 0) 
             
+            label = main.get("verdict_label", "INCERTO")
+
             # Mappa colore in base al verdetto
             colore_map = {
                 "VERIFICATO": "#10b981",
@@ -361,24 +365,29 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
 
             # Costruisci fonti reali per il frontend dai dati dell'UI
             fonti_frontend = []
-            top_sources = data_ui.get("top_sources", {})
+            top_sources = main.get("top_sources", {})
             
-            # Aggiungiamo le fonti di supporto e contrasto
-            for src in top_sources.get("supporting", []):
+            for src in top_sources.get("supporting", []) + top_sources.get("conflicting", []):
                 fonti_frontend.append({
-                    "nome": src.get("title", "Fonte a supporto"),
-                    "snippet": src.get("reason", "Conferma il claim"),
-                    "url": src.get("url", "")
-                })
-            for src in top_sources.get("conflicting", []):
-                fonti_frontend.append({
-                    "nome": src.get("title", "Fonte in contrasto"),
-                    "snippet": src.get("reason", "Smentisce il claim"),
+                    "nome": src.get("title", "Fonte"),
+                    "snippet": src.get("reason", ""),
                     "url": src.get("url", "")
                 })
 
+            if not fonti_frontend:
+                for v in verdetti:
+                    for src in v.get("fonti_reali", [])[:2]:
+                        meta = src.get("metadata", {})
+                        fonti_frontend.append({
+                            "nome": meta.get("site_name") or meta.get("title", "Fonte"),
+                            "snippet": (meta.get("description") or src.get("article_text", ""))[:150],
+                            "url": src.get("url", "")
+                        })
+
+            # ✅ IL JSON FINALE CORRETTO PER LA DASHBOARD
             risultato_frontend = {
-                "affidabilita": truth_pct,
+                "affidabilita": tuo_confidence_score, # MUOVE IL TACHIMETRO (Tua Matematica)
+                "verita_percentuale": truth_pct,      # PER I GRAFICI A BARRE (Logica Groq)
                 "verdetto": verdetto_testo,
                 "colore": colore,
                 "fonti": fonti_frontend[:4],

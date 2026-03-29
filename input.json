@@ -5,29 +5,18 @@
         "language": "it"
     },
     "original_source": {
-        "text_content": "Titolo: Vøx 🇮🇹 2️⃣0️⃣2️⃣4️⃣ 🆇 Decima Vos Liberat | Pan è morto – L'informazione pericolosa. Descrizione: . Autore: ",
-        "url": "https://voxnews.info/"
+        "text_content": "i vaccini causano autismo",
+        "text_content": "i vaccini causano autismo",
+        "url": ""
     },
     "analysis": {
         "engine": "LLM-Powered",
         "claims_to_verify": [
             {
                 "id": 0,
-                "claim_text": "Pan è morto",
-                "search_query": "notizie sulla morte di Pan",
-                "category": "other"
-            },
-            {
-                "id": 1,
-                "claim_text": "Decima Vos Liberat",
-                "search_query": "sigificato di Decima Vos Liberat",
-                "category": "other"
-            },
-            {
-                "id": 2,
-                "claim_text": "L'informazione pericolosa",
-                "search_query": "informazione pericolosa e sua influenza",
-                "category": "other"
+                "claim_text": "i vaccini causano autismo",
+                "search_query": "vaccini e autismo studio scientifico",
+                "category": "health"
             }
         ]
     }
