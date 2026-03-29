@@ -1,17 +1,17 @@
 {
-    "affidabilita": 98,
-    "verdetto": "NOTIZIA VERIFICATA",
+    "affidabilita": 95,
+    "verdetto": "Informazione Verificata",
     "colore": "#10b981",
     "fonti": [
         {
-            "nome": "Ministero della Salute",
-            "url": "https://www.salute.gov.it",
-            "snippet": "I dati ufficiali confermano che la campagna vaccinale ha raggiunto il target previsto nel mese di marzo."
+            "nome": "Ansa.it",
+            "snippet": "La notizia è stata confermata dalle agenzie di stampa ufficiali dopo le verifiche incrociate.",
+            "url": "https://www.ansa.it"
         },
         {
-            "nome": "ANSA",
-            "url": "https://www.ansa.it",
-            "snippet": "Confermato il calo dell'inflazione allo 0.8% su base annua secondo l'ultimo report."
+            "nome": "Wikipedia",
+            "snippet": "Voce enciclopedica aggiornata con riferimenti bibliografici verificati.",
+            "url": "https://it.wikipedia.org"
         }
     ]
 }

@@ -116,6 +116,10 @@ def serve_config_js():
 def serve_script_js():
     return send_from_directory('front-end', 'script.js')
 
+@app.route('/test-case/<path:filename>')
+def serve_test_case(filename):
+    return send_from_directory('front-end/test-case', filename)
+
 # --- ROTTA 1: VERIFICA COMPLETA (Il motore di Andrea/Luigi) ---
 @app.route('/api/verify', methods=['POST'])
 def verify():

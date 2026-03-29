@@ -2,9 +2,6 @@
 const BACKEND_URL = "/elabora_completo";
 let currentMode = 'testo';
 
-
-
-
 async function processData() {
     const inputField = currentMode === 'testo' ? 'testoInput' : 'urlInput';
     const inputVal = document.getElementById(inputField).value.trim();
@@ -21,10 +18,35 @@ async function processData() {
     label.innerText = "AVVIO ANALISI...";
     container.classList.add('hidden');
 
-    try {
-        console.log("[DEBUG] Chiamata a:", BACKEND_URL);
+    // --- LOGICA TEST CASE (Simulazione locale) ---
+    if (inputVal.startsWith("test_")) {
+        const scenario = inputVal.split("_")[1]; // es: 'vero' o 'falso'
+        console.log("[DEBUG] Modalità TEST attivata:", scenario);
 
-        // Timeout di 2 minuti — la pipeline può essere lenta
+        try {
+            // Cerca i file nella cartella test-case (es: test-case/vero.json)
+            const response = await fetch(`./test-case/${scenario}.json`);
+            if (!response.ok) throw new Error("File di test non trovato");
+
+            const data = await response.json();
+
+            // Simula un'attesa di 1.5 secondi per dare realismo
+            setTimeout(() => {
+                renderDashboard(data);
+                resetUI(btn, loader, label);
+            }, 1500);
+            return; // Esci dalla funzione, non chiamare il backend reale
+        } catch (e) {
+            alert("Errore Test Case: Assicurati che esista il file /test-case/" + scenario + ".json");
+            resetUI(btn, loader, label);
+            return;
+        }
+    }
+
+    // --- FLUSSO REALE (Chiamata al Backend Flask) ---
+    try {
+        console.log("[DEBUG] Chiamata reale a:", BACKEND_URL);
+
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 120000);
 
@@ -38,7 +60,6 @@ async function processData() {
         clearTimeout(timeoutId);
 
         if (!response.ok) {
-            // Leggiamo il messaggio di errore dal server
             let serverMsg = "Errore sconosciuto dal server.";
             try {
                 const errData = await response.json();
@@ -50,71 +71,62 @@ async function processData() {
         }
 
         const data = await response.json();
-        console.log("[DEBUG] Dati ricevuti dal backend:", data);
-
-        // Se il backend risponde, mostriamo i dati
         renderDashboard(data);
 
     } catch (err) {
         console.error("[DEBUG] Errore:", err);
         if (err.name === 'AbortError') {
-            alert("Timeout: l'analisi ha impiegato troppo tempo (>2 min). Riprova.");
-        } else if (err.message === 'Failed to fetch' || err.message.includes('NetworkError')) {
-            alert("Errore di rete: il server non è raggiungibile.\n\nAssicurati che il server Flask sia attivo su http://127.0.0.1:5001\n(avvia con: python app.py)");
+            alert("Timeout: l'analisi ha impiegato troppo tempo (>2 min).");
         } else {
             alert("Errore durante l'analisi: " + err.message);
         }
     } finally {
-        btn.disabled = false;
-        loader.classList.add('hidden');
-        label.innerText = "AVVIA SCANSIONE";
+        resetUI(btn, loader, label);
     }
 }
 
 function renderDashboard(data) {
-    // Rendiamo visibile il container e scrolliamo verso i risultati
     const resultContainer = document.getElementById('resultContainer');
     resultContainer.classList.remove('hidden');
 
-    // Scroll aggressivo ai risultati — setTimeout per dare tempo al browser di renderizzare
-    setTimeout(() => {
-        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        // Fallback: forza scroll diretto
-        const rect = resultContainer.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        window.scrollTo({ top: scrollTop + rect.top - 20, behavior: 'smooth' });
-    }, 200);
-
-    // Recuperiamo i dati con nomi flessibili (mapping)
+    // 1. Recuperiamo lo score (es. 85)
     const score = data.affidabilita ?? data.score ?? 0;
     const verdetto = data.verdetto ?? data.label ?? "Analisi completata";
-    const colore = data.colore ?? data.color ?? "#6366f1";
-    const fonti = data.fonti ?? [];
 
+    // 2. LOGICA COLORE DINAMICO (Qui succede la magia)
+    let gaugeColor = "#ef4444"; // Rosso (Default)
+    if (score >= 75) {
+        gaugeColor = "#10b981"; // Verde (Affidabile)
+    } else if (score >= 40) {
+        gaugeColor = "#f59e0b"; // Giallo/Arancio (Dubbio)
+    }
+
+    // 3. Applichiamo il colore e l'animazione
     const arco = document.getElementById('gaugeArcoProgress');
     const pathLength = 251.32;
     const offset = pathLength - (score * pathLength / 100);
 
-    // Calcoliamo un colore specifico per l'affidabilità
-    let gaugeColor = "#ef4444"; // Rosso per bassa affidabilità
-    if (score >= 70) gaugeColor = "#10b981"; // Verde per alta affidabilità
-    else if (score >= 40) gaugeColor = "#f59e0b"; // Arancio media
-
     setTimeout(() => {
-        arco.style.stroke = gaugeColor;
+        // Applichiamo il colore dinamico solo ai testi, lasciando il gradiente nativo all'arco
+        arco.style.stroke = "url(#gaugeGradient)"; // Ripristina il gradiente per sicurezza
         arco.style.strokeDashoffset = offset;
-        document.getElementById('percentualeTesto').innerText = score + "%";
-        document.getElementById('percentualeTesto').style.color = gaugeColor;
-        document.getElementById('verdettoTesto').innerText = verdetto;
-        document.getElementById('verdettoTesto').style.color = colore;
+
+        const pctTesto = document.getElementById('percentualeTesto');
+        pctTesto.innerText = score + "%";
+        pctTesto.style.color = gaugeColor;
+
+        const verdTesto = document.getElementById('verdettoTesto');
+        verdTesto.innerText = verdetto;
+        verdTesto.style.color = gaugeColor;
     }, 100);
 
-    // Render fonti
     const lista = document.getElementById('listaFonti');
     lista.innerHTML = `<p class="text-[9px] uppercase font-bold text-slate-500 tracking-[0.3em] mb-4">Fonti Rilevate</p>`;
 
+    const fonti = data.fonti || [];
+
     if (fonti.length === 0) {
-        lista.innerHTML += `<p class="text-slate-600 text-[11px] italic">Nessuna fonte specifica trovata, verdetto basato su analisi cross-referencing.</p>`;
+        lista.innerHTML += `<p class="text-slate-600 text-[11px] italic">Nessuna fonte specifica trovata.</p>`;
     } else {
         fonti.forEach(f => {
             const card = document.createElement('div');
@@ -125,19 +137,16 @@ function renderDashboard(data) {
                     <span class="text-[8px] bg-slate-800 text-slate-400 px-2 py-1 rounded-full font-bold uppercase">Live</span>
                 </div>
                 <p class="text-slate-400 text-[11px] leading-relaxed mb-4">"${f.snippet || 'Dettaglio non disponibile'}"</p>
-                <a href="${f.url}" target="_blank" class="text-indigo-400 text-[9px] font-black uppercase tracking-widest hover:text-white transition-colors">Vai alla fonte</a>
+                <a href="${f.url || '#'}" target="_blank" class="text-indigo-400 text-[9px] font-black uppercase tracking-widest hover:text-white transition-colors">Vai alla fonte</a>
             `;
             lista.appendChild(card);
         });
     }
 }
 
-
-
 function switchMode(mode) {
     if (currentMode === mode) return;
     currentMode = mode;
-
     const btnT = document.getElementById('tabTesto');
     const btnU = document.getElementById('tabUrl');
     const contT = document.getElementById('containerTesto');
@@ -159,15 +168,12 @@ function switchMode(mode) {
     }
 }
 
-
-
 function resetUI(btn, loader, label) {
     btn.disabled = false;
     loader.classList.add('hidden');
-    label.innerText = "Avvia Scansione";
+    label.innerText = "AVVIA SCANSIONE";
 }
 
-// Supporto tasto Enter
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
         const activeId = document.activeElement.id;
@@ -177,7 +183,6 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
-
 
 function resetAll() {
     document.getElementById('testoInput').value = "";

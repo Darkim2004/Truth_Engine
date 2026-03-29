@@ -5,7 +5,7 @@
         "language": "it"
     },
     "original_source": {
-        "text_content": "test_vero",
+        "text_content": "cose varie",
         "url": ""
     },
     "analysis": {
@@ -13,8 +13,8 @@
         "claims_to_verify": [
             {
                 "id": 0,
-                "claim_text": "test_vero",
-                "search_query": "test vero significato",
+                "claim_text": "cose varie",
+                "search_query": "definizione di cose varie",
                 "category": "other"
             }
         ]
