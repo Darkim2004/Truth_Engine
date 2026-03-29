@@ -1,0 +1,5627 @@
+{
+    "vaccinesrevealed.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "indystar.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "transparency.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "sanevax.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "pe.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "realcleardefense.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "newsrescue.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "politico.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "lifehacker.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "liberationnews.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "quackwatch.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "columbiadailyherald.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "newatlas.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "sciencenews.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "glamour.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "chicagotribune.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "afp.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "politicsthatwork.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "who.int": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "bridgemi.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "openthegovernment.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "democratandchronicle.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "sunlightfoundation.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "nextgov.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "heraldsun.com.au": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "worldsocialism.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "aidc.org.za": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "city-journal.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "time.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "thefrisky.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "dallasvoice.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "atlantablackstar.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "harvardpolitics.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "teapartypatriots.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "fresnobee.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "abovetopsecret.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "globalintegrity.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "tharawat-magazine.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "americanprogress.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "aaas.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "theeventchronicle.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "rfa.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "qz.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "principia-scientific.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "cnet.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "howstuffworks.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "plos.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "panampost.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "fortune.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "wsj.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "fraserinstitute.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "inquirer.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "theglobeandmail.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ire.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "shameproject.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "9news.com.au": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "consumerist.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "votevets.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "metabunk.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "newsweek.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "powerlineblog.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "wikipedia.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "nextavenue.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "theconservativetreehouse.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "theconversation.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "monthlyreview.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "peacock-panache.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "eurasiagroup.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "newslookup.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "bluestemprairie.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "emptywheel.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "themilitant.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "studentnewsdaily.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "theintellectualist.co": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "thejournal.ie": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "fullfact.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "engadget.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "economicshelp.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "tvw.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "ispp.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "thefingnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "washingtonbabylon.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "activistpost.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "davidicke.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "cookpolitical.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "gaystarnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "gotquestions.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "thecommonsenseshow.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "nextbigfuture.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "whydontyoutrythis.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "desertsun.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "newsday.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ncpolicywatch.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "neurosciencenews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "progressivearmy.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "news.sky.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "chinapost.com.tw": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "politicalblindspot.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "msn.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "healthnutnews.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "icenews.is": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "medicine.news": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "hsionline.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "cato.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "democracynow.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "freedomhouse.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "cityandstateny.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "thebureauinvestigates.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "ucsusa.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "azcentral.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "thesmokinggun.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "americanscientist.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "punchingbagpost.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "nowtheendbegins.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "worldpoliticsreview.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "fastcompany.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "hoover.org/publications/policy-review": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "thestranger.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ncse.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "journal.frontiersin.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "calgaryherald.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ahtribune.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "cnbc.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "pri.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "disobedientmedia.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "startribune.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "lawnewz.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "newsela.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "nrdc.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "morningledger.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "liberalmountain.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "faithfamilyamerica.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "miaminewtimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "themarysue.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "economist.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "wilsoncenter.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "triblive.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "baptistnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "sandiegouniontribune.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "geopoliticsalert.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "thetab.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "maplight.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "jstor.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "publicpolicypolling.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "breakthrough.holylandnutrition.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "stopfake.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ncbi.nlm.nih.gov": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "nytimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "newmatilda.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "bostonglobe.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "bjreview.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "postbulletin.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "gq.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "thebalance.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "debatepost.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "cpj.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "earthmagazine.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "realclimate.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "thebaffler.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "thestar.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "represent.us": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "newrepublic.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "srnnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "abc.net.au": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "hollywoodreporter.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "mysanantonio.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "nation.com.pk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "westmonster.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "fitsnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "morningstaronline.co.uk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "bust.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "agerpres.ro": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "wired.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "news.harvard.edu": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "taskandpurpose.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "pressherald.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "teapartytribune.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "tytnetwork.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "freep.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "oilprice.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "nationalmemo.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "theness.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "theihs.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "theoslotimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "merionwest.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "afr.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "realclearinvestigations.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "skeptic.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "americanfreepress.net": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "nationalobserver.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "followthemoney.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "thehayride.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "usafacts.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "investigaterussia.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "bostonherald.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "quantamagazine.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "pacificresearch.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "rollingstone.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "usahitman.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "torontosun.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "feministing.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "cscmediagroupus.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "leftaction.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "mentalfloss.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "stpete4peace.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "uft.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "thirdway.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "recode.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "al-monitor.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "councilforthenationalinterest.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "bmj.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "metro.co.uk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "washingtontimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "americablog.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "rense.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "standard.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "kuow.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "daily49er.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "huffingtonpost.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "quillette.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "france24.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "reuters.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "thesaturdaypaper.com.au": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "publicintegrity.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "assassinationscience.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "wallstreetonparade.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "thesunmagazine.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "geoengineeringwatch.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "usatoday.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "electronicintifada.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "mediashift.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "latimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "toinformistoinfluence.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "politifact.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "kentucky.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "smh.com.au": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "piie.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "leftfootforward.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "stormcloudsgathering.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "reporterslab.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "dailyhive.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "c-span.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "timesunion.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "newint.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "countdowntozerotime.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "sfchronicle.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ebar.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "politicususa.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "belfercenter.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "geologyin.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "nautil.us": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "lohud.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "collective-evolution.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "deseretnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "justfacts.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "orlandosentinel.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "advocate.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "pnas.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "wakeup-world.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "iwf.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "esquire.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "mexiconewsdaily.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "whatreallyhappened.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "csglobe.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "rightweb.irc-online.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "govtslaves.info": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "gallup.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "voiceofsandiego.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "crosscut.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "naturalcuresnotmedicine.info": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "itv.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "outlook.monmouth.edu": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "historynewsnetwork.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "theguardiansofdemocracy.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "answersingenesis.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "religionnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "epi.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "defenseone.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "skyandtelescope.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "shareably.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "democracy21.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "bitchmedia.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "valuewalk.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "kansascity.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "illuminati-news.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "freespeech.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "albawaba.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "christianscience.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "villagevoice.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "libertyviral.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "dailypress.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "armstrongeconomics.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "splcenter.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "richmond.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "christianitytoday.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "washingtonjournal.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "astronomy.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "wgntv.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "bustle.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "themilreview.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "consortiumnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "nakedcapitalism.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "militarytimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "congress.gov": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "infiniteunknown.net": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "charismanews.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "stltoday.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "jointcenter.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "commdiginews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "chicagoreader.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "nymag.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "bdnews24.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "conspiracyplanet.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "rsf.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "aps.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "foreignpolicy.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "this.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "emirates247.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "circa.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "publicinterestlegal.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "chroniclesofdemocracy.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "freewestmedia.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "statesmanjournal.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "deadspin.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "urban.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "harpers.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "oklahoman.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "rollcall.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "mwcnews.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "knowyourmeme.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "theestablishment.co": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "themoscowtimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "opposingviews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "insidehighered.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "bgr.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "reason.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "al.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "berkshireeagle.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "resourcegovernance.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "twisted.news": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "economictimes.indiatimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "greensboro.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "vox.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "thejakartapost.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "arabnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "hudson.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "daltondailycitizen.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "slate.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "larouchepac.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "nih.gov": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "ohio.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "theverge.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "techxplore.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "thewest.com.au": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "truthbetold.news": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "en.bbarta24.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "public.wmo.int": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "earth.columbia.edu": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "abcnews.go.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ivn.us": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "mediaite.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "whale.to": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "washingtonmonthly.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "nodisinfo.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "fellowshipoftheminds.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "castanet.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "janes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "policyed.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "standard.co.uk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "thegazette.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "uproxx.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "mcclatchydc.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "au.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "infowars.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "putintrump.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "thefiscaltimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "www3.nhk.or.jp": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "silive.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "newsone.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "tribunemagazine.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "escapeallthesethings.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "gizmodo.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "statnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "insidephilanthropy.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "bullshido.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "jpost.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "neonnettle.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "factscan.ca": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "news-gazette.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "jta.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "doubtfulnews.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "israelnationalnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "propublica.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "spectator.co.uk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "ourhealthguides.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "sbs.com.au": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "medscape.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "govexec.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "upi.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "samefacts.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "humansarefree.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "japantoday.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "independent.ie": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "carnegieendowment.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "independent.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "curvemag.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "irrawaddy.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "skeptics.com.au": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "scarymommy.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "cctv-america.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "indianexpress.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "justfactsdaily.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "necn.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "factmyth.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "tass.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "skepticalscience.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "shoebat.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "statesman.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "investopedia.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "greentechmedia.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "group30.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "desmoinesregister.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "chicago.suntimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "theskimm.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "prwatch.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "adl.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "staradvertiser.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "thisisthezerohour.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "rapturenewsnetwork.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "hurriyetdailynews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "theburningspear.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "tampabay.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "macleans.ca": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "english.aawsat.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "theoutline.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "warontherocks.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "foreignaffairs.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "metro.us": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "international.thenewslens.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "libertyvideos.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "csmonitor.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "natmonitor.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "baltimoresun.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "undergroundhealth.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "rationalwiki.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "euromaidanpress.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "procon.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "hpenews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "wilderness.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "psychologytoday.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "lexingtoninstitute.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "house.gov": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "mediamatters.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "thechristianleft.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "progressive.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "australiannationalreview.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "sayfiereview.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "wattsupwiththat.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "taxpayer.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "phnompenhpost.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "english.ahram.org.eg": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "populardemocracy.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "worldcantwait.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "knowledgeoftoday.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "bellingcat.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "eng.majalla.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "worldaffairsjournal.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "tennesseestar.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "theguardian.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "eagletribune.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "unicornriot.ninja": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "globaltimes.cn": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "citizen-times.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ammoland.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "ocregister.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "truthbroadcastnetwork.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "people.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "amnesty.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "theweek.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "foreignpolicyi.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "csis.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "change.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "dataasylum.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "realclearscience.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "atlanticmedia.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "rescue.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "en.wikipedia.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "knightfoundation.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "prophecytoday.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "space.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "telegraph.co.uk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "parallax.news": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "learnliberty.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "votesmart.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "niskanencenter.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "christiantoday.info": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "familysurvivalheadlines.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "aol.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "lgbtqnation.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "leftjustified.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "interpretermag.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "watchers.news": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "hrw.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "chicagoreporter.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "trueviralnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "worldtribune.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "popsci.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "worldtruth.tv": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "federaltimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "bigthink.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "nationalnewswatch.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "kff.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "firstpost.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "rooseveltinstitute.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "cleveland.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "theage.com.au": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "newhumanist.org.uk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "sciencebasedmedicine.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "dw.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "deadline.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "aljazeera.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "strategic-culture.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "eurasiareview.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "americamagazine.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "businessinsider.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "healthy-vibes.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "commonwealthfund.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "antinewsnetwork.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "reverepress.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "phys.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "newsobserver.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "nasa.gov": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "fairvote.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "jamestown.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "treehugger.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "rstreet.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "bnonews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "lfpress.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "salon.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "pastemagazine.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "nationalreview.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "dailynews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "pakalertpress.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "lavendermagazine.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "aranews.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "irena.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "inthesetimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "sourcewatch.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "washingtonblade.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "the-japan-news.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "billmoyers.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "leftcenter"
+    },
+    "fpri.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "right-center"
+    },
+    "cdt.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "rep-am.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "independent.co.uk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "seattlepi.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "peninsuladailynews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "smithsonianmag.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "sociable.co": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "govtrack.us": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "nationinstitute.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "spokesman.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "therundownlive.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "usnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "chronicle.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "evonomics.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "oilandwaterdontmix.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "desmogblog.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "fpif.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "insidesources.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "pbs.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "thedailyvox.co.za": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "grist.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "thecipherbrief.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "mackinac.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "governing.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "edmontonjournal.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "polygraph.info": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "rabble.ca": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "good.is": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "farleftwatch.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "ageofautism.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "mercurynews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "turkeyandfacts.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "realnews24.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "commondreams.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "dcreport.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "mlive.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "cbpp.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "icr.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "honestreporting.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "revolution-news.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "autisticadvocacy.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "listverse.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "stratfor.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "thenewatlantis.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "conflict-news.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "deadstate.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "news.trust.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "cfr.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "prri.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "news.cn": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "thenewstribune.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "collectivelyconscious.net": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "blog.countable.us": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "manhattan-institute.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "nber.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "elpasotimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "medicalxpress.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "sitsshow.blogspot.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "ynetnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "limacharlienews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "express.co.uk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "straitstimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "backedbyfact.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "timescolonist.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "independent.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "thefederalist.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "thenews.mx": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "archaeology.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "thelocal.no": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ydr.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "defenddemocracy.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "outsidethebeltway.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "eppc.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "everydayfeminism.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "securingdemocracy.gmfus.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "popularmechanics.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "thehindubusinessline.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "pantagraph.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "spiegel.de": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "reviewjournal.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "gulfnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "afpc.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "forwardprogressives.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "thelibertybeacon.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "cbsnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "stripes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "noozhawk.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "weeklystandard.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "anthropocenemagazine.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "dutchdailynews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "sun-sentinel.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "tomdispatch.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "americanactionforum.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "anonews.co": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "transpartisanreview.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "the-scientist.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "therealnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "educate-yourself.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "newsite.thehindu.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "americanindependent.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "themonthly.com.au": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "cftni.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "townhall.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "newsy.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "heavy.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "commentarymagazine.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "sctimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "seeker.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "ajc.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "technologyreview.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "gearsofbiz.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "therightscoop.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "everynewshere.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "courant.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "scientificamerican.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "usaspending.gov": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "sootoday.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "thelastgreatstand.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "jesus-is-savior.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "webmd.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "couriermail.com.au": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "thecontroversialfiles.net": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "axios.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "redpepper.org.uk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "globalnews.ca": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "understandrealitythroughscience.blogspot.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "worldpolicy.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "arstechnica.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "photographyisnotacrime.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "cleantechnica.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "leftcenter"
+    },
+    "algemeiner.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "bangkokpost.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "courier-journal.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "lawfareblog.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "newbernsj.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "prospect.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "carolinapublicpress.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "citizencritics.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "leftvoice.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "digg.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "curiousmindmagazine.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "miamiherald.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "disclose.tv": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "affinitymagazine.us": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "themoderatevoice.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "c4ads.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "capoliticalreview.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "climatefeedback.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "military.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "wral.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "seattletimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "newamerica.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "taxpolicycenter.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "web.randi.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "sciencedaily.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "pewresearch.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "thehumanist.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "topinfopost.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "whatstheharm.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "theepochtimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "truthorfiction.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "truthchannelpolitics.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "pri.org/programs/globalpost": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ciponline.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "leftcenter"
+    },
+    "wvgazettemail.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "truthdig.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "timesofsandiego.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "politicalcritique.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "eff.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "chicksontheright.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "climaterealityproject.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "tallahassee.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "adn.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "star-telegram.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "stocknewsusa.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "wikileaks.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "redorbit.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "project-syndicate.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "centerforinquiry.net": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "delawareonline.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "everycrsreport.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "ibtimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "thetyee.ca": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ced.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "zmescience.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "thenewsliteracyproject.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "the-daily.buzz": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "texastribune.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "news24.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "nationalpost.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "psypost.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "nationalgeographic.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "fortnightlyreview.co.uk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "apnews.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "gulagbound.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "dailydot.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "mprnews.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "tbo.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "thinkingmomsrevolution.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "countercurrents.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "thelibertarianrepublic.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "i24news.tv": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "ctj.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "northjersey.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "opendemocracy.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "thebulletin.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "theaustralian.com.au": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "fromthetrenchesworldreport.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "yesmagazine.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "guardianlv.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "darientimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "scotusblog.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "charlotteobserver.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "newleftreview.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "thevarsity.ca": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "marketwatch.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "contrailscience.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "breakingdefense.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "wn.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "talkingpointsmemo.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "npr.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "worldpress.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "theautomaticearth.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ips-dc.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "jacksonville.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "nationalacademyofsciences.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "thewhim.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "godlikeproductions.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "theintercept.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "discovery.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "sciencedebate.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "valleynewslive.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "bluelivesmatter.blue": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "dpa-international.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "thewalrus.ca": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "airwars.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "thetruthseeker.co.uk": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "aclu.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "iflscience.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "forward.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "irishtimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "newpol.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "savethemales.ca": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "thatsnonsense.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "mintpressnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "beinglibertarian.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "smirkingchimp.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "leftwingnation.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "wakingtimes.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "zeit.de": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "skeptiko.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "restoreamericanglory.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "cbc.ca": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "news.com.au": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "sciencealert.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "timesofindia.indiatimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "sciencedirect.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "discovermagazine.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "amny.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "exposingtruth.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "egbertowillies.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "sheepkillers.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "alaraby.co.uk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "vocativ.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "thedailybanter.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "awarenessact.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "insideclimatenews.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "whatmattersnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "oregonlive.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "pennlive.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ipolitics.ca": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "currentaffairs.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "newmoderate.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "washingtonpost.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "icrw.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "healthimpactnews.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "ft.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "latintimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "themarshallproject.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "justsecurity.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "antifascistnews.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "montrealgazette.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "motherjones.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "texasstandard.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "readingthepictures.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "bradford-delong.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "endtimeheadlines.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "earthpulse.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "cosmicintelligenceagency.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "viralnewsnetwork.net": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "vaccines.news": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "stormfront.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "independentsentinel.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "climatecentral.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "toledoblade.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "csicop.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "wearethemighty.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "factbox.tv": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "helsinkitimes.fi": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "brief.news": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "thediplomat.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "crfb.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "rudaw.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "autostraddle.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "en.mercopress.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "theatlantic.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ballotpedia.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "ozy.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "boingboing.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "financialexpress.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "denverpost.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "sojo.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "buffalonews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "upworthy.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "timesofisrael.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "weforum.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "windsorstar.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "sfgate.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "israelhayom.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "skeptoid.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "newsandgutsmedia.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "youthrights.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "nature.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "credoaction.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "vancouversun.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "daily.jstor.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "soas.ac.uk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "retractionwatch.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "elisabethparker.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "lethbridgeherald.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "reflectionofmind.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "memepoliceman.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "placesjournal.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "dispatch.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "cei.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "thewire.in": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "snopes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "opensecrets.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "fair.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ffrf.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "aip.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "english.alarabiya.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "remingtonresearchgroup.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "climateactiontracker.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "arkansasonline.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "nj.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "lozierinstitute.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "realclearpolicy.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "inequalitymedia.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "redstatewatcher.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "canadiandimension.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "newstatesman.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "jacobinmag.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "cbo.gov": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "jewsnews.co.il": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "post-gazette.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "freemedia.at": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "kmov.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "kansas.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "detroitnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "evolutionnews.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "dailyclimate.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "bbc.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "leftcenter"
+    },
+    "thecanary.co": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "akkadiantimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "commoncause.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "roanoke.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "mercola.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "intellihub.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "anonhq.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "doctorswithoutborders.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "cincinnati.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "euronews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "unionleader.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "blackagendareport.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "medicaldaily.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "morningconsult.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "mondoweiss.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "bettergov.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "themindunleashed.org": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "spectator.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "nbcnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "mayoclinic.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "helvidius.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "highline.huffingtonpost.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "kfor.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "journals.sagepub.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "jonesreport.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "voanews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "iea.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "globalvoices.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "syriahr.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ottawacitizen.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "manilatimes.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "prospectmagazine.co.uk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "pilotonline.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "thedailysheeple.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "cosmopolitan.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "cnas.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "politicalstorm.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "jewishpress.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "pinknews.co.uk": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "verifiedpolitics.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "mashable.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "washingtonexaminer.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "futurism.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "dailybusinessreview.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "alliedprogress.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "hoax-slayer.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "ctvnews.ca": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "pressprogress.ca": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "pgpf.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "amtvmedia.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "vanityfair.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "coasttocoastam.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "scienceillustrated.com.au": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "chron.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "fee.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "c4ss.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "realjewnews.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "mainebeacon.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "edmontonsun.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "feministfrequency.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "trofire.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "thetruthaboutguns.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "attn.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "icij.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "tucson.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "freakonomics.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "jordantimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "airspacemag.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "stimson.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "freepress.net": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "sltrib.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "guttmacher.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "cgdev.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "projectcensored.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "greenvillegazette.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "euobserver.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "cjnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "goodnewsnetwork.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "corbettreport.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "cjr.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "newscientist.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "koco.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "nolabels.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "theroot.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "acculturated.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "abqjournal.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "carbonated.tv": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "swedishwire.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "globalskywatch.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "dallasnews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "acsh.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "rewire.news": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "ifamericaknew.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "hotair.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "skepticink.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "aap.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "filmingcops.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "atlanticcouncil.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "sustainablepulse.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "thenation.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "sacbee.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "ijr.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "dailyoccupation.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "prisonplanet.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "wearyourvoicemag.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "fivethirtyeight.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "financialpost.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "shadowproof.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "thenational.ae": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "thedailybeast.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "illuminatiwatcher.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "debunkingskeptics.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "sciencemag.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "the-american-interest.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "dieharddemocrat.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "africanews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "ajaonline.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "blacklivesmatter.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "scoopnest.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "ejinsight.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "theknifemedia.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "thegrio.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "vigilantcitizen.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "scienceblogs.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "theforbiddenknowledge.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "taipeitimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "backchannel.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "leftcenter"
+    },
+    "thrivemovement.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "fas.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "nationalinterest.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "bloomberg.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "brookings.edu": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "leftcenter"
+    },
+    "counterpunch.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "crimethinc.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "dailytarheel.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "nationmaster.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "journalnow.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "althealthworks.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "trunews.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "verrit.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "yellowhammernews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "chronicle.augusta.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "whatdoesitmean.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "abovethelaw.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "gazette.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "riverbender.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "liveleak.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "providencejournal.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "mic.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "scicentral.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "pro-science"
+    },
+    "elpais.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "tcf.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "business2community.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "newyorker.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "skepdic.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "eastbaytimes.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "voiceofamericatv.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "sites.agu.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "fifthestate.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "asheepnomore.net": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "universitybusiness.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "apsa.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "takepart.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "libertynation.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "prnewswire.mediaroom.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "verywell.com": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "haaretz.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "illinoispolicy.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "jsonline.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "constitutionproject.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "theamericanconservative.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "tennessean.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "factcheck.org/scicheck": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "adaa.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "realfarmacy.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "realclearpolitics.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "observer.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "wnyc.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "scmp.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "societyforscience.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "pro-science"
+    },
+    "msmagazine.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "nola.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "newrevolutionnow.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right"
+    },
+    "observatory.journalism.wisc.edu": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "sofrep.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "americanfirearms.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "nationaljournal.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "omaha.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "fakenewscodex.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "deathandtaxesmag.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "dissentmagazine.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "crisisgroup.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "techcrunch.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "zcomm.org": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "left"
+    },
+    "novinite.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "calgarysun.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "right-center"
+    },
+    "christiantimesnewspaper.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "poynter.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "pulsegulfcoast.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "chinadaily.com.cn": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "healthcarefinancenews.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "ihealthtube.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "aeon.co": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    },
+    "taxfoundation.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "right-center"
+    },
+    "pogo.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "newsinsideout.com": {
+        "score": 0.1,
+        "label": "MBFC Low Factual",
+        "category": "Disinformation"
+    },
+    "dailyrecord.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "center"
+    },
+    "journals.cambridge.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "factcheck.org": {
+        "score": 1.0,
+        "label": "MBFC Very high",
+        "category": "center"
+    },
+    "philly.com": {
+        "score": 0.8,
+        "label": "MBFC High",
+        "category": "leftcenter"
+    }
+}

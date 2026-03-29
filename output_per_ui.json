@@ -1,34 +1,50 @@
 {
     "percentages": {
-        "truth": 75,
-        "falsity": 25,
+        "truth": 0,
+        "falsity": 100,
         "uncertainty": 0
     },
-    "verdict_label": "VERIFICATO",
+    "verdict_label": "DISINFORMAZIONE",
     "explainability": {
-        "summary": "Verdetto matematico: 0.0 punti per la conferma e 1.6 punti per la smentita.",
-        "cross_check_result": "Punteggi -> Conferma: 0.0 | Confuta: 1.6",
+        "summary": "Verdetto matematico: 0.0 punti per la conferma e 4.0 punti per la smentita.",
+        "cross_check_result": "Punteggi -> Conferma: 0.0 | Confuta: 4.0",
         "strength_analysis": "Il calcolo si basa sulla somma del peso (affidabilità) della fonte moltiplicato per ogni evidenza testuale (chunk) trovata e classificata.",
         "consensus_level": "Alto",
-        "next_step": "Raccogliere ulteriori fonti."
+        "next_step": "Nessun ulteriore approfondimento."
     },
     "top_sources": {
-        "supporting": [
+        "supporting": [],
+        "conflicting": [
             {
-                "url": "https://www.corriere.it/oriente-occidente-federico-rampini/26_marzo_25/trump-chiudere-guerra-iran-pentagono-9ac12bfd-ec3d-48e9-a34e-c0564d023xlk.shtml",
-                "reason": "[Peso 0.8] Spiega che gli obiettivi sono stati colpiti e che gli Stati Uniti e Israele stanno esaurendo gli obiettivi",
-                "title": "www.corriere.it"
+                "url": "https://it.wikipedia.org/wiki/Presunta_correlazione_tra_vaccini_e_autismo",
+                "reason": "[Peso 1.0] Specificatamente esclude l'associazione tra vaccini e autismo",
+                "title": "it.wikipedia.org"
             },
             {
-                "url": "https://www.corriere.it/oriente-occidente-federico-rampini/26_marzo_25/trump-chiudere-guerra-iran-pentagono-9ac12bfd-ec3d-48e9-a34e-c0564d023xlk.shtml",
-                "reason": "[Peso 0.8] Sostiene che la guerra è rallentata significativamente, a differenza delle affermazioni ufficiali che continuano a mantenere la massima intensità operativa",
-                "title": "www.corriere.it"
+                "url": "https://it.wikipedia.org/wiki/Presunta_correlazione_tra_vaccini_e_autismo",
+                "reason": "[Peso 1.0] Riconferma la contrarietà tra vaccini e autismo nella letteratura scientifica",
+                "title": "it.wikipedia.org"
+            },
+            {
+                "url": "https://it.wikipedia.org/wiki/Presunta_correlazione_tra_vaccini_e_autismo",
+                "reason": "[Peso 1.0] Menzione di casi di tribunale che confermano la contrarietà tra vaccini e autismo è da considerarlo insussistente.",
+                "title": "it.wikipedia.org"
+            },
+            {
+                "url": "https://www.epicentro.iss.it/vaccini/CommentoSalmaso2014",
+                "reason": "[Peso 0.5] Non è stata evidenziata alcuna correlazione tra vaccinazioni e autismo.",
+                "title": "www.epicentro.iss.it"
+            },
+            {
+                "url": "https://www.epicentro.iss.it/vaccini/CommentoSalmaso2014",
+                "reason": "[Peso 0.5] Numerose ricerche hanno confermato che non esiste una relazione causale tra vaccino MPR e autismo.",
+                "title": "www.epicentro.iss.it"
             }
         ]
     },
     "analysis_tags": [
         "Calcolo Matematico",
-        "VERIFICATO"
+        "DISINFORMAZIONE"
     ],
     "confidence_score": 75
 }

@@ -2,19 +2,15 @@ import os
 import json
 from urllib.parse import urlparse
 
-# Caricamento della libreria fonti massiva (Dataset Fact-Check)
+# Caricamento della libreria MBFC (Dataset Fact-Check di drmikecrowe)
 LIBRERIA_FONTI = {}
-dataset_path = os.path.join(os.path.dirname(__file__), 'libreria_fonti.json')
+dataset_path = os.path.join(os.path.dirname(__file__), 'database_affidabilita.json')
 if os.path.exists(dataset_path):
     try:
         with open(dataset_path, 'r', encoding='utf-8') as f:
             LIBRERIA_FONTI = json.load(f)
     except Exception as e:
-        print(f"[WARNING] Impossibile caricare libreria_fonti.json: {e}")
-
-CATEGORIE_ALTA_AFFIDABILITA = ["reliable"]
-CATEGORIE_MEDIA_AFFIDABILITA = ["bias", "satire", "clickbait"]
-CATEGORIE_FALSA_AFFIDABILITA = ["fake", "conspiracy", "junksci", "hate", "unreliable"]
+        print(f"[WARNING] Impossibile caricare database_affidabilita.json: {e}")
 
 def extract_domain(url):
     """
@@ -30,7 +26,7 @@ def extract_domain(url):
 
 def get_credibility_score(domain):
     """
-    Calcola il punteggio interpolando la libreria internazionale e la whitelist italiana.
+    Calcola il punteggio interpolando la libreria MBFC e la whitelist italiana.
     """
     clean_domain = extract_domain(domain) if "/" in domain else domain
     clean_domain = clean_domain.lower()
@@ -39,15 +35,12 @@ def get_credibility_score(domain):
     if clean_domain.endswith(".gov") or "wikipedia." in clean_domain:
         return 1.0
 
-    # 2. Controllo contro la Libreria OpenSources (800+ domini catalogati)
+    # 2. Controllo contro la Libreria MBFC estratta dallo script custom
     if clean_domain in LIBRERIA_FONTI:
-        tipo = str(LIBRERIA_FONTI[clean_domain].get("type", "")).lower()
-        if tipo in CATEGORIE_ALTA_AFFIDABILITA:
-            return 0.9
-        elif tipo in CATEGORIE_MEDIA_AFFIDABILITA:
-            return 0.3
-        elif tipo in CATEGORIE_FALSA_AFFIDABILITA:
-            return 0.1
+        # Peskiamo direttamente lo score pre-calcolato (1.0, 0.8, o 0.1)
+        record = LIBRERIA_FONTI[clean_domain]
+        if 'score' in record:
+            return float(record['score'])
 
     # 3. Whitelist Quotidiani Italiani/Esterni Maggiori (Fallback)
     quotidiani_maggiori = [
