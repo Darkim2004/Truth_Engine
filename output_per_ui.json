@@ -1,35 +1,41 @@
 {
     "percentages": {
-        "truth": 100,
-        "falsity": 0,
+        "truth": 75,
+        "falsity": 25,
         "uncertainty": 0
     },
     "verdict_label": "VERIFICATO",
     "explainability": {
-        "summary": "Verdetto matematico: 1.3 punti per la conferma e 0.0 punti per la smentita.",
-        "cross_check_result": "Punteggi -> Conferma: 1.3 | Confuta: 0.0",
+        "summary": "Verdetto matematico: 1.5 punti per la conferma e 0.5 punti per la smentita.",
+        "cross_check_result": "Punteggi -> Conferma: 1.5 | Confuta: 0.5",
         "strength_analysis": "Il calcolo si basa sulla somma del peso (affidabilità) della fonte moltiplicato per ogni evidenza testuale (chunk) trovata e classificata.",
         "consensus_level": "Alto",
-        "next_step": "Nessun ulteriore approfondimento."
+        "next_step": "Raccogliere ulteriori fonti."
     },
     "top_sources": {
         "supporting": [
             {
-                "url": "https://dizionari.corriere.it/dizionario_italiano/V/vario.shtml",
-                "reason": "[Peso 0.8] Il CHUNK definisce 'vario' come relativo a cose diverse, confermando il concetto di 'cose varie' espresso nel CLAIM.",
-                "title": "dizionari.corriere.it"
+                "url": "https://it.wikipedia.org/wiki/Monitore_belga",
+                "reason": "[Peso 1.0] Il Monitore belga è menzionato come la gazzetta ufficiale del Belgio, quindi contiene informazioni importanti",
+                "title": "it.wikipedia.org"
             },
             {
-                "url": "https://www.dizy.com/it/voce/varie",
-                "reason": "[Peso 0.5] Il CHUNK fornisce esempi di parole che contengono 'varie', implicitamente supportando l'idea di 'cose varie' come CLAIM",
-                "title": "www.dizy.com"
+                "url": "https://huggingface.co/datasets/mii-llm/gazzetta-ufficiale",
+                "reason": "[Peso 0.5] La Gazzetta Ufficiale contiene informazioni specifiche su prezzi unitari e individuazione di dispositivi medici.",
+                "title": "huggingface.co"
             }
         ],
-        "conflicting": []
+        "conflicting": [
+            {
+                "url": "https://huggingface.co/datasets/mii-llm/gazzetta-ufficiale",
+                "reason": "[Peso 0.5] Il chunk affronta argomenti di tracciabilità finanziaria e controlli di appalti pubblici, non sembra riferirsi all'importanza delle informazioni contenute nella Gazzetta Ufficiale",
+                "title": "huggingface.co"
+            }
+        ]
     },
     "analysis_tags": [
         "Calcolo Matematico",
         "VERIFICATO"
     ],
-    "confidence_score": 65
+    "confidence_score": 75
 }

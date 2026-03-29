@@ -5,16 +5,28 @@
         "language": "it"
     },
     "original_source": {
-        "text_content": "cose varie",
-        "url": ""
+        "text_content": "Titolo: Gazzetta Ufficiale. Descrizione: . Autore: ",
+        "url": "https://www.gazzettaufficiale.it/"
     },
     "analysis": {
         "engine": "LLM-Powered",
         "claims_to_verify": [
             {
                 "id": 0,
-                "claim_text": "cose varie",
-                "search_query": "definizione di cose varie",
+                "claim_text": "La Gazzetta Ufficiale è un pubblicazione ufficiale",
+                "search_query": "Gazzetta Ufficiale definizione",
+                "category": "other"
+            },
+            {
+                "id": 1,
+                "claim_text": "La Gazzetta Ufficiale è pubblicata da un autore specifico",
+                "search_query": "chi pubblica la Gazzetta Ufficiale",
+                "category": "other"
+            },
+            {
+                "id": 2,
+                "claim_text": "La Gazzetta Ufficiale contiene informazioni importanti",
+                "search_query": "contenuto della Gazzetta Ufficiale",
                 "category": "other"
             }
         ]
