@@ -5,7 +5,7 @@
         "language": "it"
     },
     "original_source": {
-        "text_content": "i vaccini causano autismo",
+        "text_content": "vaccini causano autismo",
         "url": ""
     },
     "analysis": {
@@ -13,8 +13,8 @@
         "claims_to_verify": [
             {
                 "id": 0,
-                "claim_text": "i vaccini causano autismo",
-                "search_query": "vaccini e autismo studio scientifico",
+                "claim_text": "vaccini causano autismo",
+                "search_query": "studio scientifico vaccini e autismo",
                 "category": "health"
             }
         ]
