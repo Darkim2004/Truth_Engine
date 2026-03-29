@@ -24,13 +24,30 @@ async function processData() {
     try {
         console.log("[DEBUG] Chiamata a:", BACKEND_URL);
 
+        // Timeout di 2 minuti — la pipeline può essere lenta
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 120000);
+
         const response = await fetch(BACKEND_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ mode: currentMode, data: inputVal })
+            body: JSON.stringify({ mode: currentMode, data: inputVal }),
+            signal: controller.signal
         });
 
-        if (!response.ok) throw new Error("Il server ha risposto con un errore.");
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+            // Leggiamo il messaggio di errore dal server
+            let serverMsg = "Errore sconosciuto dal server.";
+            try {
+                const errData = await response.json();
+                serverMsg = errData.error || serverMsg;
+            } catch (_) {
+                serverMsg = `HTTP ${response.status}: ${response.statusText}`;
+            }
+            throw new Error(serverMsg);
+        }
 
         const data = await response.json();
         console.log("[DEBUG] Dati ricevuti dal backend:", data);
@@ -40,7 +57,13 @@ async function processData() {
 
     } catch (err) {
         console.error("[DEBUG] Errore:", err);
-        alert("Errore durante l'analisi: " + err.message);
+        if (err.name === 'AbortError') {
+            alert("Timeout: l'analisi ha impiegato troppo tempo (>2 min). Riprova.");
+        } else if (err.message === 'Failed to fetch' || err.message.includes('NetworkError')) {
+            alert("Errore di rete: il server non è raggiungibile.\n\nAssicurati che il server Flask sia attivo su http://127.0.0.1:5001\n(avvia con: python app.py)");
+        } else {
+            alert("Errore durante l'analisi: " + err.message);
+        }
     } finally {
         btn.disabled = false;
         loader.classList.add('hidden');

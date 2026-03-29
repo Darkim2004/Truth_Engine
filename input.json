@@ -5,7 +5,7 @@
         "language": "it"
     },
     "original_source": {
-        "text_content": "sergio mattarella presidente del cosiglio",
+        "text_content": "messi ha vinto il pallone d'oro nel 2022",
         "url": ""
     },
     "analysis": {
@@ -13,9 +13,9 @@
         "claims_to_verify": [
             {
                 "id": 0,
-                "claim_text": "Sergio Mattarella presidente del consiglio",
-                "search_query": "Sergio Mattarella ruolo nel governo italiano",
-                "category": "politics"
+                "claim_text": "messi ha vinto il pallone d'oro nel 2022",
+                "search_query": "pallone d'oro 2022 vincitore",
+                "category": "other"
             }
         ]
     }
