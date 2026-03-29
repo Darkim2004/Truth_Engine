@@ -3,7 +3,7 @@ Truth Engine — Configurazione centralizzata.
 """
 
 # --- Search ---
-SEARCH_MAX_RESULTS = 2  # Risultati per motore per query
+SEARCH_MAX_RESULTS = 3  # Risultati per motore per query
 SEARCH_RETRY_MAX = 3
 SEARCH_BACKOFF_FACTOR = 2  # Secondi: 2, 4, 8
 SEARCH_DELAY_BETWEEN = 1.5  # Delay tra ricerche successive (secondi)
@@ -76,5 +76,5 @@ PAYWALL_MIN_CONTENT_LENGTH = 300  # Char minimi per considerare il contenuto val
 CHUNK_MIN_SIZE = 150
 CHUNK_MAX_SIZE = 800
 EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
-EMBEDDING_MIN_THRESHOLD = 0.2
+EMBEDDING_MIN_THRESHOLD = 0.1
 EMBEDDING_TOP_K = 3
