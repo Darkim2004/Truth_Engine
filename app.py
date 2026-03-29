@@ -392,18 +392,17 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
                 "colore": colore,
                 "fonti": fonti_frontend[:4],
                 "dettagli": {
-                    "explainability": data_ui.get("explainability", {}),
-                    "analysis_tags": data_ui.get("analysis_tags", []),
+                    "explainability": main.get("explainability", {}),
+                    "analysis_tags": main.get("analysis_tags", []),
                     "claims_analizzati": len(verdetti)
                 }
             }
-            
-        except Exception as e:
-            print(f"[ERRORE] Lettura output_per_ui.json fallita: {e}")
-            # Fallback se il file non esiste o è corrotto
+        else:
+            # Fallback se non ci sono verdetti
             risultato_frontend = {
                 "affidabilita": 0,
-                "verdetto": "Errore lettura dati",
+                "verita_percentuale": 0,
+                "verdetto": "Nessun dato analizzato",
                 "colore": "#6b7280",
                 "fonti": []
             }
