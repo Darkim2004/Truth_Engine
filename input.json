@@ -5,29 +5,29 @@
         "language": "it"
     },
     "original_source": {
-        "text_content": "Titolo: Gazzetta Ufficiale. Descrizione: . Autore: ",
-        "url": "https://www.gazzettaufficiale.it/"
+        "text_content": "Jeremy Bowen: Trump is waging war based on instinct and it isn't working",
+        "url": ""
     },
     "analysis": {
         "engine": "LLM-Powered",
         "claims_to_verify": [
             {
                 "id": 0,
-                "claim_text": "La Gazzetta Ufficiale è un pubblicazione ufficiale",
-                "search_query": "Gazzetta Ufficiale definizione",
-                "category": "other"
+                "claim_text": "Trump sta conducendo una guerra basata sull'istinto",
+                "search_query": "guerra di Trump istinto decisioni strategiche",
+                "category": "politics"
             },
             {
                 "id": 1,
-                "claim_text": "La Gazzetta Ufficiale è pubblicata da un autore specifico",
-                "search_query": "chi pubblica la Gazzetta Ufficiale",
-                "category": "other"
+                "claim_text": "La guerra di Trump non sta funzionando",
+                "search_query": "esito guerra Trump risultati strategia fallita",
+                "category": "politics"
             },
             {
                 "id": 2,
-                "claim_text": "La Gazzetta Ufficiale contiene informazioni importanti",
-                "search_query": "contenuto della Gazzetta Ufficiale",
-                "category": "other"
+                "claim_text": "Jeremy Bowen afferma che Trump sta facendo errori",
+                "search_query": "Jeremy Bowen critica Trump decisioni guerra",
+                "category": "politics"
             }
         ]
     }

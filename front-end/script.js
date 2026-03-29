@@ -106,6 +106,8 @@ function renderDashboard(data) {
     const pathLength = 251.32;
     const offset = pathLength - (score * pathLength / 100);
 
+    const percentages = data.dettagli?.percentages || { truth: 0, falsity: 0, uncertainty: 0 };
+
     setTimeout(() => {
         // Applichiamo il colore dinamico solo ai testi, lasciando il gradiente nativo all'arco
         arco.style.stroke = "url(#gaugeGradient)"; // Ripristina il gradiente per sicurezza
@@ -118,6 +120,16 @@ function renderDashboard(data) {
         const verdTesto = document.getElementById('verdettoTesto');
         verdTesto.innerText = verdetto;
         verdTesto.style.color = gaugeColor;
+
+        // Statistiche dettagliate a sinistra
+        document.getElementById('txtTruth').innerText = (percentages.truth || 0) + "%";
+        document.getElementById('barTruth').style.width = (percentages.truth || 0) + "%";
+
+        document.getElementById('txtFalsity').innerText = (percentages.falsity || 0) + "%";
+        document.getElementById('barFalsity').style.width = (percentages.falsity || 0) + "%";
+
+        document.getElementById('txtUncertainty').innerText = (percentages.uncertainty || 0) + "%";
+        document.getElementById('barUncertainty').style.width = (percentages.uncertainty || 0) + "%";
     }, 100);
 
     const lista = document.getElementById('listaFonti');

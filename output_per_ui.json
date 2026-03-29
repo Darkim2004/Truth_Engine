@@ -1,13 +1,13 @@
 {
     "percentages": {
-        "truth": 75,
-        "falsity": 25,
+        "truth": 20,
+        "falsity": 80,
         "uncertainty": 0
     },
-    "verdict_label": "VERIFICATO",
+    "verdict_label": "DISINFORMAZIONE",
     "explainability": {
-        "summary": "Verdetto matematico: 1.5 punti per la conferma e 0.5 punti per la smentita.",
-        "cross_check_result": "Punteggi -> Conferma: 1.5 | Confuta: 0.5",
+        "summary": "Verdetto matematico: 0.5 punti per la conferma e 2.0 punti per la smentita.",
+        "cross_check_result": "Punteggi -> Conferma: 0.5 | Confuta: 2.0",
         "strength_analysis": "Il calcolo si basa sulla somma del peso (affidabilità) della fonte moltiplicato per ogni evidenza testuale (chunk) trovata e classificata.",
         "consensus_level": "Alto",
         "next_step": "Raccogliere ulteriori fonti."
@@ -15,27 +15,37 @@
     "top_sources": {
         "supporting": [
             {
-                "url": "https://it.wikipedia.org/wiki/Monitore_belga",
-                "reason": "[Peso 1.0] Il Monitore belga è menzionato come la gazzetta ufficiale del Belgio, quindi contiene informazioni importanti",
-                "title": "it.wikipedia.org"
-            },
-            {
-                "url": "https://huggingface.co/datasets/mii-llm/gazzetta-ufficiale",
-                "reason": "[Peso 0.5] La Gazzetta Ufficiale contiene informazioni specifiche su prezzi unitari e individuazione di dispositivi medici.",
-                "title": "huggingface.co"
+                "url": "https://www.avvenire.it/idee-e-commenti/iran-missione-scompiuta-una-guerra-senza-dopo_106463",
+                "reason": "[Peso 0.5] Descrive il vero obiettivo di Netanyahu come rendere l'Iran uno 'Stato fallito', che supporta la descrizione di \"la guerra di Trump non sta funzionando\"",
+                "title": "www.avvenire.it"
             }
         ],
         "conflicting": [
             {
-                "url": "https://huggingface.co/datasets/mii-llm/gazzetta-ufficiale",
-                "reason": "[Peso 0.5] Il chunk affronta argomenti di tracciabilità finanziaria e controlli di appalti pubblici, non sembra riferirsi all'importanza delle informazioni contenute nella Gazzetta Ufficiale",
-                "title": "huggingface.co"
+                "url": "https://www.avvenire.it/idee-e-commenti/iran-missione-scompiuta-una-guerra-senza-dopo_106463",
+                "reason": "[Peso 0.5] Descrive la guerra come una ricerca dell'egemonia indiscussa e una forma di dominio militare incontrastato, contrario alla descrizione di \"la guerra di Trump non sta funzionando\"",
+                "title": "www.avvenire.it"
+            },
+            {
+                "url": "https://www.avvenire.it/idee-e-commenti/iran-missione-scompiuta-una-guerra-senza-dopo_106463",
+                "reason": "[Peso 0.5] Sottolinea la mancanza di una strategia chiara e lo stato finale della guerra (end game) non è chiaro per Trump, confermando la descrizione di \"la guerra di Trump non sta funzionando\"",
+                "title": "www.avvenire.it"
+            },
+            {
+                "url": "https://www.ispionline.it/it/pubblicazione/un-anno-di-trump-loccidente-non-e-piu-lo-stesso-227784",
+                "reason": "[Peso 0.5] Indica che l'annuncio di sanzioni commerciali di Trump potrebbe portare a una guerra commerciale transatlantica, suggerendo che la guerra di Trump possa essere efficace",
+                "title": "www.ispionline.it"
+            },
+            {
+                "url": "https://www.ispionline.it/it/pubblicazione/un-anno-di-trump-loccidente-non-e-piu-lo-stesso-227784",
+                "reason": "[Peso 0.5] Descrive le relazioni transatlantiche come 'al livello più basso mai raggiunto' e sottolinea che la strategia europea di appeasement è fallita, suggerendo che la guerra di Trump possa essere efficace",
+                "title": "www.ispionline.it"
             }
         ]
     },
     "analysis_tags": [
         "Calcolo Matematico",
-        "VERIFICATO"
+        "DISINFORMAZIONE"
     ],
-    "confidence_score": 75
+    "confidence_score": 50
 }

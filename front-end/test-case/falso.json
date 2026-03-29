@@ -13,5 +13,12 @@
             "url": "https://www.reuters.com",
             "snippet": "Il video circolato sui social è un deepfake creato con un software di vecchia generazione."
         }
-    ]
+    ],
+    "dettagli": {
+        "percentages": {
+            "truth": 0,
+            "falsity": 100,
+            "uncertainty": 0
+        }
+    }
 }

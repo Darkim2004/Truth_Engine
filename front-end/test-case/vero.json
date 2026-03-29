@@ -13,5 +13,12 @@
             "snippet": "Voce enciclopedica aggiornata con riferimenti bibliografici verificati.",
             "url": "https://it.wikipedia.org"
         }
-    ]
+    ],
+    "dettagli": {
+        "percentages": {
+            "truth": 95,
+            "falsity": 5,
+            "uncertainty": 0
+        }
+    }
 }

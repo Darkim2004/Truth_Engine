@@ -398,6 +398,7 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
                 "dettagli": {
                     "explainability": main.get("explainability", {}),
                     "analysis_tags": main.get("analysis_tags", []),
+                    "percentages": percentages,
                     "claims_analizzati": len(verdetti)
                 }
             }
