@@ -5,8 +5,7 @@
         "language": "it"
     },
     "original_source": {
-        "text_content": "i vaccini causano autismo",
-        "text_content": "i vaccini causano autismo",
+        "text_content": "Italia vince mondiali di calcio nel 2006",
         "url": ""
     },
     "analysis": {
@@ -14,9 +13,9 @@
         "claims_to_verify": [
             {
                 "id": 0,
-                "claim_text": "i vaccini causano autismo",
-                "search_query": "vaccini e autismo studio scientifico",
-                "category": "health"
+                "claim_text": "Italia vince mondiali di calcio nel 2006",
+                "search_query": "Italia risultati mondiali calcio 2006",
+                "category": "other"
             }
         ]
     }
