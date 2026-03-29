@@ -11,36 +11,46 @@ client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def analyze_context_match(text, claim):
     prompt = f"""
-    Analizza il rapporto tra TESTO e CLAIM.
-    TESTO: {text}
+    Sei un analista imparziale. Analizza il seguente frammento di testo (CHUNK) rispetto all'affermazione iniziale (CLAIM).
+    Il tuo UNICO compito è capire se il CHUNK supporta o smentisce il CLAIM.
+    
+    CHUNK: {text}
+    
     CLAIM: {claim}
-    Rispondi ESCLUSIVAMENTE con un JSON:
+    
+    Rispondi ESCLUSIVAMENTE con un JSON con le seguenti chiavi:
     {{
-        "rilevanza": 0.0-1.0,
-        "categoria": "CONFERMA_DIRETTA" | "SMENTITA_DIRETTA" | "PARZIALE" | "NON_RILEVANTE",
-        "motivazione": "breve spiegazione"
+        "categoria": "CONFERMA" | "CONFUTA" | "NON_ATTINENTE",
+        "motivazione": "breve spiegazione della tua scelta in una riga"
     }}
+    
+    Regole:
+    - Scegli "CONFERMA" se il CHUNK contiene informazioni che sostengono il fatto o dimostrano che il CLAIM è vero. (Corrisponde a "non confuta" / supporta).
+    - Scegli "CONFUTA" se il CHUNK contiene informazioni che dimostrano che il CLAIM è falso, errato o disinformazione.
+    - Scegli "NON_ATTINENTE" se il CHUNK non affronta direttamente il CLAIM, parla di altro, oppure è un boilerplate del sito.
+    Non inventare niente, basati solo sulle informazioni presenti nel CHUNK.
     """
     try:
-        # Chiamata corretta per Groq
         chat_completion = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
-            model="llama-3.3-70b-versatile", # Il modello più forte di Groq
-            response_format={"type": "json_object"} # Forza l'output in JSON
+            model="llama-3.3-70b-versatile",
+            response_format={"type": "json_object"}
         )
         
-        # Estraiamo il testo della risposta
-        return json.loads(chat_completion.choices[0].message.content)
+        risultato = json.loads(chat_completion.choices[0].message.content)
+        # Normalizziamo l'output per evitare errori di case o incomprensioni dell'IA
+        cat = risultato.get("categoria", "NON_ATTINENTE").upper()
+        if cat not in ["CONFERMA", "CONFUTA", "NON_ATTINENTE"]:
+            cat = "NON_ATTINENTE"
+        
+        return {
+            "categoria": cat,
+            "motivazione": risultato.get("motivazione", "")
+        }
     
     except Exception as e:
-        # Stampiamo l'errore nel terminale così capiamo se la chiave scade o altro
-        print(f"ERRORE API: {e}")
+        print(f"ERRORE API GROQ: {e}")
         return {
-            "rilevanza": 0.0, 
-            "categoria": "NON_RILEVANTE", 
+            "categoria": "NON_ATTINENTE", 
             "motivazione": f"Errore tecnico: {str(e)}"
         }
-
-def get_final_verdict_logic(evidence_list):
-    # Questa sarà la Fase 4: il Giudice Supremo
-    pass

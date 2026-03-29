@@ -91,16 +91,20 @@ function renderDashboard(data) {
     const colore = data.colore ?? data.color ?? "#6366f1";
     const fonti = data.fonti ?? [];
 
-    // Aggiorniamo il tachimetro
     const arco = document.getElementById('gaugeArcoProgress');
     const pathLength = 251.32;
     const offset = pathLength - (score * pathLength / 100);
 
+    // Calcoliamo un colore specifico per l'affidabilità
+    let gaugeColor = "#ef4444"; // Rosso per bassa affidabilità
+    if (score >= 70) gaugeColor = "#10b981"; // Verde per alta affidabilità
+    else if (score >= 40) gaugeColor = "#f59e0b"; // Arancio media
+
     setTimeout(() => {
-        arco.style.stroke = colore;
+        arco.style.stroke = gaugeColor;
         arco.style.strokeDashoffset = offset;
         document.getElementById('percentualeTesto').innerText = score + "%";
-        document.getElementById('percentualeTesto').style.color = colore;
+        document.getElementById('percentualeTesto').style.color = gaugeColor;
         document.getElementById('verdettoTesto').innerText = verdetto;
         document.getElementById('verdettoTesto').style.color = colore;
     }, 100);

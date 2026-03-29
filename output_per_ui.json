@@ -6,30 +6,45 @@
     },
     "verdict_label": "DISINFORMAZIONE",
     "explainability": {
-        "summary": "Il claim secondo cui Messi ha vinto il Pallone d'oro nel 2022 è falso. Secondo il dossier, il Pallone d'oro 2022 è stato vinto da Karim Benzema.",
-        "cross_check_result": "Il confronto tra le fonti del dossier rivela che il vincitore del Pallone d'oro 2022 è stato effettivamente Karim Benzema, e non Messi.",
-        "strength_analysis": "La prova più solida è data dalle informazioni presenti nel dossier, che citano fonti ufficiali come Wikipedia.",
+        "summary": "Verdetto matematico: 0.0 punti per la conferma e 3.9000000000000004 punti per la smentita.",
+        "cross_check_result": "Punteggi -> Conferma: 0.0 | Confuta: 3.9000000000000004",
+        "strength_analysis": "Il calcolo si basa sulla somma del peso (affidabilità) della fonte moltiplicato per ogni evidenza testuale (chunk) trovata e classificata.",
         "consensus_level": "Alto",
-        "next_step": "Per conferma definitiva, è possibile verificare ulteriormente le fonti ufficiali e gli archivi storici relativi al Pallone d'oro 2022."
+        "next_step": "Nessun ulteriore approfondimento."
     },
     "top_sources": {
-        "supporting": [
-            {
-                "url": "https://it.wikipedia.org/wiki/Pallone_d%27oro_2022",
-                "reason": "Conferma il vincitore del Pallone d'oro 2022",
-                "title": "Pallone d'oro 2022 - Wikipedia"
-            }
-        ],
+        "supporting": [],
         "conflicting": [
             {
-                "url": "",
-                "reason": "Nessuna fonte nel dossier supporta il claim",
-                "title": ""
+                "url": "https://it.wikipedia.org/wiki/Presunta_correlazione_tra_vaccini_e_autismo",
+                "reason": "[Peso 0.8] Il CHUNK afferma che non vi sono prove sufficienti a dimostrare l'associazione tra vaccini e autismo e che la comunità scientifica esclude questa associazione.",
+                "title": "it.wikipedia.org"
+            },
+            {
+                "url": "https://it.wikipedia.org/wiki/Presunta_correlazione_tra_vaccini_e_autismo",
+                "reason": "[Peso 0.8] Il CHUNK fornisce link a siti che smentiscono la correlazione tra vaccini e autismo, come ad esempio medbunker.it",
+                "title": "it.wikipedia.org"
+            },
+            {
+                "url": "https://it.wikipedia.org/wiki/Presunta_correlazione_tra_vaccini_e_autismo",
+                "reason": "[Peso 0.8] Il CHUNK cita la British Veterinary Association e il CDC, che affermano l'impossibilità dell'autismo nei cani e negano la connessione tra vaccini e autismo.",
+                "title": "it.wikipedia.org"
+            },
+            {
+                "url": "https://www.pazienti.it/news-di-salute/autismo-e-vaccini-gli-studi-scientifici-confermano-che-non-esiste-alcun-legame-25092025",
+                "reason": "[Peso 0.5] Il CHUNK cita fonti scientifiche che affermano l'assenza di un legame tra vaccini e autismo",
+                "title": "www.pazienti.it"
+            },
+            {
+                "url": "https://www.pazienti.it/news-di-salute/autismo-e-vaccini-gli-studi-scientifici-confermano-che-non-esiste-alcun-legame-25092025",
+                "reason": "[Peso 0.5] Il testo afferma che la ricerca scientifica non trova prove che collegano le vaccinazioni allo sviluppo dell'autismo",
+                "title": "www.pazienti.it"
             }
         ]
     },
     "analysis_tags": [
-        "Dati Scientifici",
-        "Fonti Ufficiali"
-    ]
+        "Calcolo Matematico",
+        "DISINFORMAZIONE"
+    ],
+    "confidence_score": 65
 }
