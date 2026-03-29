@@ -9,48 +9,74 @@ load_dotenv()
 # Assicurati che nel .env ci sia GROQ_API_KEY=gsk_...
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-def analyze_context_match(text, claim):
-    prompt = f"""
-    Sei un analista imparziale. Analizza il seguente frammento di testo (CHUNK) rispetto all'affermazione iniziale (CLAIM).
-    Il tuo UNICO compito è capire se il CHUNK supporta o smentisce il CLAIM.
+def analyze_context_match(chunks_list, claim):
+    """
+    Analizza una lista di chunk rispetto al claim IN UNA SINGOLA CHIAMATA API (Batch)
+    per risparmiare pesantemente sui Tokens Per Day e non incappare nel limite 429.
+    """
+    if not chunks_list:
+        return []
+
+    # Creiamo un dizionario dei chunk per passarli comodamente al LLM
+    chunks_dict = {f"chunk_{i}": test for i, test in enumerate(chunks_list)}
     
-    CHUNK: {text}
+    prompt = f"""
+    Sei un analista imparziale. Ti fornirò un'affermazione (CLAIM) e una serie di frammenti di testo enumerati.
+    Il tuo UNICO compito è classificare se ogni singolo chunk supporta o smentisce il CLAIM.
     
     CLAIM: {claim}
     
-    Rispondi ESCLUSIVAMENTE con un JSON con le seguenti chiavi:
+    CHUNKS:
+    {json.dumps(chunks_dict, ensure_ascii=False, indent=2)}
+    
+    Rispondi ESCLUSIVAMENTE con un JSON che contenga una lista "risultati" corrispondente a ogni chunk:
     {{
-        "categoria": "CONFERMA" | "CONFUTA" | "NON_ATTINENTE",
-        "motivazione": "breve spiegazione della tua scelta in una riga"
+      "risultati": [
+        {{
+          "id": "chunk_0",
+          "categoria": "CONFERMA" | "CONFUTA" | "NON_ATTINENTE",
+          "motivazione": "Spiega in 1 riga"
+        }}
+      ]
     }}
     
     Regole:
-    - Scegli "CONFERMA" se il CHUNK contiene informazioni che sostengono il fatto o dimostrano che il CLAIM è vero. (Corrisponde a "non confuta" / supporta).
-    - Scegli "CONFUTA" se il CHUNK contiene informazioni che dimostrano che il CLAIM è falso, errato o disinformazione.
-    - Scegli "NON_ATTINENTE" se il CHUNK non affronta direttamente il CLAIM, parla di altro, oppure è un boilerplate del sito.
-    Non inventare niente, basati solo sulle informazioni presenti nel CHUNK.
+    - CONFERMA se il chunk dimostra che il claim è vero.
+    - CONFUTA se il chunk dimostra che il claim è falso o errato.
+    - NON_ATTINENTE se il chunk non risponde in modo netto al claim.
     """
     try:
+        # Usiamo il modello veloce 8b che ha token pool separato/più alto.
         chat_completion = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
-            model="llama-3.3-70b-versatile",
+            model="llama-3.1-8b-instant",
             response_format={"type": "json_object"}
         )
         
         risultato = json.loads(chat_completion.choices[0].message.content)
-        # Normalizziamo l'output per evitare errori di case o incomprensioni dell'IA
-        cat = risultato.get("categoria", "NON_ATTINENTE").upper()
-        if cat not in ["CONFERMA", "CONFUTA", "NON_ATTINENTE"]:
-            cat = "NON_ATTINENTE"
+        lista_risultati = risultato.get("risultati", [])
         
-        return {
-            "categoria": cat,
-            "motivazione": risultato.get("motivazione", "")
-        }
+        # Mappiamo i risultati
+        classificazioni = []
+        for i in range(len(chunks_list)):
+            chunk_id = f"chunk_{i}"
+            # Troviamo la risposta corrispondente
+            match = next((item for item in lista_risultati if item.get("id") == chunk_id), None)
+            
+            if match:
+                cat = match.get("categoria", "NON_ATTINENTE").upper()
+                if cat not in ["CONFERMA", "CONFUTA", "NON_ATTINENTE"]:
+                    cat = "NON_ATTINENTE"
+                classificazioni.append({
+                    "categoria": cat,
+                    "motivazione": match.get("motivazione", "")
+                })
+            else:
+                classificazioni.append({"categoria": "NON_ATTINENTE", "motivazione": "Errore mapping"})
+                
+        return classificazioni
     
     except Exception as e:
-        print(f"ERRORE API GROQ: {e}")
-        return {
-            "categoria": "NON_ATTINENTE", 
-            "motivazione": f"Errore tecnico: {str(e)}"
-        }
+        print(f"ERRORE API GROQ BATCH: {e}")
+        # In caso di errore restituiamo NON_ATTINENTE per tutti i chunk
+        return [{"categoria": "NON_ATTINENTE", "motivazione": f"Errore: {e}"} for _ in chunks_list]

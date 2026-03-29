@@ -1,24 +1,40 @@
 {
     "percentages": {
         "truth": 0,
-        "falsity": 0,
-        "uncertainty": 100
+        "falsity": 100,
+        "uncertainty": 0
     },
-    "verdict_label": "INCERTO",
+    "verdict_label": "DISINFORMAZIONE",
     "explainability": {
-        "summary": "Verdetto matematico: 0.0 punti per la conferma e 0.0 punti per la smentita.",
-        "cross_check_result": "Punteggi -> Conferma: 0.0 | Confuta: 0.0",
+        "summary": "Verdetto matematico: 0.0 punti per la conferma e 2.4000000000000004 punti per la smentita.",
+        "cross_check_result": "Punteggi -> Conferma: 0.0 | Confuta: 2.4000000000000004",
         "strength_analysis": "Il calcolo si basa sulla somma del peso (affidabilità) della fonte moltiplicato per ogni evidenza testuale (chunk) trovata e classificata.",
-        "consensus_level": "Nessuno",
-        "next_step": "Raccogliere ulteriori fonti."
+        "consensus_level": "Alto",
+        "next_step": "Nessun ulteriore approfondimento."
     },
     "top_sources": {
         "supporting": [],
-        "conflicting": []
+        "conflicting": [
+            {
+                "url": "https://it.wikipedia.org/wiki/Presunta_correlazione_tra_vaccini_e_autismo",
+                "reason": "[Peso 0.8] Riporta la confutazione della comunità scientifica sulla correlazione tra vaccini e autismo.",
+                "title": "it.wikipedia.org"
+            },
+            {
+                "url": "https://it.wikipedia.org/wiki/Presunta_correlazione_tra_vaccini_e_autismo",
+                "reason": "[Peso 0.8] Smentisce la correlazione fra vaccini e autismo e riporta la mancata condivisione della quasi totalità della comunità e dalle istituzioni.",
+                "title": "it.wikipedia.org"
+            },
+            {
+                "url": "https://it.wikipedia.org/wiki/Presunta_correlazione_tra_vaccini_e_autismo",
+                "reason": "[Peso 0.8] Riporta la mancanza di prove scientificamente provate dell'associazione fra vaccini e autismo.",
+                "title": "it.wikipedia.org"
+            }
+        ]
     },
     "analysis_tags": [
         "Calcolo Matematico",
-        "INCERTO"
+        "DISINFORMAZIONE"
     ],
     "confidence_score": 80
 }

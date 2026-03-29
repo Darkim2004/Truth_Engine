@@ -52,17 +52,20 @@ def genera_dossier_completo(claim, search_results):
         domain = extract_domain(res.get('url', ''))
         score_fonte = get_credibility_score(domain)
         
-        # Analizziamo ogni singolo chunk trovato da Andrea con l'LLM
+        # Estraiamo tutti i chunk testuali trovati da Andrea
+        chunks_text_list = [match.get('chunk_text', '') for match in analisi_andrea.get('matches', []) if match.get('chunk_text', '')]
+        
+        # Analizziamo tutti i chunk in batch con l'LLM (velocissimo, 1 singola chiamata API)
+        risultati_llm_batch = analyze_context_match(chunks_text_list, claim) if chunks_text_list else []
+        
         chunks_analizzati = []
-        for match in analisi_andrea.get('matches', []):
-            chunk_text = match.get('chunk_text', '')
-            if chunk_text:
-                risultato_llm = analyze_context_match(chunk_text, claim)
-                chunks_analizzati.append({
-                    "testo": chunk_text,
-                    "categoria": risultato_llm.get("categoria", "NON_ATTINENTE"),
-                    "motivazione": risultato_llm.get("motivazione", "")
-                })
+        for i, chunk_text in enumerate(chunks_text_list):
+            risultato = risultati_llm_batch[i] if i < len(risultati_llm_batch) else {"categoria": "NON_ATTINENTE", "motivazione": "Non analizzato"}
+            chunks_analizzati.append({
+                "testo": chunk_text,
+                "categoria": risultato.get("categoria", "NON_ATTINENTE"),
+                "motivazione": risultato.get("motivazione", "")
+            })
         
         info = {
             "url": res.get('url'),
