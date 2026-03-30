@@ -1,24 +1,40 @@
 {
     "percentages": {
         "truth": 0,
-        "falsity": 0,
-        "uncertainty": 100
+        "falsity": 100,
+        "uncertainty": 0
     },
-    "verdict_label": "INCERTO",
+    "verdict_label": "DISINFORMAZIONE",
     "explainability": {
-        "summary": "Verdetto matematico: 0.0 punti per la conferma e 0.0 punti per la smentita.",
-        "cross_check_result": "Punteggi -> Conferma: 0.0 | Confuta: 0.0",
+        "summary": "Verdetto matematico: 0.0 punti per la conferma e 3.0 punti per la smentita.",
+        "cross_check_result": "Punteggi -> Conferma: 0.0 | Confuta: 3.0",
         "strength_analysis": "Il calcolo si basa sulla somma del peso (affidabilità) della fonte moltiplicato per ogni evidenza testuale (chunk) trovata e classificata.",
-        "consensus_level": "Nessuno",
-        "next_step": "Raccogliere ulteriori fonti."
+        "consensus_level": "Alto",
+        "next_step": "Nessun ulteriore approfondimento."
     },
     "top_sources": {
         "supporting": [],
-        "conflicting": []
+        "conflicting": [
+            {
+                "url": "https://it.wikipedia.org/wiki/Presunta_correlazione_tra_vaccini_e_autismo",
+                "reason": "[Peso 1.0] Smentisce l'associazione tra vaccini e autismo, sottolineando l'assenza di prove scientifiche e la rimozione di un prodotto vaccinale a causa delle paure dell'opinione pubblica.",
+                "title": "it.wikipedia.org"
+            },
+            {
+                "url": "https://it.wikipedia.org/wiki/Presunta_correlazione_tra_vaccini_e_autismo",
+                "reason": "[Peso 1.0] Conferma che l'autismo non è una malattia canina e cita la British Veterinary Association, smentendo quindi la possibilità di un'associazione tra vaccini e autismo nei cani.",
+                "title": "it.wikipedia.org"
+            },
+            {
+                "url": "https://it.wikipedia.org/wiki/Presunta_correlazione_tra_vaccini_e_autismo",
+                "reason": "[Peso 1.0] Smentisce la possibilità di un'associazione tra vaccini e autismo, citando fonti come il Vaccine Adverse Event Reporting System e altri articoli smentiti come bufale.",
+                "title": "it.wikipedia.org"
+            }
+        ]
     },
     "analysis_tags": [
         "Calcolo Matematico",
-        "INCERTO"
+        "DISINFORMAZIONE"
     ],
     "confidence_score": 100
 }
