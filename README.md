@@ -54,6 +54,25 @@ It includes:
 
 ## Quick Start
 
+### One-Command Startup (Windows PowerShell)
+
+Use the startup script to automate setup and launch:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\start.ps1
+```
+
+What the script does:
+- asks for `GROQ_API_KEY` at the beginning (if missing in `.env`)
+- saves or updates `GROQ_API_KEY` in `.env`
+- creates `.venv` if it does not exist
+- upgrades `pip`
+- installs dependencies from `requirements.txt`
+- installs Playwright browser
+- starts `app.py`
+
+First run can take a few minutes because package and browser installation is performed automatically.
+
 ### 1) Create and activate a virtual environment
 
 Windows (PowerShell):
