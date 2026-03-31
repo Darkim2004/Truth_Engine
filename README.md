@@ -54,12 +54,12 @@ It includes:
 
 ## Quick Start
 
-### One-Command Startup (Windows PowerShell)
+### One-Command Startup (Windows, macOS, Linux)
 
 Use the startup script to automate setup and launch:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\start.ps1
+```bash
+python start.py
 ```
 
 What the script does:
@@ -67,8 +67,8 @@ What the script does:
 - saves or updates `GROQ_API_KEY` in `.env`
 - creates `.venv` if it does not exist
 - upgrades `pip`
-- installs dependencies from `requirements.txt`
-- installs Playwright browser
+- checks dependencies from `requirements.txt` and installs only missing/incompatible ones
+- checks Playwright Chromium and installs it only if missing
 - starts `app.py`
 
 First run can take a few minutes because package and browser installation is performed automatically.
