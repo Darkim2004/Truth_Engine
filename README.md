@@ -32,10 +32,8 @@ The project includes a Flask backend API, a static dashboard, and a CLI for JSON
 |-- app.py                  # Flask app and API endpoints
 |-- main.py                 # CLI entry point
 |-- start.py                # Setup/start helper
-|-- pipeline.py             # Async search/fetch/extract/scoring orchestration
-|-- models.py               # Pydantic input/output models
 |-- config.py               # Central configuration and runtime paths
-|-- core/                   # Verdict engine and source credibility logic
+|-- core/                   # Pipeline, models, verdict engine, source credibility logic
 |-- search/                 # Search aggregation and providers
 |-- fetcher/                # HTTP and Playwright fetchers
 |-- extractor/              # Text and metadata extraction
@@ -43,7 +41,7 @@ The project includes a Flask backend API, a static dashboard, and a CLI for JSON
 |-- utils/                  # URL, language, and paywall utilities
 |-- front-end/              # Static dashboard assets
 |-- tests/                  # Automated unit and integration tests
-|-- scripts/                # Manual/debug helper scripts
+|-- scripts/                # Example/manual helper scripts
 `-- examples/               # Example input payloads
 ```
 
@@ -115,7 +113,7 @@ python main.py --input examples/input_example.json
 Run the helper script:
 
 ```bash
-python scripts/run_pipeline_example.py
+python scripts/example_pipeline.py
 ```
 
 ## API Endpoints
@@ -123,35 +121,6 @@ python scripts/run_pipeline_example.py
 ### `GET /`
 
 Serves the static dashboard from `front-end/index.html`.
-
-### `POST /api/verify`
-
-Runs the verdict engine on an already prepared claim and source list.
-
-```json
-{
-  "claim": "Sample claim",
-  "results": [
-    {
-      "url": "https://example.com",
-      "text": "Article text",
-      "metadata": { "title": "Example" }
-    }
-  ]
-}
-```
-
-### `POST /elabora`
-
-Extracts text or article metadata for UI preprocessing.
-
-```json
-{ "mode": "testo", "data": "Text to analyze" }
-```
-
-```json
-{ "mode": "url", "data": "https://example.com/news" }
-```
 
 ### `POST /elabora_completo`
 
@@ -166,7 +135,7 @@ Runs the full flow: claim extraction, search, fetch, scoring, verdict, and front
 Run the automated suite:
 
 ```bash
-python -m unittest discover -v
+python -m unittest discover -s tests -v
 ```
 
 Run specific tests:
@@ -196,7 +165,7 @@ It requires network access and a valid `GROQ_API_KEY`.
 7. Semantic chunk matching finds relevant evidence.
 8. The core engine weights evidence by source credibility and returns a verdict.
 
-Main orchestrator: `pipeline.py`
+Main orchestrator: `core/pipeline.py`
 
 Verdict logic: `core/engine.py`, `core/motore_verdetto.py`, `core/classificatore_evidenze.py`
 
