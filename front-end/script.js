@@ -2,6 +2,23 @@
 const BACKEND_URL = "/elabora_completo";
 let currentMode = 'testo';
 
+function safeHttpUrl(url) {
+    try {
+        const parsed = new URL(url);
+        return ['http:', 'https:'].includes(parsed.protocol) ? parsed.href : '#';
+    } catch (_) {
+        return '#';
+    }
+}
+
+function appendTextElement(parent, tagName, className, text) {
+    const element = document.createElement(tagName);
+    element.className = className;
+    element.textContent = text;
+    parent.appendChild(element);
+    return element;
+}
+
 async function processData() {
     const inputField = currentMode === 'testo' ? 'testoInput' : 'urlInput';
     const inputVal = document.getElementById(inputField).value.trim();
@@ -133,24 +150,61 @@ function renderDashboard(data) {
     }, 100);
 
     const lista = document.getElementById('listaFonti');
-    lista.innerHTML = `<p class="text-[9px] uppercase font-bold text-slate-500 tracking-[0.3em] mb-4">Fonti Rilevate</p>`;
+    lista.replaceChildren();
+    appendTextElement(
+        lista,
+        'p',
+        'text-[9px] uppercase font-bold text-slate-500 tracking-[0.3em] mb-4',
+        'Fonti Rilevate'
+    );
 
     const fonti = data.fonti || [];
 
     if (fonti.length === 0) {
-        lista.innerHTML += `<p class="text-slate-600 text-[11px] italic">Nessuna fonte specifica trovata.</p>`;
+        appendTextElement(
+            lista,
+            'p',
+            'text-slate-600 text-[11px] italic',
+            'Nessuna fonte specifica trovata.'
+        );
     } else {
         fonti.forEach(f => {
             const card = document.createElement('div');
             card.className = "bg-[#070a13]/60 border border-slate-800 p-5 rounded-3xl mb-4 text-left hover:border-indigo-500/50 transition-all";
-            card.innerHTML = `
-                <div class="flex justify-between items-start mb-2">
-                    <h4 class="text-white font-black text-xs uppercase italic tracking-wide">${f.nome || 'Fonte'}</h4>
-                    <span class="text-[8px] bg-slate-800 text-slate-400 px-2 py-1 rounded-full font-bold uppercase">Live</span>
-                </div>
-                <p class="text-slate-400 text-[11px] leading-relaxed mb-4">"${f.snippet || 'Dettaglio non disponibile'}"</p>
-                <a href="${f.url || '#'}" target="_blank" class="text-indigo-400 text-[9px] font-black uppercase tracking-widest hover:text-white transition-colors">Vai alla fonte</a>
-            `;
+
+            const header = document.createElement('div');
+            header.className = 'flex justify-between items-start mb-2 gap-3';
+            appendTextElement(
+                header,
+                'h4',
+                'text-white font-black text-xs uppercase italic tracking-wide',
+                f.nome || 'Fonte'
+            );
+            appendTextElement(
+                header,
+                'span',
+                'text-[8px] bg-slate-800 text-slate-400 px-2 py-1 rounded-full font-bold uppercase',
+                'Live'
+            );
+
+            appendTextElement(
+                card,
+                'p',
+                'text-slate-400 text-[11px] leading-relaxed mb-4',
+                `"${f.snippet || 'Dettaglio non disponibile'}"`
+            );
+
+            const link = appendTextElement(
+                card,
+                'a',
+                'text-indigo-400 text-[9px] font-black uppercase tracking-widest hover:text-white transition-colors',
+                'Vai alla fonte'
+            );
+            link.href = safeHttpUrl(f.url || '#');
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+
+            card.prepend(header);
             lista.appendChild(card);
         });
     }
