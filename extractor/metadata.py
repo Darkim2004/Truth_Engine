@@ -12,6 +12,18 @@ from models import ArticleMetadata
 console = Console(legacy_windows=False)
 
 
+def _class_contains(value, token: str) -> bool:
+    if not value:
+        return False
+
+    if isinstance(value, (list, tuple, set)):
+        classes = value
+    else:
+        classes = [value]
+
+    return token in " ".join(str(item) for item in classes).lower()
+
+
 def extract_metadata(html: str) -> ArticleMetadata:
     """
     Estrae metadati da HTML con BeautifulSoup.
@@ -113,7 +125,7 @@ def _extract_author(soup: BeautifulSoup) -> str:
             continue
 
     # Byline class fallback
-    byline = soup.find(class_=lambda c: c and "byline" in " ".join(c).lower())
+    byline = soup.find(class_=lambda c: _class_contains(c, "byline"))
     if byline:
         return byline.get_text(strip=True)
 

@@ -1,62 +1,111 @@
+from __future__ import annotations
+
 from urllib.parse import urlparse
 
-def extract_domain(url):
-    """
-    Trasforma 'https://www.ansa.it/news/123' in 'ansa.it'
-    """
+
+def extract_domain(url: str) -> str:
+    """Transform 'https://www.ansa.it/news/123' into 'ansa.it'."""
     try:
-        # Prende l'indirizzo base (netloc)
-        domain = urlparse(url).netloc
-        # Rimuove il 'www.' se presente
+        value = (url or "").strip()
+        if not value:
+            return ""
+
+        if "://" not in value:
+            value = "https://" + value
+
+        domain = urlparse(value).netloc.lower()
         if domain.startswith("www."):
             domain = domain[4:]
         return domain
-    except:
-        return url # Ritorna l'originale se l'URL è malformato
+    except Exception:
+        return url
 
-def get_credibility_score(domain):
+
+def get_credibility_score(domain: str) -> float:
     """
-    Calcola il punteggio di credibilità di base per un dominio.
-    Applica regole specifiche invece di whitelist/blacklist statiche.
+    Estimate baseline source credibility from the domain.
+
+    Scores are deliberately simple and explainable: institutions and primary
+    science sources rank highest, major news organizations rank high, low-trust
+    markers rank low, and unknown sources remain neutral.
     """
-    # 1. Pulizia extra (se per caso è passato un URL intero invece del solo dominio)
-    clean_domain = extract_domain(domain) if "/" in domain else domain
+    clean_domain = extract_domain(domain) if "/" in (domain or "") else (domain or "")
     clean_domain = clean_domain.lower()
 
-    if clean_domain.endswith(".gov") or "wikipedia." in clean_domain:
+    if not clean_domain:
+        return 0.0
+
+    institutional_domains = [
+        ".gov",
+        ".gov.it",
+        "who.int",
+        "cdc.gov",
+        "nih.gov",
+        "europa.eu",
+        "istat.it",
+        "iss.it",
+        "salute.gov.it",
+        "wikipedia.",
+    ]
+    if clean_domain.endswith(".gov") or any(d in clean_domain for d in institutional_domains):
         return 1.0
 
-    if "blog" in clean_domain:
-        return 0.2
-
-    quotidiani_maggiori = [
-        "corriere.it", "repubblica.it", "ilsole24ore.com", "lastampa.it",
-        "ilgiornale.it", "liberoquotidiano.it", "ansa.it",
-        "nytimes.com", "bbc.co.uk", "reuters.com", "theguardian.com"
+    high_trust_domains = [
+        "ansa.it",
+        "reuters.com",
+        "apnews.com",
+        "bbc.co.uk",
+        "nature.com",
+        "science.org",
+        "nejm.org",
+        "thelancet.com",
+        "jamanetwork.com",
     ]
-    if any(q in clean_domain for q in quotidiani_maggiori):
+    if any(d in clean_domain for d in high_trust_domains):
+        return 0.9
+
+    major_news_domains = [
+        "corriere.it",
+        "repubblica.it",
+        "ilsole24ore.com",
+        "lastampa.it",
+        "ilgiornale.it",
+        "liberoquotidiano.it",
+        "nytimes.com",
+        "theguardian.com",
+    ]
+    if any(d in clean_domain for d in major_news_domains):
         return 0.8
 
-    return 0.5 # Default Neutro
+    low_trust_markers = [
+        "bufale",
+        "verita-nascoste",
+        "complotti",
+        "fake-news",
+        "blogspot",
+    ]
+    if any(marker in clean_domain for marker in low_trust_markers):
+        return 0.2
 
-def get_source_credibility(url, text):
-    domain = extract_domain(url) # Funzione per pulire l'URL
-    
-    # 1. Base Score dal Dominio (quello che abbiamo già fatto)
-    base_score = get_credibility_score(domain) 
-    
-    # 2. Correttori Dinamici basati sul Testo
-    penalty = 0
-    bonus = 0
-    
-    # Esempio: Il testo cita fonti o dati numerici?
-    if any(char.isdigit() for char in text) and ("%" in text or "dati" in text.lower()):
+    if "blog" in clean_domain:
+        return 0.3
+
+    return 0.5
+
+
+def get_source_credibility(url: str, text: str) -> float:
+    domain = extract_domain(url)
+    base_score = get_credibility_score(domain)
+
+    penalty = 0.0
+    bonus = 0.0
+    content = text or ""
+
+    if any(char.isdigit() for char in content) and ("%" in content or "dati" in content.lower()):
         bonus += 0.05
-        
-    # Esempio: Il testo usa linguaggio troppo emotivo? (Red Flag)
+
     emotive_words = ["incredibile", "scandalo", "assurdo", "non crederai"]
-    if any(word in text.lower() for word in emotive_words):
+    if any(word in content.lower() for word in emotive_words):
         penalty += 0.2
-        
-    final_score = max(0.1, min(1.0, base_score + bonus - penalty))
-    return final_score
+
+    return max(0.1, min(1.0, base_score + bonus - penalty))

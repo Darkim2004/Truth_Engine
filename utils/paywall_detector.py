@@ -9,6 +9,18 @@ from bs4 import BeautifulSoup
 from config import PAYWALL_KEYWORDS, PAYWALL_MIN_CONTENT_LENGTH
 
 
+def _class_contains(value, token: str) -> bool:
+    if not value:
+        return False
+
+    if isinstance(value, (list, tuple, set)):
+        classes = value
+    else:
+        classes = [value]
+
+    return token in " ".join(str(item) for item in classes).lower()
+
+
 def is_paywall(html: str) -> bool:
     """
     Rileva se una pagina HTML è dietro paywall.
@@ -40,17 +52,13 @@ def is_paywall(html: str) -> bool:
         except Exception:
             return False
 
-    # Controlla classi CSS tipiche di paywall
-    paywall_selectors = [
-        {"class_": lambda c: c and "paywall" in " ".join(c).lower()},
-        {"class_": lambda c: c and "subscriber" in " ".join(c).lower()},
-        {"class_": lambda c: c and "premium-content" in " ".join(c).lower()},
-        {"id": lambda i: i and "paywall" in i.lower()},
-    ]
-
-    for selector in paywall_selectors:
-        if soup.find(attrs=selector):
+    # Controlla classi CSS tipiche di paywall.
+    for token in ("paywall", "subscriber", "premium-content"):
+        if soup.find(class_=lambda c, token=token: _class_contains(c, token)):
             return True
+
+    if soup.find(id=lambda value: bool(value and "paywall" in value.lower())):
+        return True
 
     # 3. Check se il body ha poco testo visibile
     body = soup.find("body")

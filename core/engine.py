@@ -1,14 +1,12 @@
 import json
-import sys
 import os
-
-# Permette a Python di vedere la root del progetto
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from pathlib import Path
 
 from core.tabella_pesi import get_credibility_score, extract_domain
 from core.motore_verdetto import genera_verdetto_probabilistico
 from core.classificatore_evidenze import analyze_context_match
 from scoring.evidence_matcher import validate_evidence 
+from config import UI_OUTPUT_PATH
 
 def calcola_affidabilita_media(dossier):
     """
@@ -27,11 +25,13 @@ def calcola_affidabilita_media(dossier):
     # Trasforma in base 100 per la UI del frontend
     return int(round((punteggio_ottenuto / massimo_teorico) * 100))
 
-def salva_per_matteo(risultato, nome_file="output_per_ui.json"):
+def salva_per_matteo(risultato, nome_file: str | os.PathLike | None = None):
     """Salva il verdetto finale in un JSON leggibile dal Frontend."""
-    with open(nome_file, 'w', encoding='utf-8') as f:
+    output_path = Path(nome_file) if nome_file else UI_OUTPUT_PATH
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open('w', encoding='utf-8') as f:
         json.dump(risultato, f, indent=4, ensure_ascii=False)
-    print(f"\n[OK] FILE GENERATO PER MATTEO: {nome_file}")
+    print(f"\n[OK] FILE GENERATO PER MATTEO: {output_path}")
 
 def genera_dossier_completo(claim, search_results):
     """

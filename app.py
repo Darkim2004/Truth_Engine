@@ -1,5 +1,4 @@
 import sys
-import io
 import os
 
 # Fix encoding per Windows: il terminale cp1252 non supporta emoji e caratteri Unicode.
@@ -17,14 +16,15 @@ if sys.platform == 'win32':
 
 import json
 import requests
-import os
 import asyncio
 import threading
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from dotenv import load_dotenv
+from werkzeug.exceptions import HTTPException
 
 # Import dei moduli del tuo team
+from config import INPUT_SNAPSHOT_PATH
 from core.engine import truth_engine_main
 from extractor.metadata import extract_metadata
 
@@ -72,6 +72,13 @@ def run_async_task(coro):
     future = asyncio.run_coroutine_threadsafe(coro, _async_loop)
     return future.result()
 
+
+def save_runtime_json(payload: dict) -> None:
+    """Persist the latest request payload for debugging without cluttering root."""
+    INPUT_SNAPSHOT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with INPUT_SNAPSHOT_PATH.open("w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=4, ensure_ascii=False)
+
 # Configurazione CORS blindata: 3 livelli di sicurezza
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=False)
 
@@ -85,6 +92,9 @@ def add_cors_headers(response):
 # Cattura TUTTE le eccezioni non gestite e ritorna JSON con CORS headers
 @app.errorhandler(Exception)
 def handle_exception(e):
+    if isinstance(e, HTTPException):
+        return e
+
     import traceback
     traceback.print_exc()
     response = jsonify({"error": f"Errore server: {str(e)}"})
@@ -123,7 +133,7 @@ def serve_test_case(filename):
 # --- ROTTA 1: VERIFICA COMPLETA (Il motore di Andrea/Luigi) ---
 @app.route('/api/verify', methods=['POST'])
 def verify():
-    data = request.json
+    data = request.get_json(silent=True)
     if not data:
         return jsonify({"error": "Nessun dato ricevuto"}), 400
     
@@ -141,12 +151,16 @@ def elabora():
     if request.method == 'OPTIONS':
         return jsonify({"status": "ok"}), 200
 
-    payload = request.json
+    payload = request.get_json(silent=True)
     if not payload:
         return jsonify({"error": "Payload mancante"}), 400
 
     mode = payload.get('mode') # 'testo' o 'url'
     input_data = payload.get('data')
+    if mode not in {"testo", "url"}:
+        return jsonify({"error": "Modalità non supportata"}), 400
+    if not input_data:
+        return jsonify({"error": "Input mancante"}), 400
     
     data_to_analyze = ""
     data_to_save = {}
@@ -183,11 +197,10 @@ def elabora():
             "contenuto": input_data
         }
 
-    # --- SCRITTURA SU FILE input.json ---
+    # --- SCRITTURA SNAPSHOT RUNTIME ---
     try:
-        with open('input.json', 'w', encoding='utf-8') as f:
-            json.dump(data_to_save, f, indent=4, ensure_ascii=False)
-        print("[OK] input.json aggiornato correttamente.")
+        save_runtime_json(data_to_save)
+        print(f"[OK] Snapshot runtime aggiornato: {INPUT_SNAPSHOT_PATH}")
     except Exception as e:
         print(f"[ERRORE] Errore salvataggio file: {e}")
 
@@ -213,12 +226,16 @@ def elabora_completo():
     from groq import Groq
     from pipeline import run_pipeline
 
-    payload = request.json
+    payload = request.get_json(silent=True)
     if not payload:
         return jsonify({"error": "Payload mancante"}), 400
 
     mode = payload.get('mode')
     input_data = payload.get('data')
+    if mode not in {"testo", "url"}:
+        return jsonify({"error": "Modalità non supportata"}), 400
+    if not input_data:
+        return jsonify({"error": "Input mancante"}), 400
 
     # --- STEP 0: Estrai il testo da analizzare ---
     data_to_analyze = ""
@@ -292,9 +309,7 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
             }
         }
 
-        # Salva input.json per debug
-        with open('input.json', 'w', encoding='utf-8') as f:
-            json.dump(pipeline_input, f, indent=4, ensure_ascii=False)
+        save_runtime_json(pipeline_input)
 
         # Esegue la pipeline su un loop async persistente (workaround stabile per Windows).
         pipeline_output = run_async_task(run_pipeline(pipeline_input))

@@ -1,6 +1,17 @@
 """
 Truth Engine — Configurazione centralizzata.
 """
+from pathlib import Path
+
+# --- Paths ---
+BASE_DIR = Path(__file__).resolve().parent
+RUNTIME_DIR = BASE_DIR / ".runtime"
+RUNTIME_INPUT_DIR = RUNTIME_DIR / "inputs"
+RUNTIME_OUTPUT_DIR = RUNTIME_DIR / "outputs"
+RUNTIME_LOG_DIR = RUNTIME_DIR / "logs"
+INPUT_SNAPSHOT_PATH = RUNTIME_INPUT_DIR / "input.json"
+UI_OUTPUT_PATH = RUNTIME_OUTPUT_DIR / "output_per_ui.json"
+EXAMPLE_INPUT_PATH = BASE_DIR / "examples" / "input_example.json"
 
 # --- Search ---
 SEARCH_MAX_RESULTS = 3  # Risultati per motore per query

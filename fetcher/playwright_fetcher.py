@@ -88,70 +88,72 @@ async def fetch_with_playwright(url: str) -> FetchedPage:
     try:
         browser = await _get_browser()
 
-        # Nuovo contesto per ogni pagina (isolamento cookie/cache)
-        context = await browser.new_context(
-            viewport={"width": 1920, "height": 1080},
-            user_agent=(
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/131.0.0.0 Safari/537.36"
-            ),
-            locale="en-US",
-        )
-
-        page = await context.new_page()
-
-        # Applica stealth (versione 2.x API)
-        stealth = Stealth()
-        await stealth.apply_stealth_async(page)
-
-        # Naviga
+        context = None
         try:
-            await page.goto(url, wait_until="domcontentloaded", timeout=PLAYWRIGHT_TIMEOUT)
-        except PlaywrightTimeout:
-            console.print(f"    [yellow][TIMEOUT][/yellow] Playwright timeout navigazione: {url[:60]}...")
-            await context.close()
-            return FetchedPage(
-                url=url,
-                fetch_method="playwright",
-                is_valid=False,
-                error="Timeout navigazione",
+            # Nuovo contesto per ogni pagina (isolamento cookie/cache)
+            context = await browser.new_context(
+                viewport={"width": 1920, "height": 1080},
+                user_agent=(
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/131.0.0.0 Safari/537.36"
+                ),
+                locale="en-US",
             )
 
-        # Aspetta un po' per JS rendering
-        await asyncio.sleep(2)
+            page = await context.new_page()
 
-        # Scroll lento per triggerare lazy-load
-        for i in range(PLAYWRIGHT_SCROLL_STEPS):
-            await page.evaluate(f"window.scrollBy(0, {300 + i * 200})")
-            await asyncio.sleep(PLAYWRIGHT_SCROLL_DELAY / 1000)
+            # Applica stealth (versione 2.x API)
+            stealth = Stealth()
+            await stealth.apply_stealth_async(page)
 
-        # Torna su
-        await page.evaluate("window.scrollTo(0, 0)")
-        await asyncio.sleep(1)
+            # Naviga
+            try:
+                await page.goto(url, wait_until="domcontentloaded", timeout=PLAYWRIGHT_TIMEOUT)
+            except PlaywrightTimeout:
+                console.print(f"    [yellow][TIMEOUT][/yellow] Playwright timeout navigazione: {url[:60]}...")
+                return FetchedPage(
+                    url=url,
+                    fetch_method="playwright",
+                    is_valid=False,
+                    error="Timeout navigazione",
+                )
 
-        # Ottieni HTML completo
-        html = await page.content()
+            # Aspetta un po' per JS rendering
+            await asyncio.sleep(2)
 
-        await context.close()
+            # Scroll lento per triggerare lazy-load
+            for i in range(PLAYWRIGHT_SCROLL_STEPS):
+                await page.evaluate(f"window.scrollBy(0, {300 + i * 200})")
+                await asyncio.sleep(PLAYWRIGHT_SCROLL_DELAY / 1000)
 
-        if html and len(html) > 500:
-            console.print(f"    [green][OK][/green] Playwright OK: {url[:60]}...")
-            return FetchedPage(
-                url=url,
-                html=html,
-                status_code=200,
-                fetch_method="playwright",
-                is_valid=True,
-            )
-        else:
-            return FetchedPage(
-                url=url,
-                html=html,
-                fetch_method="playwright",
-                is_valid=False,
-                error="HTML troppo corto o vuoto",
-            )
+            # Torna su
+            await page.evaluate("window.scrollTo(0, 0)")
+            await asyncio.sleep(1)
+
+            # Ottieni HTML completo
+            html = await page.content()
+
+            if html and len(html) > 500:
+                console.print(f"    [green][OK][/green] Playwright OK: {url[:60]}...")
+                return FetchedPage(
+                    url=url,
+                    html=html,
+                    status_code=200,
+                    fetch_method="playwright",
+                    is_valid=True,
+                )
+            else:
+                return FetchedPage(
+                    url=url,
+                    html=html,
+                    fetch_method="playwright",
+                    is_valid=False,
+                    error="HTML troppo corto o vuoto",
+                )
+        finally:
+            if context is not None:
+                await context.close()
 
     except PlaywrightTimeout:
         return FetchedPage(

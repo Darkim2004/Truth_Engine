@@ -1,82 +1,101 @@
-import os
+from __future__ import annotations
+
 import json
-from groq import Groq # <--- Usiamo la libreria Groq per la tua chiave gsk_
+import os
+
 from dotenv import load_dotenv
+from groq import Groq
 
 load_dotenv()
 
-# Inizializziamo il client Groq
-# Assicurati che nel .env ci sia GROQ_API_KEY=gsk_...
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+_client: Groq | None = None
 
-def analyze_context_match(chunks_list, claim):
+
+def get_groq_client() -> Groq:
+    """Create the Groq client lazily so imports and test discovery stay cheap."""
+    global _client
+
+    if _client is None:
+        api_key = os.getenv("GROQ_API_KEY")
+        if not api_key:
+            raise RuntimeError("GROQ_API_KEY non configurata.")
+        _client = Groq(api_key=api_key)
+
+    return _client
+
+
+def analyze_context_match(chunks_list: list[str], claim: str) -> list[dict]:
     """
-    Analizza una lista di chunk rispetto al claim IN UNA SINGOLA CHIAMATA API (Batch)
-    per risparmiare pesantemente sui Tokens Per Day e non incappare nel limite 429.
+    Classify evidence chunks for a claim with a single batched Groq request.
+
+    Returns one item per input chunk with:
+    - categoria: CONFERMA, CONFUTA, or NON_ATTINENTE
+    - motivazione: short explanation from the model
     """
     if not chunks_list:
         return []
 
-    # Creiamo un dizionario dei chunk per passarli comodamente al LLM
-    chunks_dict = {f"chunk_{i}": test for i, test in enumerate(chunks_list)}
-    
+    chunks_dict = {f"chunk_{i}": text for i, text in enumerate(chunks_list)}
     prompt = f"""
-    Sei un analista imparziale. Ti fornirò un'affermazione (CLAIM) e una serie di frammenti di testo enumerati.
-    Il tuo UNICO compito è classificare se ogni singolo chunk supporta o smentisce il CLAIM.
-    
-    CLAIM: {claim}
-    
-    CHUNKS:
-    {json.dumps(chunks_dict, ensure_ascii=False, indent=2)}
-    
-    Rispondi ESCLUSIVAMENTE con un JSON che contenga una lista "risultati" corrispondente a ogni chunk:
+Sei un analista imparziale. Ti fornirò un'affermazione (CLAIM) e una serie di frammenti di testo enumerati.
+Il tuo unico compito è classificare se ogni singolo chunk supporta o smentisce il CLAIM.
+
+CLAIM: {claim}
+
+CHUNKS:
+{json.dumps(chunks_dict, ensure_ascii=False, indent=2)}
+
+Rispondi esclusivamente con un JSON che contenga una lista "risultati" corrispondente a ogni chunk:
+{{
+  "risultati": [
     {{
-      "risultati": [
-        {{
-          "id": "chunk_0",
-          "categoria": "CONFERMA" | "CONFUTA" | "NON_ATTINENTE",
-          "motivazione": "Spiega in 1 riga"
-        }}
-      ]
+      "id": "chunk_0",
+      "categoria": "CONFERMA" | "CONFUTA" | "NON_ATTINENTE",
+      "motivazione": "Spiega in 1 riga"
     }}
-    
-    Regole:
-    - CONFERMA se il chunk dimostra che il claim è vero.
-    - CONFUTA se il chunk dimostra che il claim è falso o errato.
-    - NON_ATTINENTE se il chunk non risponde in modo netto al claim.
-    """
+  ]
+}}
+
+Regole:
+- CONFERMA se il chunk dimostra che il claim è vero.
+- CONFUTA se il chunk dimostra che il claim è falso o errato.
+- NON_ATTINENTE se il chunk non risponde in modo netto al claim.
+"""
     try:
-        # Usiamo il modello veloce 8b che ha token pool separato/più alto.
-        chat_completion = client.chat.completions.create(
+        chat_completion = get_groq_client().chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
             model="llama-3.1-8b-instant",
-            response_format={"type": "json_object"}
+            response_format={"type": "json_object"},
         )
-        
-        risultato = json.loads(chat_completion.choices[0].message.content)
-        lista_risultati = risultato.get("risultati", [])
-        
-        # Mappiamo i risultati
-        classificazioni = []
+
+        result = json.loads(chat_completion.choices[0].message.content)
+        result_items = result.get("risultati", [])
+
+        classifications = []
         for i in range(len(chunks_list)):
             chunk_id = f"chunk_{i}"
-            # Troviamo la risposta corrispondente
-            match = next((item for item in lista_risultati if item.get("id") == chunk_id), None)
-            
+            match = next((item for item in result_items if item.get("id") == chunk_id), None)
+
             if match:
-                cat = match.get("categoria", "NON_ATTINENTE").upper()
-                if cat not in ["CONFERMA", "CONFUTA", "NON_ATTINENTE"]:
-                    cat = "NON_ATTINENTE"
-                classificazioni.append({
-                    "categoria": cat,
-                    "motivazione": match.get("motivazione", "")
-                })
+                category = match.get("categoria", "NON_ATTINENTE").upper()
+                if category not in ["CONFERMA", "CONFUTA", "NON_ATTINENTE"]:
+                    category = "NON_ATTINENTE"
+                classifications.append(
+                    {
+                        "categoria": category,
+                        "motivazione": match.get("motivazione", ""),
+                    }
+                )
             else:
-                classificazioni.append({"categoria": "NON_ATTINENTE", "motivazione": "Errore mapping"})
-                
-        return classificazioni
-    
-    except Exception as e:
-        print(f"ERRORE API GROQ BATCH: {e}")
-        # In caso di errore restituiamo NON_ATTINENTE per tutti i chunk
-        return [{"categoria": "NON_ATTINENTE", "motivazione": f"Errore: {e}"} for _ in chunks_list]
+                classifications.append(
+                    {"categoria": "NON_ATTINENTE", "motivazione": "Errore mapping"}
+                )
+
+        return classifications
+
+    except Exception as exc:
+        print(f"ERRORE API GROQ BATCH: {exc}")
+        return [
+            {"categoria": "NON_ATTINENTE", "motivazione": f"Errore: {exc}"}
+            for _ in chunks_list
+        ]
