@@ -1,4 +1,7 @@
 import unittest
+from unittest.mock import patch
+
+import numpy as np
 
 from scoring.paragraph_chunker import chunk_by_paragraphs
 from scoring.evidence_matcher import processa_tutte_le_fonti
@@ -33,7 +36,17 @@ class TestEvidenceAPI(unittest.TestCase):
             },
         ]
 
-        results = processa_tutte_le_fonti(claim, sources, min_threshold=0.2, top_k=3)
+        with (
+            patch("scoring.evidence_matcher.embed_texts") as mock_embed_texts,
+            patch("scoring.evidence_matcher.compute_similarity") as mock_similarity,
+        ):
+            mock_embed_texts.return_value = np.array([[1.0, 0.0]])
+            mock_similarity.side_effect = [
+                np.array([0.83]),
+                np.array([0.12]),
+            ]
+
+            results = processa_tutte_le_fonti(claim, sources, min_threshold=0.2, top_k=3)
 
         self.assertEqual(len(results), 2)
         self.assertIn("url", results[0])

@@ -1,10 +1,13 @@
 import asyncio
 import json
 import traceback
+
+from config import EXAMPLE_INPUT_PATH
 from pipeline import run_pipeline
 
+
 async def main():
-    with open("input.json", "r", encoding="utf-8") as f:
+    with EXAMPLE_INPUT_PATH.open("r", encoding="utf-8") as f:
         data = json.load(f)
     print("Running with input:", data)
     try:

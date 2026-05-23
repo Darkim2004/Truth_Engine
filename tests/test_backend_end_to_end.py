@@ -179,6 +179,15 @@ class TestBackendEndToEnd(unittest.TestCase):
                 "analysis_tags": ["Dati Scientifici", "Cross-Check"],
             }
 
+        def fake_chunk_classifier(chunks: list[str], claim: str):
+            return [
+                {
+                    "categoria": "CONFERMA" if "affidabile" in chunk.lower() else "NON_ATTINENTE",
+                    "motivazione": "Classificazione deterministica per test.",
+                }
+                for chunk in chunks
+            ]
+
         with (
             patch("groq.Groq", _FakeGroqClient),
             patch("search.duckduckgo.search_duckduckgo", side_effect=fake_search_duckduckgo),
@@ -191,6 +200,7 @@ class TestBackendEndToEnd(unittest.TestCase):
             patch("pipeline.extract_metadata", side_effect=fake_extract_metadata),
             patch("pipeline.validate_evidence", side_effect=fake_similarity_validate),
             patch("core.engine.validate_evidence", side_effect=fake_similarity_validate),
+            patch("core.engine.analyze_context_match", side_effect=fake_chunk_classifier),
             patch("core.engine.genera_verdetto_probabilistico", side_effect=fake_verdict_engine),
         ):
             client = app_module.app.test_client()
@@ -207,7 +217,8 @@ class TestBackendEndToEnd(unittest.TestCase):
 
         # Assert output frontend-oriented mapping.
         self.assertEqual(payload["verdetto"], "Informazione verificata")
-        self.assertEqual(payload["affidabilita"], 82)
+        self.assertEqual(payload["affidabilita"], 55)
+        self.assertEqual(payload["verita_percentuale"], 82)
         self.assertIn("fonti", payload)
         self.assertGreaterEqual(len(payload["fonti"]), 2)
 
