@@ -3,8 +3,8 @@ Truth Engine — Entry point CLI.
 Legge JSON input, esegue il pipeline, scrive JSON output.
 
 Uso:
-    python main.py --input claims.json --output results.json
-    python main.py --input claims.json  (output su stdout)
+    python main.py --input examples/input_example.json --output .runtime/outputs/results.json
+    python main.py --input examples/input_example.json  (output su stdout)
 """
 from __future__ import annotations
 

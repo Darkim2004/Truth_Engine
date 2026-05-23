@@ -18,6 +18,19 @@ build/
 .coverage
 htmlcov/
 
+# Runtime output
+.runtime/
+artifacts/legacy/
+*.log
+debug_*.txt
+out.txt
+input.json
+output_per_ui.json
+raw_output.json
+results.json
+risultati_test.json
+test_output*.json
+
 # File di configurazione sensibili (NON caricarli su GitHub!)
 front-end/config.js
 
