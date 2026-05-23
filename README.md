@@ -96,6 +96,29 @@ python app.py
 
 Open `http://127.0.0.1:5001`.
 
+### Docker
+
+Docker Desktop, or another Docker daemon, must be running before executing these
+commands. On Windows, if Docker reports that it cannot connect to
+`//./pipe/docker_engine`, start Docker Desktop and retry.
+
+Build the image:
+
+```bash
+docker build -t truth-shield .
+```
+
+The first build can take a while because Playwright installs Chromium and the
+required system dependencies inside the image.
+
+Run the Flask API and static dashboard:
+
+```bash
+docker run --rm -p 5001:5001 --env-file .env truth-shield
+```
+
+Open `http://127.0.0.1:5001`.
+
 ## CLI Usage
 
 Run the pipeline with the example input:
