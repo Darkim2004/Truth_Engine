@@ -6,7 +6,7 @@ from __future__ import annotations
 
 from rich.console import Console
 
-from models import SearchResult
+from core.models import SearchResult
 from utils.url_normalizer import normalize_url
 
 console = Console(legacy_windows=False)

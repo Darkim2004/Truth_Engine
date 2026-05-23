@@ -12,7 +12,7 @@ import httpx
 from rich.console import Console
 
 from config import HTTP_TIMEOUT, HTTP_MAX_RETRIES, HTTP_BACKOFF_FACTOR, DEFAULT_HEADERS
-from models import FetchedPage
+from core.models import FetchedPage
 
 console = Console(legacy_windows=False)
 
@@ -34,14 +34,14 @@ async def fetch_with_httpx(url: str) -> FetchedPage:
     Returns:
         FetchedPage con html e metadati.
     """
-    for attempt in range(1, HTTP_MAX_RETRIES + 1):
-        try:
-            async with httpx.AsyncClient(
-                headers=DEFAULT_HEADERS,
-                timeout=HTTP_TIMEOUT,
-                follow_redirects=True,
-                max_redirects=5,
-            ) as client:
+    async with httpx.AsyncClient(
+        headers=DEFAULT_HEADERS,
+        timeout=HTTP_TIMEOUT,
+        follow_redirects=True,
+        max_redirects=5,
+    ) as client:
+        for attempt in range(1, HTTP_MAX_RETRIES + 1):
+            try:
                 response = await client.get(url)
 
                 # Skip immediato su errori permanenti
@@ -104,33 +104,33 @@ async def fetch_with_httpx(url: str) -> FetchedPage:
                     error=f"HTTP {response.status_code} non gestito",
                 )
 
-        except httpx.TimeoutException:
-            if attempt < HTTP_MAX_RETRIES:
-                sleep_time = HTTP_BACKOFF_FACTOR ** attempt
-                await asyncio.sleep(sleep_time)
-                continue
-            return FetchedPage(
-                url=url,
-                fetch_method="httpx",
-                is_valid=False,
-                error="Timeout",
-            )
+            except httpx.TimeoutException:
+                if attempt < HTTP_MAX_RETRIES:
+                    sleep_time = HTTP_BACKOFF_FACTOR ** attempt
+                    await asyncio.sleep(sleep_time)
+                    continue
+                return FetchedPage(
+                    url=url,
+                    fetch_method="httpx",
+                    is_valid=False,
+                    error="Timeout",
+                )
 
-        except httpx.ConnectError as e:
-            return FetchedPage(
-                url=url,
-                fetch_method="httpx",
-                is_valid=False,
-                error=f"Connessione fallita: {str(e)[:100]}",
-            )
+            except httpx.ConnectError as e:
+                return FetchedPage(
+                    url=url,
+                    fetch_method="httpx",
+                    is_valid=False,
+                    error=f"Connessione fallita: {str(e)[:100]}",
+                )
 
-        except Exception as e:
-            return FetchedPage(
-                url=url,
-                fetch_method="httpx",
-                is_valid=False,
-                error=f"Errore: {str(e)[:100]}",
-            )
+            except Exception as e:
+                return FetchedPage(
+                    url=url,
+                    fetch_method="httpx",
+                    is_valid=False,
+                    error=f"Errore: {str(e)[:100]}",
+                )
 
     # Fallback (non dovrebbe arrivarci)
     return FetchedPage(

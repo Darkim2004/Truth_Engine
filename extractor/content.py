@@ -22,7 +22,6 @@ def extract_article_text(html: str) -> str:
     """
     if not html:
         return ""
-
     try:
         from trafilatura import extract
 
@@ -42,36 +41,3 @@ def extract_article_text(html: str) -> str:
     except Exception as e:
         console.print(f"    [red][ERRORE][/red] trafilatura errore: {str(e)[:100]}")
         return ""
-
-
-def extract_article_structured(html: str) -> dict:
-    """
-    Estrazione strutturata con bare_extraction().
-    Ritorna dict con text, title, author, date, etc.
-    
-    Returns:
-        Dict con campi estratti, o dict vuoto se fallisce.
-    """
-    if not html:
-        return {}
-
-    try:
-        from trafilatura import bare_extraction
-
-        result = bare_extraction(html, include_comments=False, include_tables=True)
-
-        if result is None:
-            return {}
-
-        return {
-            "text": getattr(result, "text", "") or "",
-            "title": getattr(result, "title", "") or "",
-            "author": getattr(result, "author", "") or "",
-            "date": getattr(result, "date", "") or "",
-            "sitename": getattr(result, "sitename", "") or "",
-            "description": getattr(result, "description", "") or "",
-        }
-
-    except Exception as e:
-        console.print(f"    [red][ERRORE][/red] bare_extraction errore: {str(e)[:100]}")
-        return {}

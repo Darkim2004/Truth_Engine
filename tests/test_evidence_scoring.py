@@ -4,7 +4,7 @@ from unittest.mock import patch
 import numpy as np
 
 from scoring.paragraph_chunker import chunk_by_paragraphs
-from scoring.evidence_matcher import processa_tutte_le_fonti
+from scoring.evidence_matcher import validate_evidence
 
 
 class TestChunking(unittest.TestCase):
@@ -17,43 +17,33 @@ class TestChunking(unittest.TestCase):
 
         chunks = chunk_by_paragraphs(text, min_chunk_size=60, max_chunk_size=220)
 
+
         self.assertTrue(len(chunks) >= 2)
         self.assertTrue(any(len(chunk) <= 220 for chunk in chunks))
         self.assertTrue(all(chunk.strip() for chunk in chunks))
 
 
 class TestEvidenceAPI(unittest.TestCase):
-    def test_processa_tutte_le_fonti_shape(self):
+    def test_validate_evidence_shape(self):
         claim = "Il vaccino causa autismo"
-        sources = [
-            {
-                "url": "https://example.com/article-1",
-                "text": "I vaccini non causano autismo secondo molte revisioni scientifiche.",
-            },
-            {
-                "url": "https://example.com/article-2",
-                "text": "Articolo di sport senza relazione con il claim.",
-            },
-        ]
+        url = "https://example.com/article-1"
+        text = "I vaccini non causano autismo secondo molte revisioni scientifiche."
 
         with (
             patch("scoring.evidence_matcher.embed_texts") as mock_embed_texts,
             patch("scoring.evidence_matcher.compute_similarity") as mock_similarity,
         ):
             mock_embed_texts.return_value = np.array([[1.0, 0.0]])
-            mock_similarity.side_effect = [
-                np.array([0.83]),
-                np.array([0.12]),
-            ]
+            mock_similarity.return_value = np.array([0.83])
 
-            results = processa_tutte_le_fonti(claim, sources, min_threshold=0.2, top_k=3)
+            results = validate_evidence(url=url, text=text, claim=claim, min_threshold=0.2, top_k=3)
 
-        self.assertEqual(len(results), 2)
-        self.assertIn("url", results[0])
-        self.assertIn("analisi", results[0])
-        self.assertIn("chunks", results[0]["analisi"])
-        self.assertIn("chunk_similarity_scores", results[0]["analisi"])
-        self.assertIn("top_chunk_indices", results[0]["analisi"])
+        self.assertEqual(results["url"], url)
+        self.assertIn("chunks", results)
+        self.assertIn("chunk_similarity_scores", results)
+        self.assertIn("top_chunk_indices", results)
+        self.assertIn("matches", results)
+
 
 
 if __name__ == "__main__":

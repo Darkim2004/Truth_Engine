@@ -15,7 +15,7 @@ import sys
 
 from rich.console import Console
 
-from pipeline import run_pipeline
+from core.pipeline import run_pipeline
 
 console = Console(legacy_windows=False)
 

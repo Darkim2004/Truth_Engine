@@ -13,7 +13,7 @@ from rich.console import Console
 from ddgs import DDGS
 
 from config import SEARCH_MAX_RESULTS, SEARCH_RETRY_MAX, SEARCH_BACKOFF_FACTOR, SEARCH_DELAY_BETWEEN
-from models import SearchResult
+from core.models import SearchResult
 
 console = Console(legacy_windows=False)
 
@@ -36,7 +36,7 @@ async def search_duckduckgo(query: str, max_results: int = SEARCH_MAX_RESULTS) -
     per non bloccare l'event loop.
     """
     results: list[SearchResult] = []
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_running_loop()
 
     for attempt in range(1, SEARCH_RETRY_MAX + 1):
         try:
@@ -81,20 +81,3 @@ async def search_duckduckgo(query: str, max_results: int = SEARCH_MAX_RESULTS) -
         f"'{query[:50]}{'...' if len(query) > 50 else ''}'"
     )
     return results
-
-
-async def search_duckduckgo_batch(queries: list[str]) -> dict[str, list[SearchResult]]:
-    """
-    Esegue ricerche multiple con delay tra una e l'altra per evitare rate limit.
-    Ritorna un dict query -> risultati.
-    """
-    all_results: dict[str, list[SearchResult]] = {}
-
-    for i, query in enumerate(queries):
-        if i > 0:
-            delay = SEARCH_DELAY_BETWEEN + random.uniform(0, 1)
-            await asyncio.sleep(delay)
-
-        all_results[query] = await search_duckduckgo(query)
-
-    return all_results

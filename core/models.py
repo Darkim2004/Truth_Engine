@@ -67,6 +67,14 @@ class ArticleMetadata(BaseModel):
     canonical_url: str = ""
 
 
+class RelevantChunk(BaseModel):
+    """Chunk testuale rilevante estratto dalla fonte."""
+    url: str = ""
+    chunk_index: int = 0
+    chunk_text: str = ""
+    similarity_score: float = 0.0
+
+
 class ExtractedSource(BaseModel):
     """Contenuto completo estratto da una fonte."""
     url: str
@@ -77,7 +85,10 @@ class ExtractedSource(BaseModel):
     chunks: list[str] = Field(default_factory=list)
     chunk_similarity_scores: list[float] = Field(default_factory=list)
     top_chunk_indices: list[int] = Field(default_factory=list)
-    relevant_chunks: list[dict] = Field(default_factory=list)
+    relevant_chunks: list[RelevantChunk] = Field(default_factory=list)
+    max_similarity: float = 0.0
+    supports_claim: bool = False
+    evidence_threshold: float = 0.0
 
 
 class ClaimSources(BaseModel):

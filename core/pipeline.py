@@ -10,13 +10,14 @@ from datetime import datetime, timezone
 from rich.console import Console
 from rich.panel import Panel
 
-from models import (
+from core.models import (
     PipelineInput,
     PipelineOutput,
     ClaimSources,
     ExtractedSource,
     SearchResult,
     FetchedPage,
+    RelevantChunk,
 )
 from search.aggregator import aggregate_search
 from fetcher.manager import fetch_batch, fetch_url
@@ -185,7 +186,13 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
                 source.chunks = analysis["chunks"]
                 source.chunk_similarity_scores = analysis["chunk_similarity_scores"]
                 source.top_chunk_indices = analysis["top_chunk_indices"]
-                source.relevant_chunks = analysis["matches"]
+                source.relevant_chunks = [
+                    RelevantChunk(**match)
+                    for match in analysis["matches"]
+                ]
+                source.max_similarity = analysis["max_similarity"]
+                source.supports_claim = analysis["supports_claim"]
+                source.evidence_threshold = analysis["threshold"]
 
             console.print(
                 f"\n  [blue][RISULTATI][/blue] Claim {claim.id}: "
@@ -223,52 +230,3 @@ async def run_pipeline(input_data: dict) -> PipelineOutput:
 
     return output
 
-
-async def get_article_title_from_url(url: str) -> str:
-    """
-    Metodo riusabile per FE/BE: dato un URL, ritorna il titolo articolo.
-
-    Usa gli stessi strumenti della pipeline:
-    - fetch manager (httpx con fallback Playwright)
-    - extractor metadati (og:title, <title>, h1, ecc.)
-
-    Returns:
-        Titolo estratto, oppure stringa vuota se non disponibile.
-    """
-    normalized_url = normalize_url(url)
-    if not normalized_url:
-        return ""
-
-    try:
-        page = await fetch_url(normalized_url)
-        if not page.is_valid or not page.html:
-            return ""
-
-        metadata = extract_metadata(page.html)
-        return (metadata.title or "").strip()
-    finally:
-        # In chiamate standalone (es. endpoint frontend), rilascia risorse browser.
-        try:
-            await close_browser()
-        except OSError as e:
-            if getattr(e, "errno", None) == 22:
-                console.print("[yellow][WARN][/yellow] Ignoro OSError [Errno 22] in close_browser()")
-            else:
-                raise
-
-
-def get_article_title_from_url_sync(url: str) -> str:
-    """
-    Wrapper sincrono per ambienti non-async.
-
-    Se il chiamante e' gia' in un event loop async, usare direttamente:
-    `await get_article_title_from_url(url)`.
-    """
-    try:
-        asyncio.get_running_loop()
-    except RuntimeError:
-        return asyncio.run(get_article_title_from_url(url))
-
-    raise RuntimeError(
-        "Event loop gia' attivo: usa await get_article_title_from_url(url)."
-    )

@@ -10,7 +10,7 @@ import asyncio
 from rich.console import Console
 
 from config import HTTP_MAX_CONCURRENCY
-from models import FetchedPage
+from core.models import FetchedPage
 from fetcher.httpx_fetcher import fetch_with_httpx
 from fetcher.playwright_fetcher import fetch_with_playwright
 

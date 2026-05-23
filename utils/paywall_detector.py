@@ -7,18 +7,8 @@ from __future__ import annotations
 from bs4 import BeautifulSoup
 
 from config import PAYWALL_KEYWORDS, PAYWALL_MIN_CONTENT_LENGTH
+from utils.html_helpers import class_contains
 
-
-def _class_contains(value, token: str) -> bool:
-    if not value:
-        return False
-
-    if isinstance(value, (list, tuple, set)):
-        classes = value
-    else:
-        classes = [value]
-
-    return token in " ".join(str(item) for item in classes).lower()
 
 
 def is_paywall(html: str) -> bool:
@@ -54,7 +44,7 @@ def is_paywall(html: str) -> bool:
 
     # Controlla classi CSS tipiche di paywall.
     for token in ("paywall", "subscriber", "premium-content"):
-        if soup.find(class_=lambda c, token=token: _class_contains(c, token)):
+        if soup.find(class_=lambda c, token=token: class_contains(c, token)):
             return True
 
     if soup.find(id=lambda value: bool(value and "paywall" in value.lower())):

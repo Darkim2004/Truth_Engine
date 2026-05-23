@@ -91,21 +91,3 @@ def get_credibility_score(domain: str) -> float:
         return 0.3
 
     return 0.5
-
-
-def get_source_credibility(url: str, text: str) -> float:
-    domain = extract_domain(url)
-    base_score = get_credibility_score(domain)
-
-    penalty = 0.0
-    bonus = 0.0
-    content = text or ""
-
-    if any(char.isdigit() for char in content) and ("%" in content or "dati" in content.lower()):
-        bonus += 0.05
-
-    emotive_words = ["incredibile", "scandalo", "assurdo", "non crederai"]
-    if any(word in content.lower() for word in emotive_words):
-        penalty += 0.2
-
-    return max(0.1, min(1.0, base_score + bonus - penalty))

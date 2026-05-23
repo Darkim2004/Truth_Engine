@@ -4,24 +4,16 @@ Parsing chirurgico di meta tags, OpenGraph, schema.org.
 """
 from __future__ import annotations
 
+import json
+
 from bs4 import BeautifulSoup
 from rich.console import Console
 
-from models import ArticleMetadata
+from core.models import ArticleMetadata
+from utils.html_helpers import class_contains
 
 console = Console(legacy_windows=False)
 
-
-def _class_contains(value, token: str) -> bool:
-    if not value:
-        return False
-
-    if isinstance(value, (list, tuple, set)):
-        classes = value
-    else:
-        classes = [value]
-
-    return token in " ".join(str(item) for item in classes).lower()
 
 
 def extract_metadata(html: str) -> ArticleMetadata:
@@ -108,7 +100,6 @@ def _extract_author(soup: BeautifulSoup) -> str:
     scripts = soup.find_all("script", type="application/ld+json")
     for script in scripts:
         try:
-            import json
             data = json.loads(script.string or "")
             if isinstance(data, dict):
                 author = data.get("author")
@@ -125,7 +116,7 @@ def _extract_author(soup: BeautifulSoup) -> str:
             continue
 
     # Byline class fallback
-    byline = soup.find(class_=lambda c: _class_contains(c, "byline"))
+    byline = soup.find(class_=lambda c: class_contains(c, "byline"))
     if byline:
         return byline.get_text(strip=True)
 
@@ -154,7 +145,6 @@ def _extract_date(soup: BeautifulSoup) -> str:
     scripts = soup.find_all("script", type="application/ld+json")
     for script in scripts:
         try:
-            import json
             data = json.loads(script.string or "")
             if isinstance(data, dict):
                 dp = data.get("datePublished", "")

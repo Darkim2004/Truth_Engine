@@ -15,13 +15,14 @@ if sys.platform == 'win32':
 
 
 import json
-import requests
 import asyncio
 import threading
+import httpx
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from dotenv import load_dotenv
 from werkzeug.exceptions import HTTPException
+import traceback
 
 # Import dei moduli del tuo team
 from config import INPUT_SNAPSHOT_PATH
@@ -79,38 +80,24 @@ def save_runtime_json(payload: dict) -> None:
     with INPUT_SNAPSHOT_PATH.open("w", encoding="utf-8") as f:
         json.dump(payload, f, indent=4, ensure_ascii=False)
 
-# Configurazione CORS blindata: 3 livelli di sicurezza
+# Configurazione CORS tramite Flask-CORS
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=False)
 
-@app.after_request
-def add_cors_headers(response):
-    response.headers["Access-Control-Allow-Origin"] = "*"
-    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Accept"
-    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
-    return response
-
-# Cattura TUTTE le eccezioni non gestite e ritorna JSON con CORS headers
+# Cattura TUTTE le eccezioni non gestite
 @app.errorhandler(Exception)
 def handle_exception(e):
     if isinstance(e, HTTPException):
         return e
 
-    import traceback
     traceback.print_exc()
     response = jsonify({"error": f"Errore server: {str(e)}"})
     response.status_code = 500
-    response.headers["Access-Control-Allow-Origin"] = "*"
-    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Accept"
-    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
     return response
 
 @app.errorhandler(500)
 def handle_500(e):
     response = jsonify({"error": f"Errore interno: {str(e)}"})
     response.status_code = 500
-    response.headers["Access-Control-Allow-Origin"] = "*"
-    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Accept"
-    response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
     return response
 
 # --- ROTTA 0: SERVE IL FRONTEND ---
@@ -118,9 +105,6 @@ def handle_500(e):
 def serve_frontend():
     return send_from_directory('front-end', 'index.html')
 
-@app.route('/config.js')
-def serve_config_js():
-    return send_from_directory('front-end', 'config.js')
 
 @app.route('/script.js')
 def serve_script_js():
@@ -130,84 +114,7 @@ def serve_script_js():
 def serve_test_case(filename):
     return send_from_directory('front-end/test-case', filename)
 
-# --- ROTTA 1: VERIFICA COMPLETA (Il motore di Andrea/Luigi) ---
-@app.route('/api/verify', methods=['POST'])
-def verify():
-    data = request.get_json(silent=True)
-    if not data:
-        return jsonify({"error": "Nessun dato ricevuto"}), 400
-    
-    claim = data.get('claim')
-    search_results = data.get('results', [])
 
-    # Chiamiamo il motore core
-    verdetto = truth_engine_main(claim, search_results)
-    return jsonify(verdetto)
-
-# --- ROTTA 2: ELABORA (La funzione per Matteo e la UI) ---
-@app.route('/elabora', methods=['POST', 'OPTIONS'])
-def elabora():
-    # Gestione automatica del pre-flight del browser
-    if request.method == 'OPTIONS':
-        return jsonify({"status": "ok"}), 200
-
-    payload = request.get_json(silent=True)
-    if not payload:
-        return jsonify({"error": "Payload mancante"}), 400
-
-    mode = payload.get('mode') # 'testo' o 'url'
-    input_data = payload.get('data')
-    if mode not in {"testo", "url"}:
-        return jsonify({"error": "Modalità non supportata"}), 400
-    if not input_data:
-        return jsonify({"error": "Input mancante"}), 400
-    
-    data_to_analyze = ""
-    data_to_save = {}
-
-    if mode == 'url':
-        try:
-            # Scarichiamo la pagina con un User-Agent per evitare blocchi
-            headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'}
-            res = requests.get(input_data, timeout=10, headers=headers)
-            res.raise_for_status()
-            
-            # Estrazione metadata
-            metadata = extract_metadata(res.text)
-            
-            data_to_analyze = f"Titolo: {metadata.title}. Descrizione: {metadata.description}. Autore: {metadata.author}"
-            data_to_save = {
-                "tipo": "URL",
-                "url": input_data,
-                "metadata": {
-                    "titolo": metadata.title,
-                    "descrizione": metadata.description,
-                    "autore": metadata.author,
-                    "sito": metadata.site_name
-                }
-            }
-        except Exception as e:
-            print(f"[ERRORE] Errore URL: {e}")
-            return jsonify({"error": f"Errore durante l'estrazione URL: {str(e)}"}), 400
-    else:
-        # Modalità Testo Libero
-        data_to_analyze = input_data
-        data_to_save = {
-            "tipo": "TESTO",
-            "contenuto": input_data
-        }
-
-    # --- SCRITTURA SNAPSHOT RUNTIME ---
-    try:
-        save_runtime_json(data_to_save)
-        print(f"[OK] Snapshot runtime aggiornato: {INPUT_SNAPSHOT_PATH}")
-    except Exception as e:
-        print(f"[ERRORE] Errore salvataggio file: {e}")
-
-    return jsonify({
-        "status": "success",
-        "testo_estratto": data_to_analyze
-    })
 
 # --- ROTTA 3: ELABORA COMPLETO (Pipeline reale: Groq claims → DuckDuckGo → Core Engine) ---
 @app.route('/elabora_completo', methods=['POST', 'OPTIONS'])
@@ -224,7 +131,7 @@ def elabora_completo():
         return jsonify({"status": "ok"}), 200
 
     from groq import Groq
-    from pipeline import run_pipeline
+    from core.pipeline import run_pipeline
 
     payload = request.get_json(silent=True)
     if not payload:
@@ -244,8 +151,9 @@ def elabora_completo():
     if mode == 'url':
         try:
             headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'}
-            res = requests.get(input_data, timeout=10, headers=headers)
-            res.raise_for_status()
+            with httpx.Client(headers=headers, timeout=10, follow_redirects=True) as client:
+                res = client.get(input_data)
+                res.raise_for_status()
             metadata = extract_metadata(res.text)
             data_to_analyze = f"Titolo: {metadata.title}. Descrizione: {metadata.description}. Autore: {metadata.author}"
             source_url = input_data
@@ -325,16 +233,7 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
             sources = result.get("sources", [])
 
             if sources:
-                # Prepara i dati per truth_engine_main
-                search_results_for_engine = []
-                for src in sources:
-                    search_results_for_engine.append({
-                        "url": src["url"],
-                        "text": src.get("article_text", ""),
-                        "metadata": src.get("metadata", {})
-                    })
-
-                verdetto = truth_engine_main(claim_text, search_results_for_engine)
+                verdetto = truth_engine_main(claim_text, sources)
                 verdetti.append({
                     "claim": claim_text,
                     "verdetto": verdetto,
@@ -351,32 +250,18 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
         print(f"[STEP 4] Mapping per la dashboard...")
 
         # Prendi il verdetto principale (primo claim o media)
-        # Prendi il verdetto principale (primo claim o media)
         if verdetti:
             main = verdetti[0]["verdetto"]
             percentages = main.get("percentages", {})
-            truth_pct = percentages.get("truth", 50)
             
             # ✅ ECCO IL TUO PARAMETRO RECUPERATO!
             tuo_confidence_score = main.get("confidence_score", 0) 
             
             label = main.get("verdict_label", "INCERTO")
 
-            # Mappa colore in base al verdetto
-            colore_map = {
-                "VERIFICATO": "#10b981",
-                "PARZIALMENTE_VERO": "#f59e0b",
-                "DUBBIO": "#f97316",
-                "DISINFORMAZIONE": "#ef4444",
-                "INCERTO": "#6b7280"
-            }
-            colore = colore_map.get(label, "#6b7280")
-
             # Mappa verdetto label in italiano
             label_map = {
                 "VERIFICATO": "Informazione verificata",
-                "PARZIALMENTE_VERO": "Parzialmente vero",
-                "DUBBIO": "Informazione dubbia",
                 "DISINFORMAZIONE": "Disinformazione",
                 "INCERTO": "Non verificabile"
             }
@@ -406,9 +291,8 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
             # ✅ IL JSON FINALE CORRETTO PER LA DASHBOARD
             risultato_frontend = {
                 "affidabilita": tuo_confidence_score, # MUOVE IL TACHIMETRO (Tua Matematica)
-                "verita_percentuale": truth_pct,      # PER I GRAFICI A BARRE (Logica Groq)
+                "verita_percentuale": percentages.get("truth", 0),
                 "verdetto": verdetto_testo,
-                "colore": colore,
                 "fonti": fonti_frontend[:4],
                 "dettagli": {
                     "explainability": main.get("explainability", {}),
@@ -423,7 +307,6 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
                 "affidabilita": 0,
                 "verita_percentuale": 0,
                 "verdetto": "Nessun dato analizzato",
-                "colore": "#6b7280",
                 "fonti": []
             }
 
@@ -431,7 +314,6 @@ Estrai massimo 3 claims. Le search_query devono essere in italiano e ottimizzate
         return jsonify(risultato_frontend)
 
     except Exception as e:
-        import traceback
         traceback.print_exc()
         print(f"[ERRORE] Errore pipeline: {e}")
         return jsonify({"error": f"Errore durante l'analisi: {str(e)}"}), 500

@@ -1,5 +1,4 @@
-import json
-
+from core.tabella_pesi import extract_domain
 def genera_verdetto_probabilistico(claim, dossier_arricchito):
     """
     Esecutore Matematico: Riceve il dossier con i chunk già classificati dal LLM (Confuta/Conferma)
@@ -14,7 +13,7 @@ def genera_verdetto_probabilistico(claim, dossier_arricchito):
     for fonte in dossier_arricchito:
         score_fonte = fonte.get("score_fonte", 1.0)
         url = fonte.get("url", "")
-        domain = url.split("//")[-1].split("/")[0] if url else "Sconosciuto"
+        domain = extract_domain(url) if url else "Sconosciuto"
         
         for chunk in fonte.get("chunks_analizzati", []):
             cat = chunk.get("categoria", "NON_ATTINENTE")

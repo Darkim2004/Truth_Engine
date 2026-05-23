@@ -82,8 +82,3 @@ def normalize_url(url: str) -> str:
     normalized = urlunparse((scheme, netloc, path, "", sorted_query, ""))
 
     return normalized
-
-
-def urls_are_same(url1: str, url2: str) -> bool:
-    """Controlla se due URL puntano alla stessa risorsa dopo normalizzazione."""
-    return normalize_url(url1) == normalize_url(url2)

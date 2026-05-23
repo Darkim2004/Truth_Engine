@@ -4,7 +4,7 @@ import logging
 from pathlib import Path
 
 from config import EXAMPLE_INPUT_PATH, RUNTIME_LOG_DIR, RUNTIME_OUTPUT_DIR
-from pipeline import run_pipeline
+from core.pipeline import run_pipeline
 
 
 async def main() -> None:

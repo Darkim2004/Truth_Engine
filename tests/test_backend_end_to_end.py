@@ -3,7 +3,7 @@ import unittest
 from types import SimpleNamespace
 from unittest.mock import patch
 
-from models import ArticleMetadata, FetchedPage, SearchResult
+from core.models import ArticleMetadata, FetchedPage, SearchResult
 
 
 def _fake_groq_response(payload: dict) -> SimpleNamespace:
@@ -191,14 +191,14 @@ class TestBackendEndToEnd(unittest.TestCase):
         with (
             patch("groq.Groq", _FakeGroqClient),
             patch("search.duckduckgo.search_duckduckgo", side_effect=fake_search_duckduckgo),
-            patch("pipeline.fetch_batch", side_effect=fake_fetch_batch),
-            patch("pipeline.close_browser", side_effect=fake_close_browser),
-            patch("pipeline.is_paywall", return_value=False),
-            patch("pipeline.is_correct_language", return_value=True),
-            patch("pipeline.detect_language", return_value="it"),
-            patch("pipeline.extract_article_text", side_effect=fake_extract_article_text),
-            patch("pipeline.extract_metadata", side_effect=fake_extract_metadata),
-            patch("pipeline.validate_evidence", side_effect=fake_similarity_validate),
+            patch("core.pipeline.fetch_batch", side_effect=fake_fetch_batch),
+            patch("core.pipeline.close_browser", side_effect=fake_close_browser),
+            patch("core.pipeline.is_paywall", return_value=False),
+            patch("core.pipeline.is_correct_language", return_value=True),
+            patch("core.pipeline.detect_language", return_value="it"),
+            patch("core.pipeline.extract_article_text", side_effect=fake_extract_article_text),
+            patch("core.pipeline.extract_metadata", side_effect=fake_extract_metadata),
+            patch("core.pipeline.validate_evidence", side_effect=fake_similarity_validate),
             patch("core.engine.validate_evidence", side_effect=fake_similarity_validate),
             patch("core.engine.analyze_context_match", side_effect=fake_chunk_classifier),
             patch("core.engine.genera_verdetto_probabilistico", side_effect=fake_verdict_engine),

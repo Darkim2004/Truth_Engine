@@ -11,7 +11,7 @@ from rich.console import Console
 from playwright.async_api import async_playwright, TimeoutError as PlaywrightTimeout
 
 from config import PLAYWRIGHT_TIMEOUT, PLAYWRIGHT_SCROLL_DELAY, PLAYWRIGHT_SCROLL_STEPS
-from models import FetchedPage
+from core.models import FetchedPage
 
 console = Console(legacy_windows=False)
 
