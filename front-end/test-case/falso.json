@@ -1,7 +1,6 @@
 {
     "affidabilita": 12,
     "verdetto": "FAKE NEWS RILEVATA",
-    "colore": "#f43f5e",
     "fonti": [
         {
             "nome": "FactCheck.org",

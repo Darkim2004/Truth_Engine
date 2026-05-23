@@ -1,5 +1,6 @@
 // Truth Shield Frontend v2.1 — served via Flask
 const BACKEND_URL = "/elabora_completo";
+const ARC_LENGTH = 251.32;
 let currentMode = 'testo';
 
 function safeHttpUrl(url) {
@@ -19,6 +20,20 @@ function appendTextElement(parent, tagName, className, text) {
     return element;
 }
 
+function showError(message) {
+    const banner = document.getElementById('errorBanner');
+    const text = document.getElementById('errorText');
+    if (!banner || !text) return;
+
+    text.textContent = message;
+    banner.classList.remove('hidden');
+}
+
+function hideError() {
+    const banner = document.getElementById('errorBanner');
+    if (banner) banner.classList.add('hidden');
+}
+
 async function processData() {
     const inputField = currentMode === 'testo' ? 'testoInput' : 'urlInput';
     const inputVal = document.getElementById(inputField).value.trim();
@@ -27,18 +42,22 @@ async function processData() {
     const loader = document.getElementById('loader');
     const container = document.getElementById('resultContainer');
 
-    if (inputVal.length < 5) return alert("Inserisci un input valido.");
+    hideError();
+
+    if (inputVal.length < 5) {
+        showError("Inserisci un input valido.");
+        return;
+    }
 
     // UI Reset
     btn.disabled = true;
     loader.classList.remove('hidden');
-    label.innerText = "AVVIO ANALISI...";
+    label.textContent = "AVVIO ANALISI...";
     container.classList.add('hidden');
 
     // --- LOGICA TEST CASE (Simulazione locale) ---
     if (inputVal.startsWith("test_")) {
         const scenario = inputVal.split("_")[1]; // es: 'vero' o 'falso'
-        console.log("[DEBUG] Modalità TEST attivata:", scenario);
 
         try {
             // Cerca i file nella cartella test-case (es: test-case/vero.json)
@@ -54,18 +73,17 @@ async function processData() {
             }, 1500);
             return; // Esci dalla funzione, non chiamare il backend reale
         } catch (e) {
-            alert("Errore Test Case: Assicurati che esista il file /test-case/" + scenario + ".json");
+            showError("Errore test case: file /test-case/" + scenario + ".json non trovato.");
             resetUI(btn, loader, label);
             return;
         }
     }
 
     // --- FLUSSO REALE (Chiamata al Backend Flask) ---
+    let timeoutId;
     try {
-        console.log("[DEBUG] Chiamata reale a:", BACKEND_URL);
-
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 120000);
+        timeoutId = setTimeout(() => controller.abort(), 120000);
 
         const response = await fetch(BACKEND_URL, {
             method: 'POST',
@@ -91,13 +109,14 @@ async function processData() {
         renderDashboard(data);
 
     } catch (err) {
-        console.error("[DEBUG] Errore:", err);
+        console.error("Errore analisi:", err);
         if (err.name === 'AbortError') {
-            alert("Timeout: l'analisi ha impiegato troppo tempo (>2 min).");
+            showError("Timeout: l'analisi ha impiegato troppo tempo (>2 min).");
         } else {
-            alert("Errore durante l'analisi: " + err.message);
+            showError("Errore durante l'analisi: " + err.message);
         }
     } finally {
+        if (timeoutId) clearTimeout(timeoutId);
         resetUI(btn, loader, label);
     }
 }
@@ -120,7 +139,7 @@ function renderDashboard(data) {
 
     // 3. Applichiamo il colore e l'animazione
     const arco = document.getElementById('gaugeArcoProgress');
-    const pathLength = 251.32;
+    const pathLength = ARC_LENGTH;
     const offset = pathLength - (score * pathLength / 100);
 
     const percentages = data.dettagli?.percentages || { truth: 0, falsity: 0, uncertainty: 0 };
@@ -131,21 +150,21 @@ function renderDashboard(data) {
         arco.style.strokeDashoffset = offset;
 
         const pctTesto = document.getElementById('percentualeTesto');
-        pctTesto.innerText = score + "%";
+        pctTesto.textContent = score + "%";
         pctTesto.style.color = gaugeColor;
 
         const verdTesto = document.getElementById('verdettoTesto');
-        verdTesto.innerText = verdetto;
+        verdTesto.textContent = verdetto;
         verdTesto.style.color = gaugeColor;
 
         // Statistiche dettagliate a sinistra
-        document.getElementById('txtTruth').innerText = (percentages.truth || 0) + "%";
+        document.getElementById('txtTruth').textContent = (percentages.truth || 0) + "%";
         document.getElementById('barTruth').style.width = (percentages.truth || 0) + "%";
 
-        document.getElementById('txtFalsity').innerText = (percentages.falsity || 0) + "%";
+        document.getElementById('txtFalsity').textContent = (percentages.falsity || 0) + "%";
         document.getElementById('barFalsity').style.width = (percentages.falsity || 0) + "%";
 
-        document.getElementById('txtUncertainty').innerText = (percentages.uncertainty || 0) + "%";
+        document.getElementById('txtUncertainty').textContent = (percentages.uncertainty || 0) + "%";
         document.getElementById('barUncertainty').style.width = (percentages.uncertainty || 0) + "%";
     }, 100);
 
@@ -217,46 +236,41 @@ function switchMode(mode) {
     const btnU = document.getElementById('tabUrl');
     const contT = document.getElementById('containerTesto');
     const contU = document.getElementById('containerUrl');
+    const isText = mode === 'testo';
 
-    if (mode === 'testo') {
-        btnT.classList.add('tab-active');
-        btnU.classList.remove('tab-active');
-        btnU.classList.add('text-slate-500');
-        contT.classList.remove('hidden');
-        contU.classList.add('hidden');
-    } else {
-        btnU.classList.add('tab-active');
-        btnU.classList.remove('text-slate-500');
-        btnT.classList.remove('tab-active');
-        btnT.classList.add('text-slate-500');
-        contU.classList.remove('hidden');
-        contT.classList.add('hidden');
-    }
+    btnT.classList.toggle('tab-active', isText);
+    btnT.classList.toggle('text-slate-500', !isText);
+    btnU.classList.toggle('tab-active', !isText);
+    btnU.classList.toggle('text-slate-500', isText);
+    contT.classList.toggle('hidden', !isText);
+    contU.classList.toggle('hidden', isText);
 }
 
 function resetUI(btn, loader, label) {
     btn.disabled = false;
     loader.classList.add('hidden');
-    label.innerText = "AVVIA SCANSIONE";
+    label.textContent = "AVVIA SCANSIONE";
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-        const activeId = document.activeElement.id;
-        if (activeId === 'testoInput' || activeId === 'urlInput') {
-            e.preventDefault();
-            processData();
-        }
+    if (e.key !== 'Enter') return;
+
+    const activeId = document.activeElement.id;
+    const shouldSubmitText = activeId === 'testoInput' && (e.ctrlKey || e.metaKey);
+    const shouldSubmitUrl = activeId === 'urlInput';
+
+    if (shouldSubmitText || shouldSubmitUrl) {
+        e.preventDefault();
+        processData();
     }
 });
 
 function resetAll() {
+    hideError();
     document.getElementById('testoInput').value = "";
     document.getElementById('urlInput').value = "";
     document.getElementById('resultContainer').classList.add('hidden');
     const arco = document.getElementById('gaugeArcoProgress');
-    arco.style.strokeDashoffset = "251.32";
-    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-    window.history.pushState({ path: cleanUrl }, '', cleanUrl);
+    arco.style.strokeDashoffset = String(ARC_LENGTH);
     document.getElementById('testoInput').focus();
 }

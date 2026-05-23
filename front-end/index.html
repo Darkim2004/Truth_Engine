@@ -4,10 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Truth Shield fact-checking dashboard">
     <title>TRUTH SHIELD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        :root {
+            --gauge-arc-length: 251.32;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -32,6 +38,8 @@
         }
 
         #gaugeArcoProgress {
+            stroke-dasharray: var(--gauge-arc-length);
+            stroke-dashoffset: var(--gauge-arc-length);
             transition: stroke-dashoffset 2s ease-in-out;
         }
     </style>
@@ -95,6 +103,10 @@
                     <path d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                 </svg>
             </button>
+            <div id="errorBanner"
+                class="hidden rounded-2xl border border-red-500/40 bg-red-950/40 px-4 py-3 text-left text-xs font-bold text-red-100">
+                <span id="errorText"></span>
+            </div>
         </div>
 
         <div id="resultContainer" class="mt-12 hidden">
@@ -167,8 +179,7 @@
                             stroke-linecap="round" />
 
                         <path id="gaugeArcoProgress" d="M20,100 A80,80 0 0,1 180,100" fill="none"
-                            stroke="url(#gaugeGradient)" stroke-width="12" stroke-linecap="round"
-                            stroke-dasharray="251.32" stroke-dashoffset="251.32" />
+                            stroke="url(#gaugeGradient)" stroke-width="12" stroke-linecap="round" />
 
                         <g fill="#94a3b8" font-size="12" font-weight="900" font-family="Inter" text-anchor="middle"
                             class="select-none">
@@ -199,7 +210,7 @@
             <span>Matteo Bianchi</span>•<span>Andrea Cancaglioni</span>•<span>Luigi Romano</span>
         </div>
     </div>
-    <script src="script.js?v=3"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
