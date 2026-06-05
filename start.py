@@ -228,8 +228,8 @@ def start_app(python_exe: Path) -> None:
 
 
 def main() -> int:
-    if sys.version_info < (3, 11) or sys.version_info >= (3, 14):
-        print("Python 3.11, 3.12, or 3.13 is required to run this project.")
+    if sys.version_info[:2] < (3, 11) or sys.version_info[:2] > (3, 14):
+        print("Python 3.11, 3.12, 3.13, or 3.14 is required to run this project.")
         return 1
 
     try:

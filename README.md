@@ -16,7 +16,7 @@ The project includes a Flask backend API, a static dashboard, and a CLI for JSON
 
 ## Tech Stack
 
-- Python 3.11, 3.12, or 3.13
+- Python 3.11, 3.12, 3.13, or 3.14
 - Flask and Flask-CORS
 - Groq API
 - `ddgs` for DuckDuckGo search
